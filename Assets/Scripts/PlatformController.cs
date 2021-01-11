@@ -64,7 +64,7 @@ public class PlatformController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Handles.DrawAAPolyLine(5, Waypoints.Select(o => o.position).ToArray());
+        //Handles.DrawAAPolyLine(5, Waypoints.Select(o => o.position).ToArray());
     }
 
     private void OnTriggerEnter2D(Collider2D col)
