@@ -530,6 +530,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5ba65cfc647147d41b929cb8c3636273, type: 2}
   - {fileID: 11400000, guid: e7c68e67d5fbf9e40a79b355d9362931, type: 2}
   Middle: {fileID: 11400000, guid: 1b43d97906a4b4d40a3c919bf64a18e5, type: 2}
+  CoinPrefab: {fileID: 2337182411537567670, guid: 66d57f0c973c51e4aac0f66be1b9bdf1,
+    type: 3}
+  Collectibles:
+  - Coin
 --- !u!1 &8795538541699542642
 GameObject:
   m_ObjectHideFlags: 0

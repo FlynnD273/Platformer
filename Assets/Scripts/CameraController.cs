@@ -28,6 +28,8 @@ public class CameraController : MonoBehaviour
     //Camera component
     private Camera cam;
 
+    private float orthoSize;
+
     //offset for camera shake
     private Vector3 offset;
 
@@ -50,8 +52,8 @@ public class CameraController : MonoBehaviour
 
         //Get width and height
         cam = GetComponent<Camera>();
-        h = cam.orthographicSize * 2;
-        w = h * cam.aspect;
+        orthoSize = cam.orthographicSize;
+
         rb = Follow.GetComponent<Rigidbody2D>();
     }
 
@@ -74,6 +76,12 @@ public class CameraController : MonoBehaviour
         Vector2 target = (Vector2)Follow.transform.position + rb.velocity * LookAhead;
         Vector3 newPos = Vector3.Lerp(transform.position, target, 1 / Smoothness);
         newPos.z = -10;
+
+        h = cam.orthographicSize * 2;
+        w = h * cam.aspect;
+        cam.orthographicSize = Mathf.Min(orthoSize, Mathf.Min(Bounds.bounds.size.y / 2, Bounds.bounds.size.x / cam.aspect / 2));
+        h = cam.orthographicSize * 2;
+        w = h * cam.aspect;
 
         if (Bounds != null)
         {

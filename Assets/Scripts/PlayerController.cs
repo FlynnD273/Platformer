@@ -17,17 +17,28 @@ public class PlayerController : MonoBehaviour
     public float FloatDuration = 1f;
     public float XDecay = 0.9f;
     public int MaxJump = 2;
+    public AudioClip Jump;
+
+
+    public bool OnPlatform { get; set; }
+    public Rigidbody2D Platform { get; set; }
+    public Vector2 LastPlatform { get; set; }
+    //private bool onPlatformLastFrame;
+
+
+
     public Vector2 StartPos { get; set; }
 
     public UnityEvent Die = new UnityEvent();
 
+
     private Rigidbody2D rb;
-    private SpriteRenderer sr;
 
     private float xScale;
     private bool prevJumped = true;
     private int jumps = 0;
     private Stopwatch FloatTime;
+    private AudioSource Audio;
 
     private Animator anim;
 
@@ -36,12 +47,12 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
         xScale = transform.localScale.x;
         FloatTime = new Stopwatch();
         Die.AddListener(Reset);
         StartPos = rb.position;
         Player = this;
+        Audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -66,8 +77,14 @@ public class PlayerController : MonoBehaviour
         if (onGround)
         {
             jumps = MaxJump - 1;
+            rb.drag = 2;
         }
-        
+        else
+        {
+            rb.drag = 1f;
+            anim.SetBool("IsFalling", rb.velocity.y < 0);
+        }
+
         if (Input.GetAxisRaw("Jump") > 0.5f)
         {
             if (jumps > 0 && !prevJumped)
@@ -75,6 +92,7 @@ public class PlayerController : MonoBehaviour
                 if (!onGround)
                     jumps--;
                 jump = true;
+                Audio.PlayOneShot(Jump, 0.6f);
                 FloatTime.Restart();
             }
             prevJumped = true;
@@ -116,6 +134,20 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("Walking", false);
         }
+
+        if (OnPlatform && Platform != null)
+        {
+            rb.position += Platform.position - LastPlatform;
+            //rb.AddForce((Platform.position - LastPlatform) * (Platform.position - LastPlatform), ForceMode2D.Impulse);
+            //UnityEngine.Debug.Log(Platform.velocity);
+            LastPlatform = Platform.position;
+            //onPlatformLastFrame = true;
+        }
+        //else if (onPlatformLastFrame)
+        //{
+        //    rb.velocity += (Platform.position - LastPlatform) * 500;
+        //    onPlatformLastFrame = false;
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D col)
