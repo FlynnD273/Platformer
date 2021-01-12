@@ -85,7 +85,8 @@ public class PlayerController : MonoBehaviour
         {
             WallSlideCheck();
         }
-        else if (!wallJumping)
+        
+        if (!wallJumping)
         {
             //Stop inverting input for wall jump chains and falsify wallsliding in case it doesn't get falsified earlier
             if (!PlayerFrontChecker.isTouchingFront)
@@ -100,7 +101,10 @@ public class PlayerController : MonoBehaviour
         if (wallJumping)
         {
             WallJumpTimer();
+            
         }
+
+        WallSlideCheck();
     }
 
     // Update is called once per frame
