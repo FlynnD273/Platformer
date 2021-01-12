@@ -6,21 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/Flynn Levels/MainMenu.unity
     guid: 2ebfd47c22f4f6f4b8049a10cb1747fe
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
+    path: Assets/Scenes/Flynn Levels/Level1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
+    path: Assets/Scenes/Flynn Levels/Level2.unity
     guid: 7d2869c5a212da14db6c14fc5a586375
   - enabled: 1
-    path: Assets/Scenes/Level3.unity
+    path: Assets/Scenes/Flynn Levels/Level3.unity
     guid: 07748b8aefe19e64fbfaa506d07582fe
   - enabled: 1
-    path: Assets/Scenes/Level4.unity
+    path: Assets/Scenes/Flynn Levels/Level4.unity
     guid: e9179d75f713f9842b78edd1e1122ce2
   - enabled: 1
-    path: Assets/Scenes/WinLevel.unity
+    path: Assets/Scenes/Flynn Levels/WinLevel.unity
     guid: 1e76c6c14d9a93340b7cabfb99f6881d
   m_configObjects: {}
