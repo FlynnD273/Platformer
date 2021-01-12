@@ -17,6 +17,9 @@ public class FBProjectileMotion : MonoBehaviour
     public bool boolRotate = false;
     public float rotationSpeed = -5f;
 
+    //Death Time
+    public float deathTime = 8.0f;
+
     //declare components
     public Rigidbody2D myRB;
     private Projectile projectile;
@@ -63,5 +66,6 @@ public class FBProjectileMotion : MonoBehaviour
         {
             transform.Rotate(0, 0, rotationSpeed);
         }
+        Destroy(gameObject, deathTime);
     }
 }

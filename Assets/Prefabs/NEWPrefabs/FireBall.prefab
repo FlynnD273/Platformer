@@ -137,4 +137,5 @@ MonoBehaviour:
   damage: 250
   boolRotate: 0
   rotationSpeed: -5
+  deathTime: 13
   myRB: {fileID: 1076654503300009553}
