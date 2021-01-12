@@ -14,8 +14,10 @@ public class Enemy : MonoBehaviour
     //gameobjects for the effect to be spawned when the enemy dies
     public GameObject deathEffect;
     public GameObject proj1;
-
+    public GameObject proj2;
     public int dropRate = 5;
+    public bool isEnemy = true;
+    private int randomRate;
 
     // Start is called before the first frame update
     void Start()
@@ -36,9 +38,25 @@ public class Enemy : MonoBehaviour
     //handle spawning of death effects and destroy gameobject
     void Death()
     {
-        for(int i = 0; i < dropRate; i++)
+        if (isEnemy == true)
         {
-            Instantiate(proj1, transform.position, transform.rotation);
+            randomRate = Random.Range(1, dropRate);
+            for (int i = 0; i < randomRate; i++)
+            {
+                Instantiate(proj1, transform.position, transform.rotation);
+            }
+            randomRate = Random.Range(1, dropRate);
+            for (int i = 0; i < randomRate; i++)
+            {
+                Instantiate(proj2, transform.position, transform.rotation);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < dropRate; i++)
+            {
+                Instantiate(proj1, transform.position, transform.rotation);
+            }
         }
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);

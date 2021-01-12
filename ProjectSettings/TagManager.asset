@@ -8,6 +8,9 @@ TagManager:
   - Dangerous
   - Checkpoint
   - Tilemap
+  - kunai
+  - shurikan
+  - fireBall
   layers:
   - Default
   - TransparentFX

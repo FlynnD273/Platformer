@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileMotion : MonoBehaviour
+public class FBProjectileMotion : MonoBehaviour
 {
     //speed and damage vars
     public float speed = 20f;
@@ -38,7 +38,6 @@ public class ProjectileMotion : MonoBehaviour
         if (myEnemy != null)
         {
             myEnemy.TakeDamage(damage);
-            Destroy(gameObject);
         }
     }
 

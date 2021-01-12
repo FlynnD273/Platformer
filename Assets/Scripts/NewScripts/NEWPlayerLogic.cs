@@ -22,7 +22,8 @@ public class NEWPlayerLogic : MonoBehaviour
     void Start()
     {
         respawnPos = transform.position;
-        projectile = GameObject.FindObjectOfType<Projectile>();
+        //set object class
+        projectile = FindObjectOfType<Projectile>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -34,6 +35,14 @@ public class NEWPlayerLogic : MonoBehaviour
         else if (collision.gameObject.CompareTag("Moving"))
         {
             transform.SetParent(collision.transform);
+        }
+        if (collision.gameObject.CompareTag("kunai"))
+        {
+            projectile.IncreaseKun(1);
+        }
+        if (collision.gameObject.CompareTag("shurikan"))
+        {
+            projectile.IncreaseSha(1);
         }
     }
 
