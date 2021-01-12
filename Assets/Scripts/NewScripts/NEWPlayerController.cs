@@ -73,14 +73,14 @@ public class NEWPlayerController : MonoBehaviour
         moveInput = Input.GetAxisRaw("Horizontal");
         myRB.velocity = new Vector2(moveInput * speed, myRB.velocity.y);
 
-        if (moveInput == 0)
+        /*if (moveInput == 0)
         {
             myAnim.SetBool("Walking", false);
         }
         else
         {
             myAnim.SetBool("Walking", true);
-        }
+        }*/
 
         if (facingRight == false && moveInput > 0)
         {

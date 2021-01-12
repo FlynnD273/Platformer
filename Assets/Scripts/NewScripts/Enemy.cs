@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//////////////////
+//By: Dev Dhawan
+//Date: 12/17/2020
+//Description: Enemy logic fpr 2D game.
+//////////////////
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//////////////////
+//By: Dev Dhawan
+//Date: 1/11/2020
+//Description: Projectile Logic for 2D game.
+//////////////////
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
