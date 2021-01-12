@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class ProjectileMotion : MonoBehaviour
 {
+    //speed and damage vars
     public float speed = 20f;
     public int damage = 40;
-    public bool playerKun = false;
+    //declare components
     public Rigidbody2D myRB;
     private Projectile projectile;
     
     // Start is called before the first frame update
     void Start()
     {
+        //set the projectile speed when the projectile is spawned
         myRB.velocity = transform.right * speed;
-        projectile = GameObject.FindObjectOfType<Projectile>();
+        //set object class
+        projectile = FindObjectOfType<Projectile>();
     }
 
     void OnTriggerEnter2D (Collider2D collision)
     {
+        //if the projectile hits an enemy, deal damage to it and despawn projectile
         Enemy myEnemy = collision.GetComponent<Enemy>();
         if (myEnemy != null)
         {
@@ -31,11 +35,13 @@ public class ProjectileMotion : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            //destroy kunai if it hits player
             projectile.IncreaseKun(1);
             Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Tilemap"))
         {
+            //stop the projectile if it hits tiles
             myRB.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
