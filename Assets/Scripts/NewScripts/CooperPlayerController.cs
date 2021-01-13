@@ -155,9 +155,7 @@ public class CooperPlayerController : MonoBehaviour
     void Flip() 
     {
         facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= (-1);
-        transform.localScale = Scaler;
+        transform.Rotate(0f, 180, 0f);
     }
 
     //set the wall jumping bool to false after invoke method calls function
@@ -203,7 +201,7 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //activate jump if jumps remain
-        if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0)
+        if ((Input.GetKeyDown(KeyCode.Space) && extraJumps > 0) || (Input.GetKeyDown(KeyCode.W) && extraJumps > 0))
         {
             isJumping = true;
 
@@ -218,7 +216,7 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //allow player to jump higher within a timeframe as long as key is pressed
-        if (Input.GetKey(KeyCode.Space) == true && isJumping == true)
+        if ((Input.GetKey(KeyCode.Space) == true && isJumping == true) || (Input.GetKey(KeyCode.W) == true && isJumping == true))
         {
             if (jumpTimeCounter > 0)
             {
@@ -232,7 +230,7 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //when the key is released, set isJumping to false
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W))
         {
             isJumping = false;
         }
@@ -258,7 +256,7 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //if player presses key while wall sliding, set wall jumping to true and set it to false after invoke time
-        if (Input.GetKeyDown(KeyCode.Space) && wallSliding == true)
+        if ((Input.GetKeyDown(KeyCode.Space) && wallSliding == true) || (Input.GetKeyDown(KeyCode.W) && wallSliding == true))
         {
             //check which direction the walljump should be in
             if (facingRight == true)
