@@ -1,6 +1,6 @@
 ﻿//////////////////
 //By: Dev Dhawan
-//Date: 12/14/2020
+//Date: 1/12/2020
 //Description: Player controller for 2D platformer.
 //////////////////
 using System.Collections;
@@ -41,11 +41,11 @@ public class NEWPlayerController : MonoBehaviour
         {
             extraJumps = maxJumps;
         }
-        if (/*(Input.GetKeyDown(KeyCode.Space) && isGrounded) ||*/ (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded))
+        if ((Input.GetKeyDown(KeyCode.Space) && isGrounded) || (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded) || (Input.GetKeyDown(KeyCode.W) && isGrounded))
         {
             myRB.velocity = Vector2.up * jumpForce;
         }
-        else if (/*(Input.GetKeyDown(KeyCode.Space) && extraJumps > 1) ||*/ (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 1))
+        else if ((Input.GetKeyDown(KeyCode.Space) && extraJumps > 1) || (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 1) || (Input.GetKeyDown(KeyCode.W) && extraJumps > 1))
         {
             myRB.velocity = Vector2.up * jumpForce;
             extraJumps--;

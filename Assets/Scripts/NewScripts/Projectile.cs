@@ -37,7 +37,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             switchProj++;
         }
@@ -62,7 +62,7 @@ public class Projectile : MonoBehaviour
         }
 
         //checks when to fire
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Switch();
         }

@@ -15,15 +15,32 @@ public class NEWPlayerLogic : MonoBehaviour
 
     public Color checkActive = new Color(1, 0, 1, 1);
     public Color checkInactive = new Color(1, 1, 1, 1);
+    public Color playerHit = new Color(0, 1, 1, 1);
+
+    //Player health
+    public int healthPoints = 100;
+    private int health = 0;
+    public int lives = 5;
+    private int temp;
+
     private GameObject currentCheckPoint;
     private Projectile projectile;
+
+    
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+        //health
+        health = healthPoints;
+        //respawn point
         respawnPos = transform.position;
         //set object class
         projectile = FindObjectOfType<Projectile>();
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -31,6 +48,8 @@ public class NEWPlayerLogic : MonoBehaviour
         if (collision.gameObject.CompareTag("Death"))
         {
             transform.position = respawnPos;
+            lives--;
+            health = healthPoints;
         }
         else if (collision.gameObject.CompareTag("Moving"))
         {
@@ -43,6 +62,18 @@ public class NEWPlayerLogic : MonoBehaviour
         if (collision.gameObject.CompareTag("shurikan"))
         {
             projectile.IncreaseSha(1);
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            temp = health - 20;
+            health = temp;
+            StartCoroutine(ChangePlayerColor());
+            if (health <= 0)
+            {
+                lives--;
+                transform.position = respawnPos;
+                health = healthPoints;
+            }
         }
     }
 
@@ -86,9 +117,19 @@ public class NEWPlayerLogic : MonoBehaviour
         }
     }
 
+    IEnumerator ChangePlayerColor()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = playerHit;
+        yield return new WaitForSeconds(1f);
+        gameObject.GetComponent<SpriteRenderer>().color = checkInactive;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        if (lives <= 0)
+        {
+
+        }
     }
 }

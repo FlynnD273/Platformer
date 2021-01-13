@@ -11,6 +11,7 @@ TagManager:
   - kunai
   - shurikan
   - fireBall
+  - Enemy
   layers:
   - Default
   - TransparentFX
