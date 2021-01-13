@@ -66,10 +66,30 @@ public class CooperPlayerController : MonoBehaviour
     //update is called once per frame (needed for key checks)
     void Update()
     {
+        if (!wallSliding)
+        {
+            //reset the stopwatch if not wallsliding
+            wallSlideStopwatch.Reset();
+        }
+
+        //stop holding the player in place if they stop holding horizontally
+        if (wallSliding && Input.GetAxisRaw("Horizontal") == 0)
+        {
+            myRB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+            wallSliding = false;
+        }
+
         //stop inverting input if the player stops holding a direction so the player has responsive control
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
         {
             invertInput = false;
+            myRB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+            wallSlideStopwatch.Reset();
+        }
+
+        if(Input.GetAxisRaw("Jump") != 0)
+        {
+            myRB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
         }
 
         //check for wall slide/ wall jump when moving into a wall above ground, check for normal jumps if criteria not met
@@ -96,20 +116,7 @@ public class CooperPlayerController : MonoBehaviour
             //Reset the stopwatch on walljump
             wallSlideStopwatch.Reset();
         }
-
-        if (!wallSliding)
-        {
-            //reset the stopwatch if not wallsliding
-            wallSlideStopwatch.Reset();
-        }
-
-        //stop holding the player in place if they stop holding horizontally
-        if(wallSliding && Input.GetAxisRaw("Horizontal") == 0)
-        {
-            myRB.constraints = RigidbodyConstraints2D.None;
-            wallSliding = false;
-        }
-            
+ 
     }
 
     // Update is called once per physics frame
@@ -284,16 +291,19 @@ public class CooperPlayerController : MonoBehaviour
             if (wallSlideStopwatch.IsRunning && wallSlideStopwatch.ElapsedMilliseconds > wallSlideTime * 1000)
             {
                 myRB.velocity = new Vector2(myRB.velocity.x, Mathf.Clamp(myRB.velocity.y, -wallSlidingSpeed, float.MaxValue));
-                myRB.constraints = RigidbodyConstraints2D.None;
+                myRB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
             }
             else
             {
                 myRB.velocity = new Vector2(0,0);
 
+                myRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+
                 //If the player inputs to walljump, unfreeze constraints before the next if statement
-                if (!((Input.GetKeyDown(KeyCode.Space) && wallSliding == true) || (Input.GetKeyDown(KeyCode.W) && wallSliding == true)))
+                if (Input.GetAxisRaw("Jump") != 0)
                 {
-                    myRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+                    myRB.velocity = new Vector2(myRB.velocity.x, Mathf.Clamp(myRB.velocity.y, -wallSlidingSpeed, float.MaxValue));
+                    myRB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
                 }
             }
         }
@@ -301,6 +311,8 @@ public class CooperPlayerController : MonoBehaviour
         //if player presses key while wall sliding, set wall jumping to true and set it to false after invoke time
         if ((Input.GetKeyDown(KeyCode.Space) && wallSliding == true) || (Input.GetKeyDown(KeyCode.W) && wallSliding == true))
         {
+            myRB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+
             //check which direction the walljump should be in
             if (facingRight == true)
             {
@@ -313,7 +325,6 @@ public class CooperPlayerController : MonoBehaviour
 
             //flip the player before the next movement
             Flip();
-            myRB.constraints = RigidbodyConstraints2D.None;
 
             jumpSource.PlayOneShot(jumpSound);
 
