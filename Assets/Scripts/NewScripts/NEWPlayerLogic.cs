@@ -22,6 +22,9 @@ public class NEWPlayerLogic : MonoBehaviour
     private int health = 0;
     public int lives = 5;
     private int temp;
+    //Player Energy
+    public int energyPoints = 101;
+    private int energy;
 
     private GameObject currentCheckPoint;
     private Projectile projectile;
@@ -33,6 +36,8 @@ public class NEWPlayerLogic : MonoBehaviour
     {
         //health
         health = healthPoints;
+        //energy
+        energy = energyPoints;
         //respawn point
         respawnPos = transform.position;
         //set object class
@@ -97,7 +102,7 @@ public class NEWPlayerLogic : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("CheckPoint"))
+        if (collision.gameObject.CompareTag("Checkpoint"))
         {
             //set a new position for the player to respawn
             respawnPos = collision.transform.position;
@@ -115,6 +120,28 @@ public class NEWPlayerLogic : MonoBehaviour
         }
     }
 
+    public bool EnergyChange(bool decORIncEne, int amount)
+    {
+        if (decORIncEne == true)
+        {
+            temp = energy - amount;
+        }
+        if (decORIncEne == false)
+        {
+            temp = energy + amount;
+        }
+        energy = temp;
+        if (energy > 0)
+        { 
+            return true;
+        }
+        else
+        {
+            energy = 0;
+            return false;
+        }
+    }
+
     IEnumerator ChangePlayerColor()
     {
         gameObject.GetComponent<SpriteRenderer>().color = playerHit;
@@ -127,7 +154,8 @@ public class NEWPlayerLogic : MonoBehaviour
     {
         if (lives <= 0)
         {
-
+            energy = energyPoints;
+            health = healthPoints;
         }
     }
 }

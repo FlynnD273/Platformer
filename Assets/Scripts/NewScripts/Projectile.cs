@@ -14,6 +14,7 @@ public class Projectile : MonoBehaviour
     public GameObject proj3;
 
     public ProjectileMotion projectile;
+    public NEWPlayerLogic player;
     
     //Projectile variables
     //Kunai variable
@@ -23,7 +24,7 @@ public class Projectile : MonoBehaviour
     public int shurikan = 30;
     private bool boolShurikan;
     //Energy Varaible (used for fireball)
-    public int energyLim = 100;
+    public int energyLim;
     public float offset;
     private Vector3 difference;
     private float rotz;
@@ -36,6 +37,7 @@ public class Projectile : MonoBehaviour
     {
         boolKunai = true;
         projectile = FindObjectOfType<ProjectileMotion>();
+        player = FindObjectOfType<NEWPlayerLogic>();
     }
 
     // Update is called once per frame
@@ -123,8 +125,13 @@ public class Projectile : MonoBehaviour
             difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, rotz + offset);
-            
-            if (energyLim >= 1)
+
+            if (player.EnergyChange(true, 25) == true)
+            {
+                Instantiate(proj3, firePoint.position, transform.rotation);
+            }
+            transform.rotation = rotateFreeze;
+            /*if (energyLim >= 1)
             {
                 temp = energyLim - 20;
                 energyLim = temp;
@@ -134,7 +141,7 @@ public class Projectile : MonoBehaviour
             {
                 energyLim = 0;
             }
-            transform.rotation = rotateFreeze;
+            transform.rotation = rotateFreeze;*/
         }
         
     }
