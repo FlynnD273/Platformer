@@ -24,6 +24,10 @@ public class Projectile : MonoBehaviour
     private bool boolShurikan;
     //Energy Varaible (used for fireball)
     public int energyLim = 100;
+    public float offset;
+    private Vector3 difference;
+    private float rotz;
+    private Quaternion rotateFreeze;
 
     private int temp;
 
@@ -37,7 +41,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetMouseButtonDown(2))
         {
             switchProj++;
         }
@@ -62,7 +66,7 @@ public class Projectile : MonoBehaviour
         }
 
         //checks when to fire
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             Switch();
         }
@@ -115,16 +119,22 @@ public class Projectile : MonoBehaviour
         }
         if (switchProj == 3)
         {
-            if(energyLim >= 1)
+            rotateFreeze = transform.rotation;
+            difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, rotz + offset);
+            
+            if (energyLim >= 1)
             {
                 temp = energyLim - 20;
                 energyLim = temp;
-                Fire(proj3);
+                Instantiate(proj3, firePoint.position, transform.rotation);
             }
             if(energyLim <= 0)
             {
                 energyLim = 0;
             }
+            transform.rotation = rotateFreeze;
         }
         
     }
