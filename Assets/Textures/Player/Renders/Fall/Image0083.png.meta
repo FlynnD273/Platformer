@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/Textures/Player/Renders/Fall/Image0083.png.meta
 guid: dade0ed80a95a20438e364d5b0741281
+=======
+guid: de6bd28b4b4fc784886d0bd73ee5508c
+>>>>>>> 22635e58f321193d2fbc52f3aa9323ca4f1441b7:Assets/Textures/Player/Renders/Down/Image0078.png.meta
+=======
+guid: dade0ed80a95a20438e364d5b0741281
+>>>>>>> 22635e58f321193d2fbc52f3aa9323ca4f1441b7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

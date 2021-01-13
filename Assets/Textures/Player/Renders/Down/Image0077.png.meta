@@ -1,9 +1,17 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Textures/Player/Renders/Down/Image0077.png.meta
 guid: 6440603c36b9d14408bc33c4691abab1
 =======
 guid: c2c32622f44e0134f8e9d1f8f5061f8a
 >>>>>>> 22635e58f321193d2fbc52f3aa9323ca4f1441b7:Assets/Textures/Player/Renders/Down/Image0076.png.meta
+=======
+<<<<<<< HEAD:Assets/Textures/Player/Renders/Fall/Image0082.png.meta
+guid: c9428fc922ccc254c97e3be6ba2f73ec
+=======
+guid: 6440603c36b9d14408bc33c4691abab1
+>>>>>>> 22635e58f321193d2fbc52f3aa9323ca4f1441b7:Assets/Textures/Player/Renders/Down/Image0077.png.meta
+>>>>>>> 22635e58f321193d2fbc52f3aa9323ca4f1441b7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
