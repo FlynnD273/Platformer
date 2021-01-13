@@ -5,6 +5,8 @@
  */
 
 using UnityEngine;
+using System.Diagnostics;
+using UnityEngine.Events;
 
 public class CooperPlayerController : MonoBehaviour
 {
@@ -34,13 +36,16 @@ public class CooperPlayerController : MonoBehaviour
     
 
     public float jumpForce;
-     private float jumpTimeCounter;
+    private float jumpTimeCounter;
     public float jumpTime;
     private int extraJumps;
     public int maxJumps;
     public float wallJumpTime;
     private float wallJumpTimeMax;
     private float storedMoveInput;
+    public float wallSlideTime;
+
+    [SerializeField]private Stopwatch wallSlideStopwatch;
 
     public float xWallForce;
     public float yWallForce;
@@ -55,6 +60,7 @@ public class CooperPlayerController : MonoBehaviour
         jumpSource = gameObject.GetComponent<AudioSource>();
         //set max time to public var
         wallJumpTimeMax = wallJumpTime;
+        wallSlideStopwatch = new Stopwatch();
     }
 
     //update is called once per frame (needed for key checks)
@@ -87,7 +93,23 @@ public class CooperPlayerController : MonoBehaviour
         if (wallJumping)
         {
             WallJumpTimer();
+            //Reset the stopwatch on walljump
+            wallSlideStopwatch.Reset();
         }
+
+        if (!wallSliding)
+        {
+            //reset the stopwatch if not wallsliding
+            wallSlideStopwatch.Reset();
+        }
+
+        //stop holding the player in place if they stop holding horizontally
+        if(wallSliding && Input.GetAxisRaw("Horizontal") == 0)
+        {
+            myRB.constraints = RigidbodyConstraints2D.None;
+            wallSliding = false;
+        }
+            
     }
 
     // Update is called once per physics frame
@@ -176,6 +198,7 @@ public class CooperPlayerController : MonoBehaviour
         wallJumpTime -= Time.deltaTime;
     }
 
+    
     //function that checks if there is wall the player is touching
     bool CheckForNewWallHit()
     {
@@ -243,6 +266,11 @@ public class CooperPlayerController : MonoBehaviour
         if (PlayerFrontChecker.isTouchingFront == true)
         {
             wallSliding = true;
+
+            if (!wallSlideStopwatch.IsRunning)
+            {
+                wallSlideStopwatch.Start();
+            }
         }
         else if(PlayerFrontChecker.isTouchingFront == false)
         {
@@ -252,9 +280,24 @@ public class CooperPlayerController : MonoBehaviour
         //if player is wall sliding, apply relevant velocity change
         if (wallSliding)
         {
-            myRB.velocity = new Vector2(myRB.velocity.x, Mathf.Clamp(myRB.velocity.y, -wallSlidingSpeed, float.MaxValue));
-        }
+            //check if time is up for the stopwatch and apply sliding, if not, then keep player in place
+            if (wallSlideStopwatch.IsRunning && wallSlideStopwatch.ElapsedMilliseconds > wallSlideTime * 1000)
+            {
+                myRB.velocity = new Vector2(myRB.velocity.x, Mathf.Clamp(myRB.velocity.y, -wallSlidingSpeed, float.MaxValue));
+                myRB.constraints = RigidbodyConstraints2D.None;
+            }
+            else
+            {
+                myRB.velocity = new Vector2(0,0);
 
+                //If the player inputs to walljump, unfreeze constraints before the next if statement
+                if (!((Input.GetKeyDown(KeyCode.Space) && wallSliding == true) || (Input.GetKeyDown(KeyCode.W) && wallSliding == true)))
+                {
+                    myRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+                }
+            }
+        }
+        
         //if player presses key while wall sliding, set wall jumping to true and set it to false after invoke time
         if ((Input.GetKeyDown(KeyCode.Space) && wallSliding == true) || (Input.GetKeyDown(KeyCode.W) && wallSliding == true))
         {
@@ -270,6 +313,7 @@ public class CooperPlayerController : MonoBehaviour
 
             //flip the player before the next movement
             Flip();
+            myRB.constraints = RigidbodyConstraints2D.None;
 
             jumpSource.PlayOneShot(jumpSound);
 
