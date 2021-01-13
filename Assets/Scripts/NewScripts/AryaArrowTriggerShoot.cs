@@ -10,13 +10,13 @@ using UnityEngine;
 
 public class AryaArrowTriggerShoot : MonoBehaviour
 {
-    public GameObject arrows;
+    //public GameObject arrows;
     public GameObject player;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            Instantiate(arrows, player.transform.position, Quaternion.identity);
+            //Instantiate(arrows, player.transform.position, Quaternion.identity);
         }
     }
 }
