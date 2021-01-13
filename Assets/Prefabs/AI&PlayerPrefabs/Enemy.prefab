@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 4381265844265837226}
   - component: {fileID: 4381265844265837227}
   - component: {fileID: 4381265844265837224}
-  - component: {fileID: 4381265844265837225}
+  - component: {fileID: -7239962453829050894}
+  - component: {fileID: 4234930061503394605}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4381265844265837230}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.075, y: -0.301, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4381265844265837227
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -109,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4381265844265837225
+--- !u!114 &-7239962453829050894
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,4 +125,27 @@ MonoBehaviour:
   health: 100
   deathEffect: {fileID: 0}
   proj1: {fileID: 9031457613526283657, guid: 37beb4771497c774f86705ec37daf562, type: 3}
+  proj2: {fileID: 1278394888584079965, guid: 1e093557e3cb2f649bb6f8e33894d881, type: 3}
   dropRate: 5
+  isEnemy: 1
+  waypoints:
+  - {x: 0, y: 0, z: 0}
+  - {x: 4, y: 0, z: 0}
+  speed: 1
+  closeEnough: 0.1
+--- !u!58 &4234930061503394605
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4381265844265837230}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

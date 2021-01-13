@@ -57,6 +57,7 @@ public class ProjectileMotion : MonoBehaviour
             //stop the projectile if it hits tiles
             myRB.constraints = RigidbodyConstraints2D.FreezeAll;
             boolRotate = false;
+            damage = 0;
         }
     }
 
