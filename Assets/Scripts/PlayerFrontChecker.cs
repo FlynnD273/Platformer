@@ -12,7 +12,6 @@ public class PlayerFrontChecker : MonoBehaviour
         if (!collision.isTrigger)
         {
             isTouchingFront = true;
-            Debug.Log(isTouchingFront);
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -27,7 +26,6 @@ public class PlayerFrontChecker : MonoBehaviour
         if (!collision.isTrigger)
         {
             isTouchingFront = false;
-            Debug.Log(isTouchingFront);
         }
     }
 }
