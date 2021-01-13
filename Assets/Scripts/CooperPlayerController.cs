@@ -88,7 +88,8 @@ public class CooperPlayerController : MonoBehaviour
             Invoke(nameof(CheckForNewWallHit), 0f);
         }
 
-        
+        myAnim.SetBool("OnGround", PlayerBottomChecker.isTouchingBottom);
+
         //allows player to hold one direction while wall jumping, making timing easier
         if (invertInput == true)
         {

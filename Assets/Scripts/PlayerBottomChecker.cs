@@ -13,11 +13,11 @@ public class PlayerBottomChecker : MonoBehaviour
         if (!collision.isTrigger)
         {
             isTouchingBottom = true;
-            CooperPlayerController.myAnim.SetBool("Grounded", true);
+            //CooperPlayerController.myAnim.SetBool("Grounded", true);
         }
 
         //change pl var if player hits a death object
-        if (collision.gameObject.CompareTag("Death"))
+        if (collision.gameObject.CompareTag("Dangerous"))
         {
             PlayerLogic.bottomCheckerDeathHit = true;
         }
@@ -37,7 +37,7 @@ public class PlayerBottomChecker : MonoBehaviour
         if (!collision.isTrigger)
         {
             isTouchingBottom = false;
-            CooperPlayerController.myAnim.SetBool("Grounded", false);
+            //CooperPlayerController.myAnim.SetBool("Grounded", false);
         }
     }
 }
