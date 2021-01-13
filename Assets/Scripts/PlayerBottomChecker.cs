@@ -7,8 +7,12 @@ public class PlayerBottomChecker : MonoBehaviour
 {
     public static bool isTouchingBottom;
 
+
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
+        
         //handle when player enters ground space
         if (!collision.isTrigger)
         {
@@ -23,21 +27,46 @@ public class PlayerBottomChecker : MonoBehaviour
         }
         
     }
+    
     private void OnTriggerStay2D(Collider2D collision)
     {
+        
         //maintain touching bottom state while grounded
         if (!collision.isTrigger)
         {
             isTouchingBottom = true;
         }
     }
+    
     private void OnTriggerExit2D(Collider2D collision)
     {
+       
         //handle when the player leaves the ground
         if (!collision.isTrigger)
         {
             isTouchingBottom = false;
             //CooperPlayerController.myAnim.SetBool("Grounded", false);
         }
+    }
+    */
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        isTouchingBottom = true;
+
+        if (collision.gameObject.CompareTag("Dangerous"))
+        {
+            PlayerLogic.bottomCheckerDeathHit = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        isTouchingBottom = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isTouchingBottom = false;
     }
 }

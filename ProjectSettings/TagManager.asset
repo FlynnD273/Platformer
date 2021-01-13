@@ -6,12 +6,14 @@ TagManager:
   tags:
   - Ground
   - Dangerous
-  - Checkpoint
   - Tilemap
   - kunai
   - shurikan
   - fireBall
-  - Trigger
+  - Moving
+  - Enemy
+  - Death
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

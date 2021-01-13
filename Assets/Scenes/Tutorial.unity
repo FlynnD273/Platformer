@@ -170,7 +170,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -778,7 +778,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 11
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -805,7 +805,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 9
+      m_TileSpriteIndex: 11
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -915,11 +915,11 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 29cf6f08d84fc4604a07224e49e8a141, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: b45e46f4c774e496db7e82dbb0d76fc8, type: 3}
+    m_Data: {fileID: 21300000, guid: 54250ff1fbfcc4016960c3d32e9c1588, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 352230044061843ac9a5b541f431b5fe, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 54250ff1fbfcc4016960c3d32e9c1588, type: 3}
+    m_Data: {fileID: 21300000, guid: b45e46f4c774e496db7e82dbb0d76fc8, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: b95714b64b82f44feaf428420f5d528e, type: 3}
   - m_RefCount: 3
@@ -1098,6 +1098,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 78308639, guid: 61ffce8cc9951864b8c8b344ee26a26d, type: 3}
+      propertyPath: myRB
+      value: 
+      objectReference: {fileID: 953270480}
+    - target: {fileID: 225928482, guid: 61ffce8cc9951864b8c8b344ee26a26d, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.012007774
+      objectReference: {fileID: 0}
+    - target: {fileID: 225928482, guid: 61ffce8cc9951864b8c8b344ee26a26d, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.5238358
+      objectReference: {fileID: 0}
+    - target: {fileID: 225928482, guid: 61ffce8cc9951864b8c8b344ee26a26d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.35755795
+      objectReference: {fileID: 0}
+    - target: {fileID: 225928482, guid: 61ffce8cc9951864b8c8b344ee26a26d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.035349846
+      objectReference: {fileID: 0}
+    - target: {fileID: 225928482, guid: 61ffce8cc9951864b8c8b344ee26a26d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964840267461068277, guid: 61ffce8cc9951864b8c8b344ee26a26d,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964840267461068277, guid: 61ffce8cc9951864b8c8b344ee26a26d,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6964840267461068278, guid: 61ffce8cc9951864b8c8b344ee26a26d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1106,7 +1140,7 @@ PrefabInstance:
     - target: {fileID: 6964840267461068278, guid: 61ffce8cc9951864b8c8b344ee26a26d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.47
+      value: -2.39
       objectReference: {fileID: 0}
     - target: {fileID: 6964840267461068278, guid: 61ffce8cc9951864b8c8b344ee26a26d,
         type: 3}
@@ -1157,17 +1191,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 695bb7b1124b1ff4db3bf48823df5472,
+      objectReference: {fileID: 21300000, guid: b69db227926f55b45bf57e4c3cc34ee0,
         type: 3}
     - target: {fileID: 6964840267461068279, guid: 61ffce8cc9951864b8c8b344ee26a26d,
         type: 3}
       propertyPath: m_Size.x
-      value: 1
+      value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 6964840267461068279, guid: 61ffce8cc9951864b8c8b344ee26a26d,
         type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 6964840267461068279, guid: 61ffce8cc9951864b8c8b344ee26a26d,
         type: 3}
@@ -1298,6 +1332,12 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!50 &953270480 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6964840267461068282, guid: 61ffce8cc9951864b8c8b344ee26a26d,
+    type: 3}
+  m_PrefabInstance: {fileID: 751240483}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1412264340
 GameObject:
   m_ObjectHideFlags: 0
