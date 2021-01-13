@@ -137,7 +137,7 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: ef9ff4d1660241c4ba13c62879372aaa, type: 3}
   maxJumps: 1
   jumpTime: 0.3
-  wallSlidingSpeed: 5
+  wallSlidingSpeed: 0.1
   xWallForce: 10
   yWallForce: 10
   wallJumpTime: 2
@@ -243,6 +243,11 @@ PrefabInstance:
       propertyPath: m_SleepingMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6964840267461068282, guid: 61ffce8cc9951864b8c8b344ee26a26d,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a71b98fe10da10a488ae6fae2b3f1f38, type: 2}
     - target: {fileID: 6964840267461068283, guid: 61ffce8cc9951864b8c8b344ee26a26d,
         type: 3}
       propertyPath: m_Name
