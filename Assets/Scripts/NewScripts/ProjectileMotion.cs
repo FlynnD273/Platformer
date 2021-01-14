@@ -15,6 +15,7 @@ public class ProjectileMotion : MonoBehaviour
 
     //rotation variables
     public bool boolRotate = false;
+    public bool isEnemyWeapon = false;
     public float rotationSpeed = -5f;
 
     //Death Time
@@ -55,9 +56,18 @@ public class ProjectileMotion : MonoBehaviour
         if (collision.gameObject.CompareTag("Tilemap"))
         {
             //stop the projectile if it hits tiles
-            myRB.constraints = RigidbodyConstraints2D.FreezeAll;
-            boolRotate = false;
-            damage = 0;
+            if (isEnemyWeapon == false)
+            {
+                myRB.constraints = RigidbodyConstraints2D.FreezeAll;
+                boolRotate = false;
+                damage = 0;
+            }
+            else
+            {
+                boolRotate = false;
+                damage = 0;
+                Destroy(gameObject);
+            }
         }
     }
 

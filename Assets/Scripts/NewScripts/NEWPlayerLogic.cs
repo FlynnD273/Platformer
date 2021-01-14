@@ -66,17 +66,24 @@ public class NEWPlayerLogic : MonoBehaviour
         {
             projectile.IncreaseSha(1);
         }
+        if (collision.gameObject.CompareTag("kunaiEnemy"))
+        {
+            temp = health - 30;
+            health = temp;
+            StartCoroutine(ChangePlayerColor());
+        }
+        if (collision.gameObject.CompareTag("shurikanEnemy"))
+        {
+            temp = health - 10;
+            health = temp;
+            StartCoroutine(ChangePlayerColor());
+        }
         if (collision.gameObject.CompareTag("Enemy"))
         {
             temp = health - 20;
             health = temp;
             StartCoroutine(ChangePlayerColor());
-            if (health <= 0)
-            {
-                lives--;
-                transform.position = respawnPos;
-                health = healthPoints;
-            }
+            
         }
     }
 
@@ -102,7 +109,7 @@ public class NEWPlayerLogic : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("CheckPoint"))
+        if (collision.gameObject.CompareTag("Checkpoint"))
         {
             //set a new position for the player to respawn
             respawnPos = collision.transform.position;
@@ -152,6 +159,12 @@ public class NEWPlayerLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (health <= 0)
+        {
+            lives--;
+            transform.position = respawnPos;
+            health = healthPoints;
+        }
         if (lives <= 0)
         {
             energy = energyPoints;

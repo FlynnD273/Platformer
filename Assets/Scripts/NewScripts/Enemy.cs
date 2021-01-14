@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
 {
     //enemy health
     public int health = 100;
+    private int temp;
+    private Vector3 healthT;
 
     //gameobjects for the effect to be spawned when the enemy dies
     public GameObject deathEffect;
@@ -19,6 +21,7 @@ public class Enemy : MonoBehaviour
     public int dropRate = 5;
     public bool isEnemy = true;
     private int randomRate;
+    public Transform healthBar;
 
     //enemy Movement
     [Tooltip("These points treat 0, 0, 0 as the start point, all other points are relative to that.")]
@@ -34,7 +37,14 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < waypoints.Length; ++i)
         {
             waypoints[i] += transform.position;
+            healthT = healthBar.transform.localScale;
         }
+    }
+    void Update()
+    {
+        float temp = health * 0.01f;
+        healthT = new Vector3(temp, 0.0875f, 0f);
+        healthBar.transform.localScale = healthT;
     }
 
     void FixedUpdate()
@@ -76,6 +86,7 @@ public class Enemy : MonoBehaviour
     //handle spawning of death effects and destroy gameobject
     void Death()
     {
+        transform.rotation = Quaternion.Euler(0f, 0f, 90f);
         if (isEnemy == true)
         {
             randomRate = Random.Range(1, dropRate);

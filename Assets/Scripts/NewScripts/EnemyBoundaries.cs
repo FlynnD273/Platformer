@@ -9,17 +9,25 @@ public class EnemyBoundaries : MonoBehaviour
     public float offset;
     private Vector3 difference;
     private float rotz;
+    public int temp;
+
+    public float waitBetweenShots;
+    private float shotCounter;
 
     private bool shoot;
-    private Vector3 playerPos;
+    public GameObject player;
+    private Quaternion originalPos;
+    public Transform firePointRight;
+    public Transform firePointLeft;
     public CircleCollider2D boundary;
+
+
     // Start is called before the first frame update
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            playerPos = collision.transform.position;
             shoot = true;
         }
     }
@@ -27,10 +35,11 @@ public class EnemyBoundaries : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerPos = collision.transform.position;
             shoot = true;
         }
     }
+
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -40,29 +49,42 @@ public class EnemyBoundaries : MonoBehaviour
     }
     void FireAtPlayer()
     {
-        difference = playerPos - transform.position;
+
+        difference = player.transform.position - transform.position;
         rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotz + offset);
-        Instantiate(proj, transform.position, transform.rotation);
-        StartCoroutine(Wait());
+        fire();
+        transform.rotation = originalPos;
     }
-
-    IEnumerator Wait()
+    void fire()
     {
-        yield return new WaitForSeconds(6f);
+        if (rotz >= 90)
+        {
+            Instantiate(proj, firePointRight.position, transform.rotation);
+        }
+        if (rotz <= 90)
+        {
+            Instantiate(proj, firePointLeft.position, transform.rotation);
+        }
     }
-
     void Start()
     {
-
+        originalPos = transform.rotation;
+        shotCounter = waitBetweenShots;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (shoot == true)
+        shotCounter -= Time.deltaTime;
+        if (shoot == true && shotCounter < 0)
         {
             FireAtPlayer();
+            shotCounter = waitBetweenShots;
+        }
+        if (shoot == false)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, 0);
         }
     }
 }
