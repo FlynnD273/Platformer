@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnScoreChanged = new UnityEvent();
 
     public static int Level { get; private set; }
+    public static int prevLevel { get; private set; }
     public int Volume { get; private set; }
     public bool Fullscreen { get; private set; }
 
@@ -55,7 +56,8 @@ public class GameManager : MonoBehaviour
             a.Play();
         }
         Level = SceneManager.GetActiveScene().buildIndex;
-    }
+        Debug.Log(Level);
+}
 
     public void NextLevel()
     {
@@ -104,5 +106,10 @@ public class GameManager : MonoBehaviour
         i = Screen.resolutions.Length - i - 1;
         if (i >= 0 && i < Screen.resolutions.Length)
             Screen.SetResolution(Screen.resolutions[i].width, Screen.resolutions[i].height, Screen.fullScreenMode);
+    }
+
+    public void SendToLoseLevel()
+    {
+        SceneManager.LoadScene("LoseLevel");
     }
 }
