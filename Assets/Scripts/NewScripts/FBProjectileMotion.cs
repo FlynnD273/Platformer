@@ -10,8 +10,8 @@ using UnityEngine;
 public class FBProjectileMotion : MonoBehaviour
 {
     //speed and damage vars
-    public float speed = 20f;
-    public int damage = 40;
+    public float speed = 2f;
+    public int damage = 300;
 
     //rotation variables
     public bool boolRotate = false;
@@ -42,22 +42,14 @@ public class FBProjectileMotion : MonoBehaviour
         {
             myEnemy.TakeDamage(damage);
         }
+        if (collision.gameObject.CompareTag("kunaiEnemy") || collision.gameObject.CompareTag("shurikenEnemy"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
-    private void OnCollisionEnter2D (Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            //destroy kunai if it hits player
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.CompareTag("Tilemap"))
-        {
-            //stop the projectile if it hits tiles
-            myRB.constraints = RigidbodyConstraints2D.FreezeAll;
-            boolRotate = false;
-        }
-    }
+    
+        
 
     // Update is called once per frame
     void Update()
@@ -66,6 +58,7 @@ public class FBProjectileMotion : MonoBehaviour
         {
             transform.Rotate(0, 0, rotationSpeed);
         }
+
         Destroy(gameObject, deathTime);
     }
 }

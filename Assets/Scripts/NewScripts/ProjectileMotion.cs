@@ -69,6 +69,11 @@ public class ProjectileMotion : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        if (collision.gameObject.CompareTag("kunaiEnemy") || collision.gameObject.CompareTag("shurikenEnemy"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame

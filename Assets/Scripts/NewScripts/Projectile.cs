@@ -131,17 +131,6 @@ public class Projectile : MonoBehaviour
                 Instantiate(proj3, firePoint.position, transform.rotation);
             }
             transform.rotation = rotateFreeze;
-            /*if (energyLim >= 1)
-            {
-                temp = energyLim - 20;
-                energyLim = temp;
-                Instantiate(proj3, firePoint.position, transform.rotation);
-            }
-            if(energyLim <= 0)
-            {
-                energyLim = 0;
-            }
-            transform.rotation = rotateFreeze;*/
         }
         
     }
