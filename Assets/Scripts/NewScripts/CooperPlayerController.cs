@@ -11,45 +11,43 @@ using UnityEngine.Events;
 public class CooperPlayerController : MonoBehaviour
 {
     [Header("Player Movement Values")]
+    //speed
     public float speed;
-    private float moveInput;
-    private AudioSource jumpSource;
-    public AudioClip jumpSound;
+    //jump
+    public float jumpForce;
+    public float jumpTime;
+    public int maxJumps;
+    //wall
+    public float wallJumpTime;
+    public float wallSlideTime;
+    public float wallSlidingSpeed;
+    public float xWallForce;
+    public float yWallForce;
+    //adds a delay before sliding happens when player is on clinging to the wall
+    public Stopwatch wallSlideStopwatch;
 
-    //initialisisng gameobject
+    [Header("Boolean Values for debugging")]
+    [SerializeField] private bool wallSliding = false;
+    [SerializeField] private bool invertInput = false;
+    [SerializeField] private bool isJumping = false;
+    [SerializeField] private bool wallJumping = false;
+
+    //private variable
+    private float wallJumpTimeMax;
+    private float storedMoveInput;
+    private int extraJumps;
+    private float jumpTimeCounter;
+    private bool facingRight = true;
+    private float moveInput;
+
+    //initialisisng gameobject component
     private Rigidbody2D myRB;
     private Animator myAnim;
 
-    [Header("FlipPlayer")]
-    private bool facingRight = true;
-    public float wallSlidingSpeed;
+    [Header("Sound")]
+    public AudioClip jumpSound;
 
-
-
-
-    [Header("Boolean Values")]
-    bool wallSliding = false;
-    bool invertInput = false;
-    bool isJumping = false;
-    bool wallJumping = false;
-
-    
-
-    public float jumpForce;
-    private float jumpTimeCounter;
-    public float jumpTime;
-    private int extraJumps;
-    public int maxJumps;
-    public float wallJumpTime;
-    private float wallJumpTimeMax;
-    private float storedMoveInput;
-    public float wallSlideTime;
-
-    [SerializeField]private Stopwatch wallSlideStopwatch;
-
-    public float xWallForce;
-    public float yWallForce;
-
+    private AudioSource jumpSource;
 
     // Start is called before the first frame update
     void Start()
