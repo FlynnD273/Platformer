@@ -18,16 +18,17 @@ public class NEWPlayerLogic : MonoBehaviour
     public Color playerHit = new Color(0, 1, 1, 1);
 
     //Player health
-    public int healthPoints = 100;
-    private int health = 0;
+    public float healthPoints = 100;
+    private float health = 0;
     public int lives = 5;
-    private int temp;
+    private float temp;
     //Player Energy
-    public int energyPoints = 101;
-    private int energy;
+    public float energyPoints = 101;
+    private float energy;
 
     private GameObject currentCheckPoint;
     private Projectile projectile;
+    private NEWFollowingCamera healthBar;
 
     public Rigidbody2D myRB;
 
@@ -42,7 +43,7 @@ public class NEWPlayerLogic : MonoBehaviour
         respawnPos = transform.position;
         //set object class
         projectile = FindObjectOfType<Projectile>();
-
+        healthBar = FindObjectOfType<NEWFollowingCamera>();
 
     }
 
@@ -68,20 +69,20 @@ public class NEWPlayerLogic : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("kunaiEnemy"))
         {
-            temp = health - 30;
-            health = temp;
+            Subhealth(30);
+            healthBar.MoveHealthbar(30, true);
             StartCoroutine(ChangePlayerColor());
         }
         if (collision.gameObject.CompareTag("shurikanEnemy"))
         {
-            temp = health - 10;
-            health = temp;
+            Subhealth(10);
+            healthBar.MoveHealthbar(10, true);
             StartCoroutine(ChangePlayerColor());
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            temp = health - 20;
-            health = temp;
+            Subhealth(20);
+            healthBar.MoveHealthbar(20, true);
             StartCoroutine(ChangePlayerColor());
             
         }
@@ -127,7 +128,7 @@ public class NEWPlayerLogic : MonoBehaviour
         }
     }
 
-    public bool EnergyChange(bool decORIncEne, int amount)
+    public bool EnergyChange(bool decORIncEne, float amount)
     {
         if (decORIncEne == true)
         {
@@ -148,6 +149,11 @@ public class NEWPlayerLogic : MonoBehaviour
             return false;
         }
     }
+    void Subhealth(float amount)
+    {
+        temp = health - amount;
+        health = temp;
+    }
 
     IEnumerator ChangePlayerColor()
     {
@@ -164,6 +170,7 @@ public class NEWPlayerLogic : MonoBehaviour
             lives--;
             transform.position = respawnPos;
             health = healthPoints;
+            healthBar.MoveHealthbar(healthPoints, false);
         }
         if (lives <= 0)
         {

@@ -440,12 +440,14 @@ MonoBehaviour:
   switchLimit: 4
   proj1: {fileID: 1448262376143027643, guid: 00cba1fc27206784aa01735123bde903, type: 3}
   proj2: {fileID: 1221758511702409808, guid: 6e537eadf4be50e418aecfbb56e4832f, type: 3}
-  proj3: {fileID: 1076654503300009558, guid: 5d8a66d97a1e106448f8eead61323b8e, type: 3}
+  proj3: {fileID: 7260996731256116273, guid: d5d5dd8f0f74e4a5d9d81e1d36459fea, type: 3}
   projectile: {fileID: 0}
+  player: {fileID: 0}
   kunai: 20
   shurikan: 30
-  energyLim: 100
+  energyMin: 25
   offset: 0
+  cursur: {fileID: 0}
 --- !u!114 &78308639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,6 +465,7 @@ MonoBehaviour:
   playerHit: {r: 1, g: 0, b: 0.03706789, a: 1}
   healthPoints: 100
   lives: 5
+  energyPoints: 101
   myRB: {fileID: 0}
 --- !u!114 &1972206552
 MonoBehaviour:
@@ -477,12 +480,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpSound: {fileID: 8300000, guid: ef9ff4d1660241c4ba13c62879372aaa, type: 3}
-  wallSlidingSpeed: 0.1
   jumpForce: 7
   jumpTime: 0.3
   maxJumps: 1
   wallJumpTime: 2
   wallSlideTime: 0.5
+  wallSlidingSpeed: 0.1
   xWallForce: 10
   yWallForce: 10
+  wallSliding: 0
+  invertInput: 0
+  isJumping: 0
+  wallJumping: 0
+  jumpSound: {fileID: 8300000, guid: ef9ff4d1660241c4ba13c62879372aaa, type: 3}
