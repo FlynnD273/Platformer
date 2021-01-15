@@ -17,6 +17,8 @@ TagManager:
   - kunaiEnemy
   - shurikanEnemy
   - Boundary
+  - fireBallMini
+  - shurikenEnemy
   layers:
   - Default
   - TransparentFX

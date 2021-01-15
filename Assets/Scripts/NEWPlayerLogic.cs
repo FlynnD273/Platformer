@@ -28,11 +28,12 @@ public class NEWPlayerLogic : MonoBehaviour
 
     public float waitforRegen = 20;
     private float regenCounter;
-    private bool startRegen;
+    private bool startRegen = false;
 
 
     private GameObject currentCheckPoint;
     private Projectile projectile;
+    private FBProjectileMotion FireBall;
     private NEWFollowingCamera healthBar;
 
     public Rigidbody2D myRB;
@@ -49,6 +50,7 @@ public class NEWPlayerLogic : MonoBehaviour
         //set object class
         projectile = FindObjectOfType<Projectile>();
         healthBar = FindObjectOfType<NEWFollowingCamera>();
+        FireBall = FindObjectOfType<FBProjectileMotion>();
         //timer
         regenCounter = waitforRegen;
 
@@ -135,8 +137,16 @@ public class NEWPlayerLogic : MonoBehaviour
         }
     }
 
-    public bool EnergyChange(bool decORIncEne, float amount)
+    public bool EnergyChange(bool decORIncEne, float amount, int switchProj)
     {
+        if (energy >= 60 && switchProj == 4)
+        {
+            energy = 0;
+            healthBar.MoveEnergybar(amount, true);
+            startRegen = true;
+            return true;
+        }
+        float energyIntial = energy;
         if (decORIncEne == true)
         {
             temp = energy - amount;
@@ -146,25 +156,29 @@ public class NEWPlayerLogic : MonoBehaviour
             temp = energy + amount;
         }
         energy = temp;
-        Debug.Log(energy);
         if (energy >= 0)
         {
             healthBar.MoveEnergybar(amount, true);
             if (startRegen == false)
             {
+                Debug.Log("set Timer " + energy);
                 startRegen = true;
             }
             if (startRegen == true)
             {
+                Debug.Log("restart timer " + energy);
                 regenCounter = waitforRegen;
+                return true;
             }
             return true;
         }
-        else
+        if (energy < 0)
         {
             energy = 0;
-            return false;
+            Debug.Log("no energy " + energy);
+            //energy = energyIntial;
         }
+        return false;
     }
     void Subhealth(float amount)
     {
@@ -201,15 +215,12 @@ public class NEWPlayerLogic : MonoBehaviour
         if (startRegen == true)
         {
             regenCounter -= Time.deltaTime;
-            Debug.Log("aa" + regenCounter);
             if (regenCounter <= 0)
             {
                 float inc = (Time.deltaTime * 3);
                 temp = temp + inc;
-                Debug.Log("temp" + temp);
                 energy = temp;
                 healthBar.MoveEnergybar(inc, false);
-                Debug.Log("ener" + energy);
                 
                 if (energy >= energyPoints)
                 {

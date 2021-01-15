@@ -53,7 +53,6 @@ public class EnemyBoundaries : MonoBehaviour
         difference = player.transform.position - transform.position;
         rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotz + offset);
-        Debug.Log(rotz);
         fire();
         transform.rotation = originalPos;
     }

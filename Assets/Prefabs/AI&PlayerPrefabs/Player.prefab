@@ -437,15 +437,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 762343653}
-  switchLimit: 4
+  switchLimit: 5
   proj1: {fileID: 1448262376143027643, guid: 00cba1fc27206784aa01735123bde903, type: 3}
   proj2: {fileID: 1221758511702409808, guid: 6e537eadf4be50e418aecfbb56e4832f, type: 3}
   proj3: {fileID: 7260996731256116273, guid: d5d5dd8f0f74e4a5d9d81e1d36459fea, type: 3}
+  proj4: {fileID: 7260996731256116273, guid: d5d5dd8f0f74e4a5d9d81e1d36459fea, type: 3}
   projectile: {fileID: 0}
   player: {fileID: 0}
   kunai: 20
   shurikan: 30
-  energyMin: 25
+  energyFireBall: 30
+  energyMiniBall: 10
   offset: 0
   cursur: {fileID: 0}
   kunaiThrow: {fileID: 8300000, guid: e3a8c60c0f8a21c4d95786012d6433fd, type: 3}
@@ -467,7 +469,8 @@ MonoBehaviour:
   playerHit: {r: 1, g: 0, b: 0.03706789, a: 1}
   healthPoints: 100
   lives: 5
-  energyPoints: 101
+  energyPoints: 60
+  waitforRegen: 20
   myRB: {fileID: 6964840267461068282}
 --- !u!114 &1972206552
 MonoBehaviour:

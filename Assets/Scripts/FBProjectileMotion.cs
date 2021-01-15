@@ -17,6 +17,9 @@ public class FBProjectileMotion : MonoBehaviour
     public bool boolRotate = false;
     public float rotationSpeed = -5f;
 
+    //mini bool
+    public bool boolMini = false;
+
     //Death Time
     public float deathTime = 8.0f;
 
@@ -42,14 +45,19 @@ public class FBProjectileMotion : MonoBehaviour
         {
             myEnemy.TakeDamage(damage);
         }
-        if (collision.gameObject.CompareTag("kunaiEnemy") || collision.gameObject.CompareTag("shurikanEnemy"))
+        if (collision.gameObject.CompareTag("kunaiEnemy") || collision.gameObject.CompareTag("shurikenEnemy"))
         {
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if(boolMini == true)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
-    
-        
 
     // Update is called once per frame
     void Update()
