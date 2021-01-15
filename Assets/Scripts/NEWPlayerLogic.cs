@@ -1,6 +1,6 @@
 ﻿//////////////////
 //By: Dev Dhawan and Thomas Allen
-//Date: 12/17/2020
+//Date: 1/15/2020
 //Description: Player Logic fpr 2D game.
 //////////////////
 using System.Collections;
@@ -27,12 +27,21 @@ public class NEWPlayerLogic : MonoBehaviour
     [Header("Energy")]
     public float maxEnergy = 60;
     public static float energy;
-
     public float waitforRegen = 20;
+    //Melee
+    [Header("Melee")]
+    public GameObject sword;
+    public float waitForMelee = 1;
+
+    //Energy Timer variables
     private float regenCounter;
     private bool startRegen = false;
+    //Melee Timer variables
+    private float meleeCounter;
+    private bool inMeleeFrame = false;
+    private bool canUseMelee = true;
 
-
+    //Classes being initialized
     private GameObject currentCheckPoint;
     private Projectile projectile;
     private FBProjectileMotion FireBall;
@@ -51,25 +60,30 @@ public class NEWPlayerLogic : MonoBehaviour
         respawnPos = transform.position;
         //set object class
         projectile = FindObjectOfType<Projectile>();
-        //healthBar = FindObjectOfType<NEWFollowingCamera>();
         FireBall = FindObjectOfType<FBProjectileMotion>();
         //timer
         regenCounter = waitforRegen;
+        meleeCounter = waitForMelee;
 
     }
 
+    //Checking for all collisions
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //For Lava
         if (collision.gameObject.CompareTag("Death"))
         {
+            //Reset Player
             transform.position = respawnPos;
             lives--;
             health = maxHealth;
         }
+        //For TileMap
         else if (collision.gameObject.CompareTag("Moving"))
         {
             transform.SetParent(collision.transform);
         }
+        //ALL projectile collisions
         if (collision.gameObject.CompareTag("kunai"))
         {
             projectile.IncreaseKun(1);
@@ -101,12 +115,14 @@ public class NEWPlayerLogic : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        //checking for tilemap
         if (collision.gameObject.CompareTag("Moving"))
         {
             transform.SetParent(null);
         }
     }
 
+    //Looking for Level Door
     private void OnTriggerStay2D(Collider2D collision)
     {
         LevelDoor LD = collision.GetComponent<LevelDoor>();
@@ -119,6 +135,7 @@ public class NEWPlayerLogic : MonoBehaviour
         }
     }
 
+    //Collision with CheckPoint
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("CheckPoint"))
@@ -139,8 +156,10 @@ public class NEWPlayerLogic : MonoBehaviour
         }
     }
 
+    //Change in energy function (Used when energy is being needed to change)
     public bool EnergyChange(bool decORIncEne, float amount, int switchProj)
     {
+        //Checking if using FireBall is possible
         if (energy >= 60 && switchProj == 4)
         {
             energy = 0;
@@ -148,6 +167,7 @@ public class NEWPlayerLogic : MonoBehaviour
             startRegen = true;
             return true;
         }
+        //changing energy's value
         float energyIntial = energy;
         if (decORIncEne == true)
         {
@@ -158,6 +178,7 @@ public class NEWPlayerLogic : MonoBehaviour
             temp = energy + amount;
         }
         energy = temp;
+        //Checking if firing projectile is possible
         if (energy >= 0)
         {
             //healthBar.MoveEnergybar(amount, true);
@@ -166,6 +187,7 @@ public class NEWPlayerLogic : MonoBehaviour
                 Debug.Log("set Timer " + energy);
                 startRegen = true;
             }
+            //Happens when Regen Counter is active
             if (startRegen == true)
             {
                 Debug.Log("restart timer " + energy);
@@ -181,13 +203,18 @@ public class NEWPlayerLogic : MonoBehaviour
             //energy = energyIntial;
         }
         return false;
+        //Returns false for no shooting returns true to shoot
     }
+
+    //subtracting health
     void Subhealth(float amount)
     {
         temp = health - amount;
         health = temp;
     }
 
+    //Changes color on the event that player is hit by enemy weapon
+    //Look at enemy projectile collisions for more details
     IEnumerator ChangePlayerColor()
     {
         gameObject.GetComponent<SpriteRenderer>().color = playerHit;
@@ -198,22 +225,34 @@ public class NEWPlayerLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Checks for respawn
         if (health <= 0)
         {
             lives--;
             transform.position = respawnPos;
             health = maxHealth;
-            //healthBar.MoveHealthbar(healthPoints, false);
         }
+        //for starting the timer
         if (energy <= 0)
         {
             startRegen = true;
         }
+        if(Input.GetMouseButtonDown(1) && canUseMelee == true)
+        {
+            if (EnergyChange(true, 5, 1) == true)
+            {
+                inMeleeFrame = true;
+            }
+        }
+        //When lives = 0 
+        //!!NEEDS TO BE SET TO LEVEL LOSE OR RESPAWN!!
         if (lives <= 0)
         {
             energy = maxEnergy;
             health = maxHealth;
+            //^ This is temporary ^ DELETE WHEN LEVEL CHANGE HAS BEEN ADDED
         }
+        //energy Timer starting
         if (startRegen == true)
         {
             regenCounter -= Time.deltaTime;
@@ -222,13 +261,29 @@ public class NEWPlayerLogic : MonoBehaviour
                 float inc = (Time.deltaTime * 3);
                 temp = temp + inc;
                 energy = temp;
-                //healthBar.MoveEnergybar(inc, false);
-                
+                //Stop Timer once energy reaches its limit       
                 if (energy >= maxEnergy)
                 {
                     startRegen = false;
                     regenCounter = waitforRegen;
                 }
+            }
+        }
+        //Melee timer starting
+        if (inMeleeFrame == true)
+        {
+            canUseMelee = false;
+            meleeCounter -= Time.deltaTime;
+            if(meleeCounter > 0)
+            {
+                sword.SetActive(true);
+            }
+            else
+            {
+                sword.SetActive(false);
+                inMeleeFrame = false;
+                canUseMelee = true;
+                meleeCounter = waitForMelee;
             }
         }
     }

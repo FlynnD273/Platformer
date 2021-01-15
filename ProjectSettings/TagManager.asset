@@ -19,6 +19,7 @@ TagManager:
   - Boundary
   - fireBallMini
   - shurikenEnemy
+  - sword
   layers:
   - Default
   - TransparentFX

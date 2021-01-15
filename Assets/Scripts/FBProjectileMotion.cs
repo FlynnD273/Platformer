@@ -1,7 +1,7 @@
 ﻿//////////////////
 //By: Dev Dhawan
 //Date: 1/11/2020
-//Description: The motion of the Projectile.
+//Description: The motion of Projectile FireBall.
 //////////////////
 using System.Collections;
 using System.Collections.Generic;

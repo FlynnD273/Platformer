@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿//////////////////
+//By: Dev Dhawan and Thomas Allen
+//Date: 1/15/2020
+//Description: Firing Projectiles.
+//////////////////
+///Thomas Updated and fixed bugs and used this for the UI
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

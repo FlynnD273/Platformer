@@ -122,7 +122,7 @@ MonoBehaviour:
   boolRotate: 0
   rotationSpeed: -5
   boolMini: 0
-  deathTime: 8
+  deathTime: 12
   myRB: {fileID: 5594173120019483616}
 --- !u!50 &5594173120019483616
 Rigidbody2D:

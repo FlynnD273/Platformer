@@ -47,6 +47,15 @@ public class Enemy : MonoBehaviour
         healthBar.transform.localScale = healthT;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("sword"))
+        {
+            TakeDamage(15);
+            Debug.Log("Hit");
+        }
+    }
+
     void FixedUpdate()
     {
         if (isEnemy == true)
@@ -77,7 +86,6 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        Debug.Log(health);
         if (health <= 0)
         {
             Death();
