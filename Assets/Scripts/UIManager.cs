@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
                 smallEnergyOrb.enabled = true;
                 break;
             default:
-                Debug.LogError("USER REACHED INVALID WEAPON INDEX");
+                Debug.LogError("USER REACHED INVALID WEAPON INDEX: " + projectile.switchProj);
                 break;
         }
     }

@@ -57,10 +57,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (switchProj >= switchLimit)
-        {
-            switchProj = 1;
-        }
+        
         //display.SwitchProj(switchProj);
         if (switchProj == 3 || switchProj == 4)
         {
@@ -74,6 +71,10 @@ public class Projectile : MonoBehaviour
         if (Input.GetMouseButtonDown(2))
         {
             switchProj++;
+            if (switchProj >= switchLimit)
+            {
+                switchProj = 1;
+            }
         }
         //projectile.GetSwitch(switchProj);
 
