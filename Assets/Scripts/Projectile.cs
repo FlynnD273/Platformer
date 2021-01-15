@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     //Spawn Point for projectiles
     public Transform firePoint;
     //projectiles
-    private int switchProj = 1;
+    public int switchProj = 1;
     public int switchLimit = 5;
     public GameObject proj1;
     public GameObject proj2;
@@ -20,10 +20,10 @@ public class Projectile : MonoBehaviour
     
     //Projectile variables
     //Kunai variable
-    public int kunai = 20;
+    public static int kunai = 20;
     private bool boolKunai;
     //Shurikan variable
-    public int shurikan = 30;
+    public static int shurikan = 30;
     private bool boolShurikan;
     //Energy Varaible (used for fireball)
     public float energyFireBall = 30;
@@ -57,10 +57,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (switchProj >= switchLimit)
-        {
-            switchProj = 1;
-        }
+        
         //display.SwitchProj(switchProj);
         if (switchProj == 3 || switchProj == 4)
         {
@@ -74,6 +71,10 @@ public class Projectile : MonoBehaviour
         if (Input.GetMouseButtonDown(2))
         {
             switchProj++;
+            if (switchProj >= switchLimit)
+            {
+                switchProj = 1;
+            }
         }
         //projectile.GetSwitch(switchProj);
 

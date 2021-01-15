@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefabs/UI Prefabs.meta
+guid: 468d443698ecf834a84f2ed10b12b37c
+=======
 guid: 63904eae20b01e845a45f484ff4d83c0
+>>>>>>> 8237ddfc821d2f007f7cdcb1e14446e13e169152:Assets/Scenes/GameLevels.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

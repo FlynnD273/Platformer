@@ -1,5 +1,5 @@
 ﻿//////////////////
-//By: Dev Dhawan
+//By: Dev Dhawan and Thomas Allen
 //Date: 12/17/2020
 //Description: Player Logic fpr 2D game.
 //////////////////
@@ -18,13 +18,15 @@ public class NEWPlayerLogic : MonoBehaviour
     public Color playerHit = new Color(0, 1, 1, 1);
 
     //Player health
-    public float healthPoints = 100;
-    private float health = 0;
+    [Header("Health")]
+    public float maxHealth = 100;
+    public static float health = 0;
     public int lives = 5;
     private float temp;
     //Player Energy
-    public float energyPoints = 60;
-    private float energy;
+    [Header("Energy")]
+    public float maxEnergy = 60;
+    public static float energy;
 
     public float waitforRegen = 20;
     private float regenCounter;
@@ -34,7 +36,7 @@ public class NEWPlayerLogic : MonoBehaviour
     private GameObject currentCheckPoint;
     private Projectile projectile;
     private FBProjectileMotion FireBall;
-    private NEWFollowingCamera healthBar;
+    //private NEWFollowingCamera healthBar;
 
     public Rigidbody2D myRB;
 
@@ -42,9 +44,9 @@ public class NEWPlayerLogic : MonoBehaviour
     void Start()
     {
         //health
-        health = healthPoints;
+        health = maxHealth;
         //energy
-        energy = energyPoints;
+        energy = maxEnergy;
         //respawn point
         respawnPos = transform.position;
         //set object class
@@ -62,7 +64,7 @@ public class NEWPlayerLogic : MonoBehaviour
         {
             transform.position = respawnPos;
             lives--;
-            health = healthPoints;
+            health = maxHealth;
         }
         else if (collision.gameObject.CompareTag("Moving"))
         {
@@ -200,7 +202,7 @@ public class NEWPlayerLogic : MonoBehaviour
         {
             lives--;
             transform.position = respawnPos;
-            health = healthPoints;
+            health = maxHealth;
             //healthBar.MoveHealthbar(healthPoints, false);
         }
         if (energy <= 0)
@@ -209,8 +211,8 @@ public class NEWPlayerLogic : MonoBehaviour
         }
         if (lives <= 0)
         {
-            energy = energyPoints;
-            health = healthPoints;
+            energy = maxEnergy;
+            health = maxHealth;
         }
         if (startRegen == true)
         {
@@ -222,7 +224,7 @@ public class NEWPlayerLogic : MonoBehaviour
                 energy = temp;
                 //healthBar.MoveEnergybar(inc, false);
                 
-                if (energy >= energyPoints)
+                if (energy >= maxEnergy)
                 {
                     startRegen = false;
                     regenCounter = waitforRegen;
