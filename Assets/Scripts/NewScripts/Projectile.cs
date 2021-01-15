@@ -35,6 +35,9 @@ public class Projectile : MonoBehaviour
 
     private int temp;
 
+    public AudioClip kunaiThrow; //sound for when player throws the kunai
+    public AudioClip fireballSound; //sound for when player throws a fireball
+
     // Start is called before the first frame update
     void Start()
     {
@@ -125,10 +128,13 @@ public class Projectile : MonoBehaviour
             {
                 shurikan--;
                 Fire(proj2);
+                player.GetComponent<AudioSource>().PlayOneShot(kunaiThrow);
             }
         }
         if (switchProj == 3)
         {
+            
+
             cursur.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             rotateFreeze = transform.rotation;
             difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -138,6 +144,7 @@ public class Projectile : MonoBehaviour
             if (player.EnergyChange(true, energyMin) == true)
             {
                 Instantiate(proj3, firePoint.position, transform.rotation);
+                player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
             }
             transform.rotation = rotateFreeze;
         }

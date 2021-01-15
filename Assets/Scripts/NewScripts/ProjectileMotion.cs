@@ -69,7 +69,7 @@ public class ProjectileMotion : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        if (collision.gameObject.CompareTag("kunaiEnemy") || collision.gameObject.CompareTag("shurikenEnemy"))
+        if (collision.gameObject.CompareTag("kunaiEnemy") || collision.gameObject.CompareTag("shurikanEnemy"))
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);

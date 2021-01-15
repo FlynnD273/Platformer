@@ -448,6 +448,8 @@ MonoBehaviour:
   energyMin: 25
   offset: 0
   cursur: {fileID: 0}
+  kunaiThrow: {fileID: 8300000, guid: e3a8c60c0f8a21c4d95786012d6433fd, type: 3}
+  fireballSound: {fileID: 8300000, guid: df7c83b1e3b332c43b5b0bcb6399c076, type: 3}
 --- !u!114 &78308639
 MonoBehaviour:
   m_ObjectHideFlags: 0

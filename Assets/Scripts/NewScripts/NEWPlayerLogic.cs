@@ -73,7 +73,7 @@ public class NEWPlayerLogic : MonoBehaviour
             healthBar.MoveHealthbar(30, true);
             StartCoroutine(ChangePlayerColor());
         }
-        if (collision.gameObject.CompareTag("shurikanEnemy"))
+        if (collision.gameObject.CompareTag("shurikenEnemy"))
         {
             Subhealth(10);
             healthBar.MoveHealthbar(10, true);
@@ -110,7 +110,7 @@ public class NEWPlayerLogic : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Checkpoint"))
+        if (collision.gameObject.CompareTag("CheckPoint"))
         {
             //set a new position for the player to respawn
             respawnPos = collision.transform.position;

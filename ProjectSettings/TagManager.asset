@@ -15,7 +15,8 @@ TagManager:
   - Death
   - CheckPoint
   - kunaiEnemy
-  - shurikanEnemy
+  - Trigger
+  - shurikenEnemy
   layers:
   - Default
   - TransparentFX
