@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
 
     public AudioMixer Audio;
 
+
+    public static UnityEvent OnKunaiAmmoChange = new UnityEvent();
+
+
     private int _score;
     public int Score
     {
@@ -31,6 +35,28 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+
+    public static int kunaiAmmo
+    {
+        get => Projectile.kunai;
+        set
+        {
+            Projectile.kunai = value;
+            OnKunaiAmmoChange.Invoke();
+        }
+    }
+
+    public static int shurikenAmmo
+    {
+        get => Projectile.shurikan;
+        set
+        {
+            Projectile.shurikan = value;
+            OnKunaiAmmoChange.Invoke();
+        }
+    }
+
     public UnityEvent OnScoreChanged = new UnityEvent();
 
     public static int Level { get; private set; }

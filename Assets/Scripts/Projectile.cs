@@ -20,10 +20,10 @@ public class Projectile : MonoBehaviour
     
     //Projectile variables
     //Kunai variable
-    public int kunai = 20;
+    public static int kunai = 20;
     private bool boolKunai;
     //Shurikan variable
-    public int shurikan = 30;
+    public static int shurikan = 30;
     private bool boolShurikan;
     //Energy Varaible (used for fireball)
     public float energyFireBall = 30;
