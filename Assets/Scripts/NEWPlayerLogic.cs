@@ -23,8 +23,13 @@ public class NEWPlayerLogic : MonoBehaviour
     public int lives = 5;
     private float temp;
     //Player Energy
-    public float energyPoints = 101;
+    public float energyPoints = 60;
     private float energy;
+
+    public float waitforRegen = 20;
+    private float regenCounter;
+    private bool startRegen;
+
 
     private GameObject currentCheckPoint;
     private Projectile projectile;
@@ -44,6 +49,8 @@ public class NEWPlayerLogic : MonoBehaviour
         //set object class
         projectile = FindObjectOfType<Projectile>();
         healthBar = FindObjectOfType<NEWFollowingCamera>();
+        //timer
+        regenCounter = waitforRegen;
 
     }
 
@@ -139,8 +146,18 @@ public class NEWPlayerLogic : MonoBehaviour
             temp = energy + amount;
         }
         energy = temp;
-        if (energy > 0)
-        { 
+        Debug.Log(energy);
+        if (energy >= 0)
+        {
+            healthBar.MoveEnergybar(amount, true);
+            if (startRegen == false)
+            {
+                startRegen = true;
+            }
+            if (startRegen == true)
+            {
+                regenCounter = waitforRegen;
+            }
             return true;
         }
         else
@@ -172,10 +189,34 @@ public class NEWPlayerLogic : MonoBehaviour
             health = healthPoints;
             healthBar.MoveHealthbar(healthPoints, false);
         }
+        if (energy <= 0)
+        {
+            startRegen = true;
+        }
         if (lives <= 0)
         {
             energy = energyPoints;
             health = healthPoints;
+        }
+        if (startRegen == true)
+        {
+            regenCounter -= Time.deltaTime;
+            Debug.Log("aa" + regenCounter);
+            if (regenCounter <= 0)
+            {
+                float inc = (Time.deltaTime * 3);
+                temp = temp + inc;
+                Debug.Log("temp" + temp);
+                energy = temp;
+                healthBar.MoveEnergybar(inc, false);
+                Debug.Log("ener" + energy);
+                
+                if (energy >= energyPoints)
+                {
+                    startRegen = false;
+                    regenCounter = waitforRegen;
+                }
+            }
         }
     }
 }

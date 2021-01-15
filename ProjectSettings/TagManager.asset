@@ -16,6 +16,7 @@ TagManager:
   - CheckPoint
   - kunaiEnemy
   - shurikanEnemy
+  - Boundary
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - 
   - 
   - Ground
-  - 
+  - Boundaries
   - 
   - 
   - 
