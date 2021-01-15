@@ -12,9 +12,12 @@ public class NEWFollowingCamera : MonoBehaviour
 {
     public GameObject Target;
     public GameObject healthBar;
+    public GameObject energyBar;
     private Vector3 ogPosH;
+    private Vector3 ogPosE;
 
     private Vector3 healthPos;
+    private Vector3 energyPos;
 
     public float smoothVal = 0.5f;
 
@@ -22,6 +25,7 @@ public class NEWFollowingCamera : MonoBehaviour
     void Start()
     {
         ogPosH = healthBar.transform.position;
+        ogPosE = energyBar.transform.position;
     }
 
     public void FixedUpdate()
@@ -39,6 +43,11 @@ public class NEWFollowingCamera : MonoBehaviour
             healthPos.y = transform.position.y + ogPosH.y;
             healthPos.z = ogPosH.z;
             healthBar.transform.position = healthPos;
+
+            energyPos.x = transform.position.x + ogPosE.x;
+            energyPos.y = transform.position.y + ogPosE.y;
+            energyPos.z = ogPosE.z;
+            energyBar.transform.position = energyPos;
         }
     }
 
@@ -47,13 +56,28 @@ public class NEWFollowingCamera : MonoBehaviour
         float newX;
         if (decOrInc == true)
         {
-            newX = ogPosH.x - (amount / 8);
+            newX = ogPosH.x - (amount / 12);
         }
         else
         {
-            newX = ogPosH.x + (amount / 8);
+            newX = ogPosH.x + (amount / 12);
+            
         }
         ogPosH.x = newX;
+    }
+    public void MoveEnergybar(float amount, bool decOrInc)
+    {
+        float newX;
+        if (decOrInc == true)
+        {
+            newX = ogPosE.x - (amount / 20);
+        }
+        else
+        {
+            newX = ogPosE.x + (amount / 20);
+
+        }
+        ogPosE.x = newX;
     }
 
     // Update is called once per frame
