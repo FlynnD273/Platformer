@@ -49,7 +49,7 @@ public class NEWPlayerLogic : MonoBehaviour
         respawnPos = transform.position;
         //set object class
         projectile = FindObjectOfType<Projectile>();
-        healthBar = FindObjectOfType<NEWFollowingCamera>();
+        //healthBar = FindObjectOfType<NEWFollowingCamera>();
         FireBall = FindObjectOfType<FBProjectileMotion>();
         //timer
         regenCounter = waitforRegen;
@@ -79,19 +79,19 @@ public class NEWPlayerLogic : MonoBehaviour
         if (collision.gameObject.CompareTag("kunaiEnemy"))
         {
             Subhealth(30);
-            healthBar.MoveHealthbar(30, true);
+            //healthBar.MoveHealthbar(30, true);
             StartCoroutine(ChangePlayerColor());
         }
         if (collision.gameObject.CompareTag("shurikenEnemy"))
         {
             Subhealth(10);
-            healthBar.MoveHealthbar(10, true);
+            //healthBar.MoveHealthbar(10, true);
             StartCoroutine(ChangePlayerColor());
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Subhealth(20);
-            healthBar.MoveHealthbar(20, true);
+            //healthBar.MoveHealthbar(20, true);
             StartCoroutine(ChangePlayerColor());
             
         }
@@ -142,7 +142,7 @@ public class NEWPlayerLogic : MonoBehaviour
         if (energy >= 60 && switchProj == 4)
         {
             energy = 0;
-            healthBar.MoveEnergybar(amount, true);
+            //healthBar.MoveEnergybar(amount, true);
             startRegen = true;
             return true;
         }
@@ -158,7 +158,7 @@ public class NEWPlayerLogic : MonoBehaviour
         energy = temp;
         if (energy >= 0)
         {
-            healthBar.MoveEnergybar(amount, true);
+            //healthBar.MoveEnergybar(amount, true);
             if (startRegen == false)
             {
                 Debug.Log("set Timer " + energy);
@@ -201,7 +201,7 @@ public class NEWPlayerLogic : MonoBehaviour
             lives--;
             transform.position = respawnPos;
             health = healthPoints;
-            healthBar.MoveHealthbar(healthPoints, false);
+            //healthBar.MoveHealthbar(healthPoints, false);
         }
         if (energy <= 0)
         {
@@ -220,7 +220,7 @@ public class NEWPlayerLogic : MonoBehaviour
                 float inc = (Time.deltaTime * 3);
                 temp = temp + inc;
                 energy = temp;
-                healthBar.MoveEnergybar(inc, false);
+                //healthBar.MoveEnergybar(inc, false);
                 
                 if (energy >= energyPoints)
                 {

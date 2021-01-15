@@ -21,8 +21,8 @@ public class NEWFollowingCamera : MonoBehaviour
 
     private Vector3 ogPosH;
     private Vector3 ogPosE;
-    private Vector3 ogPosD;
     private Vector3 ogPosDI;
+    private Vector3 maxEnergyBar;
 
 
     private Vector3 healthPos;
@@ -37,8 +37,8 @@ public class NEWFollowingCamera : MonoBehaviour
     {
         ogPosH = healthBar.transform.position;
         ogPosE = energyBar.transform.position;
-        ogPosD = displayS.transform.position;
         ogPosDI = display.transform.position;
+        maxEnergyBar = ogPosE;
     }
 
     public void FixedUpdate()
@@ -72,6 +72,12 @@ public class NEWFollowingCamera : MonoBehaviour
             display.transform.position = displayPos;
 
             ProjectileSwitch();
+
+            if(energyPos.x < maxEnergyBar.x)
+            {
+                energyPos.x = maxEnergyBar.x + transform.position.x;
+                energyBar.transform.position = energyPos;
+            }
         }
     }
 
