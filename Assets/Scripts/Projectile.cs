@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     //Spawn Point for projectiles
     public Transform firePoint;
     //projectiles
-    private int switchProj = 1;
+    public int switchProj = 1;
     public int switchLimit = 5;
     public GameObject proj1;
     public GameObject proj2;
@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
 
     public ProjectileMotion projectile;
     public NEWPlayerLogic player;
-    public NEWFollowingCamera display;
+    //public NEWFollowingCamera display;
     
     //Projectile variables
     //Kunai variable
@@ -49,9 +49,9 @@ public class Projectile : MonoBehaviour
         boolKunai = true;
         projectile = FindObjectOfType<ProjectileMotion>();
         player = FindObjectOfType<NEWPlayerLogic>();
-        display = FindObjectOfType<NEWFollowingCamera>();
+        //display = FindObjectOfType<NEWFollowingCamera>();
         cursurOg = cursur.transform.position;
-        display.SwitchProj(switchProj);
+        //display.SwitchProj(switchProj);
     }
 
     // Update is called once per frame
@@ -61,7 +61,7 @@ public class Projectile : MonoBehaviour
         {
             switchProj = 1;
         }
-        display.SwitchProj(switchProj);
+        //display.SwitchProj(switchProj);
         if (switchProj == 3 || switchProj == 4)
         {
             cursurPos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 1);
