@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         helthSlider.value = NEWPlayerLogic.health;
         energySlider.value = NEWPlayerLogic.energy;
