@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//////////////////
+//By: Dev Dhawan
+//Date: 1/14/2020
+//Description: Enemy Boundaries and enemy shoot
+//////////////////
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -444,12 +444,13 @@ MonoBehaviour:
   proj4: {fileID: 7260996731256116273, guid: d5d5dd8f0f74e4a5d9d81e1d36459fea, type: 3}
   projectile: {fileID: 0}
   player: {fileID: 0}
+  display: {fileID: 0}
   kunai: 20
   shurikan: 30
   energyFireBall: 30
   energyMiniBall: 10
   offset: 0
-  cursur: {fileID: 0}
+  cursur: {fileID: 2337305290693064177, guid: 8ef4fcc872d5214458f6e7d413b0b610, type: 3}
   kunaiThrow: {fileID: 8300000, guid: e3a8c60c0f8a21c4d95786012d6433fd, type: 3}
   fireballSound: {fileID: 8300000, guid: df7c83b1e3b332c43b5b0bcb6399c076, type: 3}
 --- !u!114 &78308639

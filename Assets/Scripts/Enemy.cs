@@ -1,6 +1,6 @@
 ﻿//////////////////
 //By: Dev Dhawan
-//Date: 12/17/2020
+//Date: 1/12/2020
 //Description: Enemy logic fpr 2D game.
 //////////////////
 using System.Collections;
