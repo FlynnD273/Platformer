@@ -8,7 +8,7 @@ public class PlayerBottomChecker : MonoBehaviour
     public static bool isTouchingBottom;
 
 
-    /*
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
@@ -48,9 +48,9 @@ public class PlayerBottomChecker : MonoBehaviour
             //CooperPlayerController.myAnim.SetBool("Grounded", false);
         }
     }
-    */
+    
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Boundary"))
         {
@@ -88,5 +88,5 @@ public class PlayerBottomChecker : MonoBehaviour
         {
             isTouchingBottom = true;
         }
-    }
+    }*/
 }
