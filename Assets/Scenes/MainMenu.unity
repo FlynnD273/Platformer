@@ -634,6 +634,87 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1001 &560586606
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9162664488188522146, guid: e352b92df5e87bf4db5076d034771209,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d43c08405907ea44284a1d6282a555c8, type: 3}
+    - target: {fileID: 9162664488188522146, guid: e352b92df5e87bf4db5076d034771209,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 82cb8c5593609044aa3086bc8e6ce0f2,
+        type: 2}
+    - target: {fileID: 9162664488188522147, guid: e352b92df5e87bf4db5076d034771209,
+        type: 3}
+      propertyPath: m_Name
+      value: Music Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162664488188522149, guid: e352b92df5e87bf4db5076d034771209,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162664488188522149, guid: e352b92df5e87bf4db5076d034771209,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162664488188522149, guid: e352b92df5e87bf4db5076d034771209,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162664488188522149, guid: e352b92df5e87bf4db5076d034771209,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162664488188522149, guid: e352b92df5e87bf4db5076d034771209,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162664488188522149, guid: e352b92df5e87bf4db5076d034771209,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162664488188522149, guid: e352b92df5e87bf4db5076d034771209,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162664488188522149, guid: e352b92df5e87bf4db5076d034771209,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162664488188522149, guid: e352b92df5e87bf4db5076d034771209,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162664488188522149, guid: e352b92df5e87bf4db5076d034771209,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162664488188522149, guid: e352b92df5e87bf4db5076d034771209,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9162664488188522148, guid: e352b92df5e87bf4db5076d034771209, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: e352b92df5e87bf4db5076d034771209, type: 3}
 --- !u!1 &573922096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,7 +1569,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070331011}
-  m_Text: 'Project By: Arya, Cooper, Abhi, Flynn, Dev'
+  m_Text: 'Project By: Arya, Cooper, Abhi, Flynn, Dev, and Thomas'
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -2175,6 +2256,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1473426389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9162664488188522147, guid: e352b92df5e87bf4db5076d034771209,
+    type: 3}
+  m_PrefabInstance: {fileID: 560586606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1473426390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473426389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea0a50b0bcfaba24997e2c96cb0f8871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1484546208
 GameObject:
   m_ObjectHideFlags: 0

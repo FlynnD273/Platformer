@@ -18,16 +18,22 @@ public class NEWPlayerLogic : MonoBehaviour
     public Color playerHit = new Color(0, 1, 1, 1);
 
     //Player health
-    public int healthPoints = 100;
-    private int health = 0;
+    public float healthPoints = 100;
+    private float health = 0;
     public int lives = 5;
-    private int temp;
+    private float temp;
     //Player Energy
-    public int energyPoints = 101;
-    private int energy;
+    public float energyPoints = 60;
+    private float energy;
+
+    public float waitforRegen = 20;
+    private float regenCounter;
+    private bool startRegen;
+
 
     private GameObject currentCheckPoint;
     private Projectile projectile;
+    private NEWFollowingCamera healthBar;
 
     public Rigidbody2D myRB;
 
@@ -42,7 +48,9 @@ public class NEWPlayerLogic : MonoBehaviour
         respawnPos = transform.position;
         //set object class
         projectile = FindObjectOfType<Projectile>();
-
+        healthBar = FindObjectOfType<NEWFollowingCamera>();
+        //timer
+        regenCounter = waitforRegen;
 
     }
 
@@ -68,20 +76,20 @@ public class NEWPlayerLogic : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("kunaiEnemy"))
         {
-            temp = health - 30;
-            health = temp;
+            Subhealth(30);
+            healthBar.MoveHealthbar(30, true);
             StartCoroutine(ChangePlayerColor());
         }
-        if (collision.gameObject.CompareTag("shurikanEnemy"))
+        if (collision.gameObject.CompareTag("shurikenEnemy"))
         {
-            temp = health - 10;
-            health = temp;
+            Subhealth(10);
+            healthBar.MoveHealthbar(10, true);
             StartCoroutine(ChangePlayerColor());
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            temp = health - 20;
-            health = temp;
+            Subhealth(20);
+            healthBar.MoveHealthbar(20, true);
             StartCoroutine(ChangePlayerColor());
             
         }
@@ -109,7 +117,7 @@ public class NEWPlayerLogic : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Checkpoint"))
+        if (collision.gameObject.CompareTag("CheckPoint"))
         {
             //set a new position for the player to respawn
             respawnPos = collision.transform.position;
@@ -127,7 +135,7 @@ public class NEWPlayerLogic : MonoBehaviour
         }
     }
 
-    public bool EnergyChange(bool decORIncEne, int amount)
+    public bool EnergyChange(bool decORIncEne, float amount)
     {
         if (decORIncEne == true)
         {
@@ -138,8 +146,18 @@ public class NEWPlayerLogic : MonoBehaviour
             temp = energy + amount;
         }
         energy = temp;
-        if (energy > 0)
-        { 
+        Debug.Log(energy);
+        if (energy >= 0)
+        {
+            healthBar.MoveEnergybar(amount, true);
+            if (startRegen == false)
+            {
+                startRegen = true;
+            }
+            if (startRegen == true)
+            {
+                regenCounter = waitforRegen;
+            }
             return true;
         }
         else
@@ -147,6 +165,11 @@ public class NEWPlayerLogic : MonoBehaviour
             energy = 0;
             return false;
         }
+    }
+    void Subhealth(float amount)
+    {
+        temp = health - amount;
+        health = temp;
     }
 
     IEnumerator ChangePlayerColor()
@@ -164,11 +187,36 @@ public class NEWPlayerLogic : MonoBehaviour
             lives--;
             transform.position = respawnPos;
             health = healthPoints;
+            healthBar.MoveHealthbar(healthPoints, false);
+        }
+        if (energy <= 0)
+        {
+            startRegen = true;
         }
         if (lives <= 0)
         {
             energy = energyPoints;
             health = healthPoints;
+        }
+        if (startRegen == true)
+        {
+            regenCounter -= Time.deltaTime;
+            Debug.Log("aa" + regenCounter);
+            if (regenCounter <= 0)
+            {
+                float inc = (Time.deltaTime * 3);
+                temp = temp + inc;
+                Debug.Log("temp" + temp);
+                energy = temp;
+                healthBar.MoveEnergybar(inc, false);
+                Debug.Log("ener" + energy);
+                
+                if (energy >= energyPoints)
+                {
+                    startRegen = false;
+                    regenCounter = waitforRegen;
+                }
+            }
         }
     }
 }

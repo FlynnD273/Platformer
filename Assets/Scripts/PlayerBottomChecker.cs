@@ -52,8 +52,14 @@ public class PlayerBottomChecker : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isTouchingBottom = true;
-
+        if (collision.gameObject.CompareTag("Boundary"))
+        {
+            isTouchingBottom = false;
+        }
+        else
+        {
+            isTouchingBottom = true;
+        }
         if (collision.gameObject.CompareTag("Dangerous"))
         {
             PlayerLogic.bottomCheckerDeathHit = true;
@@ -62,11 +68,25 @@ public class PlayerBottomChecker : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        isTouchingBottom = true;
+        if (collision.gameObject.CompareTag("Boundary"))
+        {
+            isTouchingBottom = false;
+        }
+        else
+        {
+            isTouchingBottom = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isTouchingBottom = false;
+        if (collision.gameObject.CompareTag("Boundary"))
+        {
+            isTouchingBottom = false;
+        }
+        else
+        {
+            isTouchingBottom = true;
+        }
     }
 }

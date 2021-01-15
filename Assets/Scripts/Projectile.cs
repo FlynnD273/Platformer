@@ -24,13 +24,19 @@ public class Projectile : MonoBehaviour
     public int shurikan = 30;
     private bool boolShurikan;
     //Energy Varaible (used for fireball)
-    public int energyLim;
+    public float energyMin = 25;
     public float offset;
     private Vector3 difference;
     private float rotz;
     private Quaternion rotateFreeze;
+    public GameObject cursur;
+    private Vector3 cursurPos;
+    private Vector3 cursurOg;
 
     private int temp;
+
+    public AudioClip kunaiThrow; //sound for when player throws the kunai
+    public AudioClip fireballSound; //sound for when player throws a fireball
 
     // Start is called before the first frame update
     void Start()
@@ -38,11 +44,21 @@ public class Projectile : MonoBehaviour
         boolKunai = true;
         projectile = FindObjectOfType<ProjectileMotion>();
         player = FindObjectOfType<NEWPlayerLogic>();
+        cursurOg = cursur.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (switchProj == 3)
+        {
+            cursurPos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 1);
+            cursur.transform.position = cursurPos;
+        }
+        else
+        {
+            cursur.transform.position = cursurOg;
+        }
         if (Input.GetMouseButtonDown(2))
         {
             switchProj++;
@@ -91,11 +107,6 @@ public class Projectile : MonoBehaviour
         temp = shurikan + amount;
         shurikan = temp;
     }
-    public void IncreaseEne(int amount)
-    {
-        temp = energyLim + amount;
-        energyLim = temp;
-    }
 
     void Switch()
     {
@@ -117,18 +128,23 @@ public class Projectile : MonoBehaviour
             {
                 shurikan--;
                 Fire(proj2);
+                player.GetComponent<AudioSource>().PlayOneShot(kunaiThrow);
             }
         }
         if (switchProj == 3)
         {
+            
+
+            cursur.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             rotateFreeze = transform.rotation;
             difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, rotz + offset);
 
-            if (player.EnergyChange(true, 25) == true)
+            if (player.EnergyChange(true, energyMin) == true)
             {
                 Instantiate(proj3, firePoint.position, transform.rotation);
+                player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
             }
             transform.rotation = rotateFreeze;
         }
