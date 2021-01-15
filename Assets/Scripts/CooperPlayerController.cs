@@ -32,9 +32,12 @@ public class CooperPlayerController : MonoBehaviour
     [SerializeField] private bool isJumping = false;
     [SerializeField] private bool wallJumping = false;
 
-    //private variable
+    
     private float wallJumpTimeMax;
     private float storedMoveInput;
+    /// <summary>
+    /// The number of extra jumps in the air
+    /// </summary>
     private int extraJumps;
     private float jumpTimeCounter;
     private bool facingRight = true;
@@ -44,10 +47,12 @@ public class CooperPlayerController : MonoBehaviour
     private Rigidbody2D myRB;
     private Animator myAnim;
 
+
     [Header("Sound")]
     public AudioClip jumpSound;
-
     private AudioSource jumpSource;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +69,7 @@ public class CooperPlayerController : MonoBehaviour
     //update is called once per frame (needed for key checks)
     void Update()
     {
+        myAnim.SetBool("WallSlide", wallSliding);
         if (!wallSliding)
         {
             //reset the stopwatch if not wallsliding
@@ -91,7 +97,7 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //check for wall slide/ wall jump when moving into a wall above ground, check for normal jumps if criteria not met
-        if (PlayerFrontChecker.isTouchingFront == true && PlayerBottomChecker.isTouchingBottom == false && moveInput != 0)
+        if (PlayerFrontChecker.isTouchingFront == true && PlayerBottomChecker.isOnGround == false && moveInput != 0)
         {
             WallSlideCheck();
         }
@@ -126,7 +132,7 @@ public class CooperPlayerController : MonoBehaviour
             Invoke(nameof(CheckForNewWallHit), 0f);
         }
 
-        myAnim.SetBool("OnGround", PlayerBottomChecker.isTouchingBottom);
+        myAnim.SetBool("OnGround", PlayerBottomChecker.isOnGround);
 
         //allows player to hold one direction while wall jumping, making timing easier
         if (invertInput == true)
@@ -141,7 +147,7 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //set wall jump bool to false when player hits ground or another wall if function is not invoked by then
-        if (PlayerBottomChecker.isTouchingBottom == true)
+        if (PlayerBottomChecker.isOnGround == true)
         {
             SetWallJumpingToFalse();
         }
@@ -222,7 +228,7 @@ public class CooperPlayerController : MonoBehaviour
     void JumpCheck()
     {
         //refresh jumps when on ground
-        if (PlayerBottomChecker.isTouchingBottom == true)
+        if (PlayerBottomChecker.isOnGround == true)
         {
             invertInput = false;
             extraJumps = maxJumps;
