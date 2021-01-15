@@ -31,6 +31,8 @@ public class CooperPlayerController : MonoBehaviour
     [SerializeField] private bool invertInput = false;
     [SerializeField] private bool isJumping = false;
     [SerializeField] private bool wallJumping = false;
+    [SerializeField] bool isTouchingWall;
+    [SerializeField] bool isTouchingGround;
 
     
     private float wallJumpTimeMax;
@@ -52,7 +54,8 @@ public class CooperPlayerController : MonoBehaviour
     public AudioClip jumpSound;
     private AudioSource jumpSource;
 
-
+    PolygonCollider2D frontCheck;
+    CapsuleCollider2D groundCheck;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +67,8 @@ public class CooperPlayerController : MonoBehaviour
         //set max time to public var
         wallJumpTimeMax = wallJumpTime;
         wallSlideStopwatch = new Stopwatch();
+        frontCheck = GetComponent<PolygonCollider2D>();
+        groundCheck = GetComponent<CapsuleCollider2D>();
     }
 
     //update is called once per frame (needed for key checks)
@@ -97,14 +102,14 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //check for wall slide/ wall jump when moving into a wall above ground, check for normal jumps if criteria not met
-        if (PlayerFrontChecker.isTouchingFront == true && PlayerBottomChecker.isOnGround == false && moveInput != 0)
+        if (isTouchingWall == true && isTouchingGround == false && moveInput != 0)
         {
             WallSlideCheck();
         }
         else if(!wallJumping)
         {
             //Stop inverting input for wall jump chains and falsify wallsliding in case it doesn't get falsified earlier
-            if (!PlayerFrontChecker.isTouchingFront)
+            if (!isTouchingWall)
             {
                 invertInput = false;
                 wallSliding = false;
@@ -132,7 +137,7 @@ public class CooperPlayerController : MonoBehaviour
             Invoke(nameof(CheckForNewWallHit), 0f);
         }
 
-        myAnim.SetBool("OnGround", PlayerBottomChecker.isOnGround);
+        myAnim.SetBool("OnGround", isTouchingGround);
 
         //allows player to hold one direction while wall jumping, making timing easier
         if (invertInput == true)
@@ -147,7 +152,7 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //set wall jump bool to false when player hits ground or another wall if function is not invoked by then
-        if (PlayerBottomChecker.isOnGround == true)
+        if (isTouchingGround == true)
         {
             SetWallJumpingToFalse();
         }
@@ -184,6 +189,68 @@ public class CooperPlayerController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (frontCheck.IsTouching(collision))
+        {
+            if (!collision.isTrigger)
+            {
+                isTouchingWall = true;
+            }
+        }
+        if (groundCheck.IsTouching(collision))
+        {
+            if (!collision.isTrigger)
+            {
+                isTouchingGround = true;
+                //CooperPlayerController.myAnim.SetBool("Grounded", true);
+            }
+
+            //change pl var if player hits a death object
+            if (collision.gameObject.CompareTag("Dangerous"))
+            {
+                PlayerLogic.bottomCheckerDeathHit = true;
+            }
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (frontCheck.IsTouching(collision))
+        {
+            if (!collision.isTrigger)
+            {
+                isTouchingWall = true;
+            }
+
+        }
+        if (groundCheck.IsTouching(collision))
+        {
+            if (!collision.isTrigger)
+            {
+                isTouchingGround = true;
+            }
+        }
+    
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!frontCheck.IsTouching(collision))
+        {
+            if (!collision.isTrigger)
+            {
+                isTouchingWall = false;
+            }
+            
+        }
+        if (!groundCheck.IsTouching(collision))
+        {
+            if (!collision.isTrigger) {
+                isTouchingGround = false;
+            }
+        }
+        
+    }
+
     //Flip the sprite based on movement direction
     void Flip() 
     {
@@ -213,7 +280,7 @@ public class CooperPlayerController : MonoBehaviour
     //function that checks if there is wall the player is touching
     bool CheckForNewWallHit()
     {
-        if (PlayerFrontChecker.isTouchingFront)
+        if (isTouchingWall)
         {
             SetWallJumpingToFalse();
             return true;
@@ -228,7 +295,7 @@ public class CooperPlayerController : MonoBehaviour
     void JumpCheck()
     {
         //refresh jumps when on ground
-        if (PlayerBottomChecker.isOnGround == true)
+        if (isTouchingGround == true)
         {
             invertInput = false;
             extraJumps = maxJumps;
@@ -274,7 +341,7 @@ public class CooperPlayerController : MonoBehaviour
     void WallSlideCheck()
     {
         //set wallslide to true if parameters are met and vice versa
-        if (PlayerFrontChecker.isTouchingFront == true)
+        if (isTouchingWall == true)
         {
             wallSliding = true;
 
@@ -283,7 +350,7 @@ public class CooperPlayerController : MonoBehaviour
                 wallSlideStopwatch.Start();
             }
         }
-        else if(PlayerFrontChecker.isTouchingFront == false)
+        else if(isTouchingWall == false)
         {
             wallSliding = false;
         }
@@ -359,11 +426,11 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //check if we're wallsliding still after the wall jump for jump chains
-        if (PlayerFrontChecker.isTouchingFront == true)
+        if (isTouchingWall == true)
         {
             wallSliding = true;
         }
-        else if (PlayerFrontChecker.isTouchingFront == false)
+        else if (isTouchingWall == false)
         {
             wallSliding = false;
         }
