@@ -33,8 +33,9 @@ public class NEWPlayerLogic : MonoBehaviour
     public GameObject sword;
     public float waitForMelee = 1;
 
+    [Header("Energy")]
     //Energy Timer variables
-    private float regenCounter;
+    [SerializeField] private float regenCounter;
     private bool startRegen = false;
     //Melee Timer variables
     private float meleeCounter;
@@ -162,7 +163,7 @@ public class NEWPlayerLogic : MonoBehaviour
         //Checking if using FireBall is possible
         if (energy >= 60 && switchProj == 4)
         {
-            energy = 0;
+            energy -= 15;
             //healthBar.MoveEnergybar(amount, true);
             startRegen = true;
             return true;
@@ -258,7 +259,7 @@ public class NEWPlayerLogic : MonoBehaviour
             regenCounter -= Time.deltaTime;
             if (regenCounter <= 0)
             {
-                float inc = (Time.deltaTime * 3);
+                float inc = (Time.deltaTime * 20);
                 temp = temp + inc;
                 energy = temp;
                 //Stop Timer once energy reaches its limit       

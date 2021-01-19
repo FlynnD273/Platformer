@@ -1371,10 +1371,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 2009786579980632805, guid: 39504ef80e584477f9edc638510b9ce0,
+        type: 3}
+      propertyPath: energyFireBall
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009786579980632805, guid: 39504ef80e584477f9edc638510b9ce0,
+        type: 3}
+      propertyPath: proj3
+      value: 
+      objectReference: {fileID: 5140067678613221594, guid: 2e31629fe22cd2446937d22e46017116,
+        type: 3}
     - target: {fileID: 2009786579980632809, guid: 39504ef80e584477f9edc638510b9ce0,
         type: 3}
       propertyPath: m_Name
       value: Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009786579980632810, guid: 39504ef80e584477f9edc638510b9ce0,
+        type: 3}
+      propertyPath: maxEnergy
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009786579980632810, guid: 39504ef80e584477f9edc638510b9ce0,
+        type: 3}
+      propertyPath: waitforRegen
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39504ef80e584477f9edc638510b9ce0, type: 3}

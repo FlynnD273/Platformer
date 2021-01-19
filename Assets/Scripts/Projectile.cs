@@ -32,8 +32,8 @@ public class Projectile : MonoBehaviour
     public static int shurikan = 30;
     private bool boolShurikan;
     //Energy Varaible (used for fireball)
-    public float energyFireBall = 30;
-    public float energyMiniBall = 20;
+    public float energyFireBall = 20;
+    public float energyMiniBall = 10;
     public float offset;
     private Vector3 difference;
     private float rotz;
@@ -158,7 +158,7 @@ public class Projectile : MonoBehaviour
         if (switchProj == 3)
         {
             MouseTarget();
-            if (player.EnergyChange(true, energyMiniBall, switchProj) == true)
+            if (player.EnergyChange(true, energyFireBall, switchProj) == true)
             {
                 Instantiate(proj3, firePoint.position, transform.rotation);
                 player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
@@ -168,7 +168,7 @@ public class Projectile : MonoBehaviour
         if (switchProj == 4)
         {
             MouseTarget();
-            if (player.EnergyChange(true, energyFireBall, switchProj) == true)
+            if (player.EnergyChange(true, energyMiniBall, switchProj) == true)
             {
                 Instantiate(proj4, firePoint.position, transform.rotation);
                 player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
