@@ -161,7 +161,7 @@ public class Projectile : MonoBehaviour
         if (switchProj == 3)
         {
             MouseTarget();
-            if (player.EnergyChange(true, energyFireBall, switchProj) == true)
+            if (player.EnergyChange(true, energyMiniBall, switchProj) == true)
             {
                 Instantiate(proj3, firePoint.position, transform.rotation);
                 player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
@@ -171,7 +171,7 @@ public class Projectile : MonoBehaviour
         if (switchProj == 4)
         {
             MouseTarget();
-            if (player.EnergyChange(true, energyMiniBall, switchProj) == true)
+            if (player.EnergyChange(true, energyFireBall, switchProj) == true)
             {
                 Instantiate(proj4, firePoint.position, transform.rotation);
                 player.GetComponent<AudioSource>().PlayOneShot(fireballSound);

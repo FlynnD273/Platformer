@@ -164,7 +164,7 @@ public class NEWPlayerLogic : MonoBehaviour
         //Checking if using FireBall is possible
         if (energy >= 60 && switchProj == 4)
         {
-            energy -= 15;
+            energy = 0;
             //healthBar.MoveEnergybar(amount, true);
             startRegen = true;
             return true;

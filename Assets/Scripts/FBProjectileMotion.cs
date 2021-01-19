@@ -19,6 +19,7 @@ public class FBProjectileMotion : MonoBehaviour
 
     //mini bool
     public bool boolMini = false;
+    public bool isExplosion = false;
 
     //Death Time
     public float deathTime = 8.0f;
@@ -26,7 +27,8 @@ public class FBProjectileMotion : MonoBehaviour
     //declare components
     public Rigidbody2D myRB;
     private Projectile projectile;
-
+    //explosion when gameobject death
+    public GameObject explosion;
     
     
     // Start is called before the first frame update
@@ -62,11 +64,21 @@ public class FBProjectileMotion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        deathTime -= Time.deltaTime;
         if (boolRotate == true)
         {
             transform.Rotate(0, 0, rotationSpeed);
         }
 
         Destroy(gameObject, deathTime);
+        if (deathTime == 0 && boolMini == false && isExplosion == false)
+        {
+            Debug.Log("ha");
+            Vector2 spawn = transform.position;
+            spawn.y = transform.position.y + 10;
+            transform.position = spawn;
+            //Instantiate(explosion, transform.position, transform.rotation);
+        }
+
     }
 }
