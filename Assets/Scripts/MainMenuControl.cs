@@ -11,6 +11,7 @@ public class MainMenuControl : MonoBehaviour
     public bool startSelect;
     public bool quitSelect;
     public bool settingsSelect;
+    private static bool inSettings = false;
     public GameObject MainMenuObject;
     public GameObject SettingsMenuObject;
     private void OnMouseUp()
@@ -31,8 +32,19 @@ public class MainMenuControl : MonoBehaviour
         if (settingsSelect)
         {
             //set the main menu to inactive so we can show the settings menu
-            MainMenuObject.SetActive(false);
-            SettingsMenuObject.SetActive(true);
+            if (!inSettings)
+            {
+                MainMenuObject.SetActive(false);
+                SettingsMenuObject.SetActive(true);
+                inSettings = true;
+            }
+            else if (inSettings)
+            {
+                MainMenuObject.SetActive(true);
+                SettingsMenuObject.SetActive(false);
+                inSettings = false;
+            }
+            
         }
     }
 
