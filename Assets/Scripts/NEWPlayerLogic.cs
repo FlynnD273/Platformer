@@ -50,6 +50,9 @@ public class NEWPlayerLogic : MonoBehaviour
 
     public Rigidbody2D myRB;
 
+    public AudioClip playerHurtSound; //sound for when player is hurt or takes damage
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -102,13 +105,11 @@ public class NEWPlayerLogic : MonoBehaviour
         if (collision.gameObject.CompareTag("shurikenEnemy"))
         {
             Subhealth(10);
-            //healthBar.MoveHealthbar(10, true);
             StartCoroutine(ChangePlayerColor());
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Subhealth(20);
-            //healthBar.MoveHealthbar(20, true);
             StartCoroutine(ChangePlayerColor());
             
         }
@@ -212,6 +213,8 @@ public class NEWPlayerLogic : MonoBehaviour
     {
         temp = health - amount;
         health = temp;
+        gameObject.GetComponent<AudioSource>().PlayOneShot(playerHurtSound);
+
     }
 
     //Changes color on the event that player is hit by enemy weapon
