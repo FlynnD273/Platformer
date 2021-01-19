@@ -122,8 +122,11 @@ MonoBehaviour:
   boolRotate: 0
   rotationSpeed: -5
   boolMini: 0
-  deathTime: 12
+  isExplosion: 0
+  deathTime: 15
   myRB: {fileID: 5594173120019483616}
+  explosion: {fileID: 4697140370886517889, guid: 0197bb17f39d89448a5d581ad1cf18c2,
+    type: 3}
 --- !u!50 &5594173120019483616
 Rigidbody2D:
   serializedVersion: 4

@@ -33,8 +33,9 @@ public class NEWPlayerLogic : MonoBehaviour
     public GameObject sword;
     public float waitForMelee = 1;
 
+    [Header("Energy")]
     //Energy Timer variables
-    private float regenCounter;
+    [SerializeField] private float regenCounter;
     private bool startRegen = false;
     //Melee Timer variables
     private float meleeCounter;
@@ -48,6 +49,9 @@ public class NEWPlayerLogic : MonoBehaviour
     //private NEWFollowingCamera healthBar;
 
     public Rigidbody2D myRB;
+
+    public AudioClip playerHurtSound; //sound for when player is hurt or takes damage
+
 
     // Start is called before the first frame update
     void Start()
@@ -101,13 +105,11 @@ public class NEWPlayerLogic : MonoBehaviour
         if (collision.gameObject.CompareTag("shurikenEnemy"))
         {
             Subhealth(10);
-            //healthBar.MoveHealthbar(10, true);
             StartCoroutine(ChangePlayerColor());
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Subhealth(20);
-            //healthBar.MoveHealthbar(20, true);
             StartCoroutine(ChangePlayerColor());
             
         }
@@ -211,6 +213,8 @@ public class NEWPlayerLogic : MonoBehaviour
     {
         temp = health - amount;
         health = temp;
+        gameObject.GetComponent<AudioSource>().PlayOneShot(playerHurtSound);
+
     }
 
     //Changes color on the event that player is hit by enemy weapon
@@ -258,7 +262,7 @@ public class NEWPlayerLogic : MonoBehaviour
             regenCounter -= Time.deltaTime;
             if (regenCounter <= 0)
             {
-                float inc = (Time.deltaTime * 3);
+                float inc = (Time.deltaTime * 20);
                 temp = temp + inc;
                 energy = temp;
                 //Stop Timer once energy reaches its limit       
