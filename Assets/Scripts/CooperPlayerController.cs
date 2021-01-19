@@ -1,5 +1,5 @@
 ﻿/*
- * Name : Cooper Spring
+ * Name : Cooper Spring and Thomas Allen
  * Date : 12/14/2020 
  * Description : Script to control player movement in a 2D platformer game
  */

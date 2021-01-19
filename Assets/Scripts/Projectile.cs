@@ -46,6 +46,7 @@ public class Projectile : MonoBehaviour
 
     private int temp;
 
+    public AudioClip shurikenThrow; //sound for when player throws the shuriken
     public AudioClip kunaiThrow; //sound for when player throws the kunai
     public AudioClip fireballSound; //sound for when player throws a fireball
 
@@ -144,6 +145,8 @@ public class Projectile : MonoBehaviour
             {
                 kunai--;
                 Fire(proj1);
+                player.GetComponent<AudioSource>().PlayOneShot(kunaiThrow);
+
             }
         }
         if (switchProj == 2)
@@ -152,7 +155,7 @@ public class Projectile : MonoBehaviour
             {
                 shurikan--;
                 Fire(proj2);
-                player.GetComponent<AudioSource>().PlayOneShot(kunaiThrow);
+                player.GetComponent<AudioSource>().PlayOneShot(shurikenThrow);
             }
         }
         if (switchProj == 3)
