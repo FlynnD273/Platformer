@@ -33,8 +33,8 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerLogic = GameObject.Find("Player 1").GetComponent<NEWPlayerLogic>();
-        projectile = GameObject.Find("Player 1").GetComponent<Projectile>();
+        playerLogic = GameObject.Find("Player").GetComponent<NEWPlayerLogic>();
+        projectile = GameObject.Find("Player").GetComponent<Projectile>();
 
         GameManager.OnKunaiAmmoChange.AddListener(UpdateText);
     }
