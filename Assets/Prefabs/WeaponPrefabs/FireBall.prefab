@@ -117,13 +117,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e40cb8049d3dbd42baa9fad662a1d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 3
   damage: 300
   boolRotate: 0
   rotationSpeed: -5
   boolMini: 0
   isExplosion: 0
-  deathTime: 15
+  deathTime: 7
   myRB: {fileID: 5594173120019483616}
   explosion: {fileID: 4697140370886517889, guid: 0197bb17f39d89448a5d581ad1cf18c2,
     type: 3}
