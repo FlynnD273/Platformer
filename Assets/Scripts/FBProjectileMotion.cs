@@ -70,15 +70,14 @@ public class FBProjectileMotion : MonoBehaviour
             transform.Rotate(0, 0, rotationSpeed);
         }
 
-        if (deathTime == 0 && boolMini == false && isExplosion == false)
-        {
-            Debug.Log("ha");
-            Vector2 spawn = transform.position;
-            spawn.y = transform.position.y + 10;
-            transform.position = spawn;
-            //Instantiate(explosion, transform.position, transform.rotation);
+        if (deathTime <= 0 && boolMini == false && isExplosion == false)
+        { 
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject, deathTime);
+        else if (deathTime <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

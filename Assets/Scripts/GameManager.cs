@@ -136,6 +136,6 @@ public class GameManager : MonoBehaviour
 
     public void SendToLoseLevel()
     {
-        SceneManager.LoadScene("LoseLevel");
+        SceneManager.LoadScene("LoseScene");
     }
 }

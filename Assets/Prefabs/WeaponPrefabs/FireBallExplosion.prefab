@@ -124,7 +124,7 @@ MonoBehaviour:
   isExplosion: 1
   deathTime: 2
   myRB: {fileID: 5465354292987666363}
-  explosion: {fileID: 0}
+  explosion: {fileID: 4697140370886517889}
 --- !u!50 &5465354292987666363
 Rigidbody2D:
   serializedVersion: 4

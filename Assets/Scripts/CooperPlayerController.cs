@@ -215,12 +215,6 @@ public class CooperPlayerController : MonoBehaviour
                 isTouchingGround = true;
                 //CooperPlayerController.myAnim.SetBool("Grounded", true);
             }
-
-            //change pl var if player hits a death object
-            if (collision.gameObject.CompareTag("Dangerous"))
-            {
-                PlayerLogic.bottomCheckerDeathHit = true;
-            }
         }
     }
     private void OnTriggerStay2D(Collider2D collision)

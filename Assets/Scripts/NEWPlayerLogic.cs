@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class NEWPlayerLogic : MonoBehaviour
@@ -46,7 +47,7 @@ public class NEWPlayerLogic : MonoBehaviour
     private GameObject currentCheckPoint;
     private Projectile projectile;
     private FBProjectileMotion FireBall;
-    //private NEWFollowingCamera healthBar;
+    private GameManager gameManager;
 
     public Rigidbody2D myRB;
 
@@ -65,6 +66,7 @@ public class NEWPlayerLogic : MonoBehaviour
         //set object class
         projectile = FindObjectOfType<Projectile>();
         FireBall = FindObjectOfType<FBProjectileMotion>();
+        gameManager = FindObjectOfType<GameManager>();
         //timer
         regenCounter = waitforRegen;
         meleeCounter = waitForMelee;
@@ -156,6 +158,15 @@ public class NEWPlayerLogic : MonoBehaviour
                 currentCheckPoint.GetComponent<SpriteRenderer>().color = checkActive;
             }
         }
+        if (collision.gameObject.CompareTag("Health"))
+        {
+            temp = health + 25;
+            health = temp;
+            if (health <= maxHealth)
+            {
+                health = maxHealth;
+            }
+        }
     }
 
     //Change in energy function (Used when energy is being needed to change)
@@ -229,6 +240,7 @@ public class NEWPlayerLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(lives);
         //Checks for respawn
         if (health <= 0)
         {
@@ -249,12 +261,12 @@ public class NEWPlayerLogic : MonoBehaviour
             }
         }
         //When lives = 0 
-        //!!NEEDS TO BE SET TO LEVEL LOSE OR RESPAWN!!
         if (lives <= 0)
         {
+            SceneManager.LoadScene(2);
             energy = maxEnergy;
             health = maxHealth;
-            //^ This is temporary ^ DELETE WHEN LEVEL CHANGE HAS BEEN ADDED
+            lives = 5;
         }
         //energy Timer starting
         if (startRegen == true)
