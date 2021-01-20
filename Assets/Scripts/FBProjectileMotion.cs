@@ -70,7 +70,6 @@ public class FBProjectileMotion : MonoBehaviour
             transform.Rotate(0, 0, rotationSpeed);
         }
 
-        Destroy(gameObject, deathTime);
         if (deathTime == 0 && boolMini == false && isExplosion == false)
         {
             Debug.Log("ha");
@@ -80,5 +79,6 @@ public class FBProjectileMotion : MonoBehaviour
             //Instantiate(explosion, transform.position, transform.rotation);
         }
 
+        Destroy(gameObject, deathTime);
     }
 }

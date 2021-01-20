@@ -21,6 +21,9 @@ public class ProjectileMotion : MonoBehaviour
     //Death Time
     public float deathTime = 8.0f;
 
+    //Strength Variable
+    public bool strength = false;
+
     //declare components
     public Rigidbody2D myRB;
     private Projectile projectile;
@@ -71,8 +74,26 @@ public class ProjectileMotion : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("kunaiEnemy") || collision.gameObject.CompareTag("shurikenEnemy"))
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
+            if (strength == true)
+            {
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+            }
+        }
+        if ((collision.gameObject.CompareTag("kunai") || collision.gameObject.CompareTag("shuriken")) && isEnemyWeapon == true)
+        {
+            if (strength == true)
+            {
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
         if (collision.gameObject.CompareTag("sword"))
         {

@@ -28,9 +28,13 @@ public class Projectile : MonoBehaviour
     //Kunai variable
     public static int kunai = 20;
     private bool boolKunai;
+    public float cooldown = 1;
+    private float cooldownSt;
+    private bool startCount = false;
     //Shurikan variable
     public static int shurikan = 30;
     private bool boolShurikan;
+    public int maxThrow = 4;
     //Energy Varaible (used for fireball)
     public float energyFireBall = 20;
     public float energyMiniBall = 10;
@@ -58,7 +62,8 @@ public class Projectile : MonoBehaviour
         player = FindObjectOfType<NEWPlayerLogic>();
         //display = FindObjectOfType<NEWFollowingCamera>();
         cursurOg = cursur.transform.position;
-        //display.SwitchProj(switchProj);
+        //cooldown timer set
+        cooldownSt = cooldown;
     }
 
     // Update is called once per frame
@@ -103,8 +108,19 @@ public class Projectile : MonoBehaviour
             boolShurikan = true;
         }
 
+        if (startCount == true)
+        {
+            cooldownSt -= Time.deltaTime;
+            if (cooldownSt <= 0)
+            {
+                startCount = false;
+                maxThrow = 4;
+                cooldownSt = cooldown;
+            }
+        }
+
         //checks when to fire
-        if (Input.GetMouseButtonDown(0) && PauseMenu.isPaused == false)
+        if (Input.GetMouseButtonDown(0) && PauseMenu.isPaused == false && startCount == false)
         {
             Switch();
         }
@@ -116,6 +132,7 @@ public class Projectile : MonoBehaviour
         //projectile logic
         Instantiate(proj, firePoint.position, firePoint.rotation);
     }
+
     //increase kunai based on event
     public void IncreaseKun(int amount)
     {
@@ -144,6 +161,8 @@ public class Projectile : MonoBehaviour
             if(boolKunai == true)
             {
                 kunai--;
+                cooldownSt = cooldown - 0.3f;
+                startCount = true;
                 Fire(proj1);
                 player.GetComponent<AudioSource>().PlayOneShot(kunaiThrow);
 
@@ -154,12 +173,19 @@ public class Projectile : MonoBehaviour
             if(boolShurikan == true)
             {
                 shurikan--;
+                maxThrow--;
+                if (maxThrow <= 0)
+                {
+                    startCount = true;
+                }
                 Fire(proj2);
                 player.GetComponent<AudioSource>().PlayOneShot(shurikenThrow);
             }
         }
         if (switchProj == 3)
         {
+            cooldownSt = cooldown - 0.3f;
+            startCount = true;
             MouseTarget();
             if (player.EnergyChange(true, energyMiniBall, switchProj) == true)
             {
@@ -170,6 +196,8 @@ public class Projectile : MonoBehaviour
         }
         if (switchProj == 4)
         {
+            cooldownSt = cooldown * 3;
+            startCount = true;
             MouseTarget();
             if (player.EnergyChange(true, energyFireBall, switchProj) == true)
             {
