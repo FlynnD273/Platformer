@@ -1,9 +1,4 @@
-﻿//////////////////
-//By: Dev Dhawan
-//Date: 1/18/2020
-//Description: Melee script.
-//////////////////
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

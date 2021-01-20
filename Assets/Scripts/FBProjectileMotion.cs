@@ -23,7 +23,6 @@ public class FBProjectileMotion : MonoBehaviour
 
     //Death Time
     public float deathTime = 8.0f;
-    private float lifeTime = 0f;
 
     //declare components
     public Rigidbody2D myRB;
@@ -66,17 +65,9 @@ public class FBProjectileMotion : MonoBehaviour
     void Update()
     {
         deathTime -= Time.deltaTime;
-        lifeTime += Time.deltaTime;
-
         if (boolRotate == true)
         {
             transform.Rotate(0, 0, rotationSpeed);
-        }
-
-        if (isExplosion == true)
-        {
-            Vector2 newSize = new Vector2((transform.localScale.x + lifeTime) * 0.8f, (transform.localScale.y + lifeTime) * 0.8f);
-            transform.localScale = newSize;
         }
 
         if (deathTime <= 0 && boolMini == false && isExplosion == false)
