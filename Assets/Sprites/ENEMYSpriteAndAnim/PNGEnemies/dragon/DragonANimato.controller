@@ -11,27 +11,27 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 675619153913535811}
-    m_Position: {x: 235, y: 65, z: 0}
+    m_Position: {x: 210, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9692918432509232}
-    m_Position: {x: 270, y: 130, z: 0}
+    m_Position: {x: 680, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2328830387891471296}
-    m_Position: {x: 305, y: 195, z: 0}
+    m_Position: {x: 680, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8296435351669409140}
-    m_Position: {x: 340, y: 260, z: 0}
+    m_Position: {x: 610, y: -60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -458998737367991658}
-    m_Position: {x: 375, y: 325, z: 0}
+    m_Position: {x: 110, y: 360, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
+  m_AnyStatePosition: {x: 40, y: -40, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 800, y: 120, z: 0}
+  m_ExitPosition: {x: 1000, y: 110, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 675619153913535811}
 --- !u!1102 &-458998737367991658
@@ -94,7 +94,37 @@ AnimatorController:
   m_PrefabAsset: {fileID: 0}
   m_Name: DragonANimato
   serializedVersion: 5
-  m_AnimatorParameters: []
+  m_AnimatorParameters:
+  - m_Name: dragonIsIdle
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: dragonIsWalking
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: dragonDeathActivated
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: dragonAttackTriggered
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: demonIsHurt
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
