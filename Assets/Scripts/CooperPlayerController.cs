@@ -17,6 +17,7 @@ public class CooperPlayerController : MonoBehaviour
     public float jumpForce;
     public float jumpTime;
     public int maxJumps;
+    public float fallMultiplier = 1.5f;
     //wall
     public float wallJumpTime;
     public float wallSlideTime;
@@ -57,6 +58,8 @@ public class CooperPlayerController : MonoBehaviour
     PolygonCollider2D frontCheck;
     CapsuleCollider2D groundCheck;
 
+
+    private Vector3 stupidFix;
     // Start is called before the first frame update
     void Start()
     {
@@ -125,7 +128,14 @@ public class CooperPlayerController : MonoBehaviour
             //Reset the stopwatch on walljump
             wallSlideStopwatch.Reset();
         }
- 
+
+        if (myRB.velocity.y < 0 || myRB.velocity.y > 1)
+        {
+            myRB.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+
+        
+
     }
 
     // Update is called once per physics frame

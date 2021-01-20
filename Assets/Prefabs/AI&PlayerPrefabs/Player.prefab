@@ -296,11 +296,14 @@ MonoBehaviour:
   proj4: {fileID: 5140067678613221594, guid: 2e31629fe22cd2446937d22e46017116, type: 3}
   projectile: {fileID: 0}
   player: {fileID: 0}
+  cooldown: 1
+  maxThrow: 4
   energyFireBall: 60
   energyMiniBall: 10
   offset: 0
   cursur: {fileID: 2337305290693064177, guid: 8ef4fcc872d5214458f6e7d413b0b610, type: 3}
-  kunaiThrow: {fileID: 8300000, guid: e3a8c60c0f8a21c4d95786012d6433fd, type: 3}
+  shurikenThrow: {fileID: 8300000, guid: e3a8c60c0f8a21c4d95786012d6433fd, type: 3}
+  kunaiThrow: {fileID: 8300000, guid: da0ade2c753e11c4381c2eaf423b8d85, type: 3}
   fireballSound: {fileID: 8300000, guid: df7c83b1e3b332c43b5b0bcb6399c076, type: 3}
 --- !u!114 &2009786579980632810
 MonoBehaviour:
@@ -325,6 +328,7 @@ MonoBehaviour:
   waitForMelee: 0.4
   regenCounter: 0
   myRB: {fileID: 2009786581153239853}
+  playerHurtSound: {fileID: 8300000, guid: 2bce5f26c6fa1834dbaca896d4616a2a, type: 3}
 --- !u!114 &2009786579980632811
 MonoBehaviour:
   m_ObjectHideFlags: 0
