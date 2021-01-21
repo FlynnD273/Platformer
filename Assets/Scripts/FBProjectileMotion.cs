@@ -48,7 +48,7 @@ public class FBProjectileMotion : MonoBehaviour
         {
             myEnemy.TakeDamage(damage);
         }
-        if (collision.gameObject.CompareTag("KunaiEnemy") || collision.gameObject.CompareTag("ShurikenEnemy"))
+        if (collision.gameObject.CompareTag("kunaiEnemy") || collision.gameObject.CompareTag("shurikenEnemy"))
         {
             Destroy(collision.gameObject);
         }

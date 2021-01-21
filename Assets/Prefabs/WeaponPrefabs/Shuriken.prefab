@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1691138574020259209}
   m_Layer: 0
   m_Name: Shurikan
-  m_TagString: shurikan
+  m_TagString: Shuriken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,8 +99,10 @@ MonoBehaviour:
   speed: 12
   damage: 10
   boolRotate: 1
+  isEnemyWeapon: 0
   rotationSpeed: -5
   deathTime: 8
+  strength: 0
   myRB: {fileID: 8708946878784888794}
 --- !u!50 &8708946878784888794
 Rigidbody2D:
