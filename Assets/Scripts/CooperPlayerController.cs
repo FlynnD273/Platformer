@@ -45,6 +45,7 @@ public class CooperPlayerController : MonoBehaviour
     private float jumpTimeCounter;
     private bool facingRight = true;
     private float moveInput;
+    private bool prevJump;
 
     //initialisisng gameobject component
     private Rigidbody2D myRB;
@@ -100,7 +101,7 @@ public class CooperPlayerController : MonoBehaviour
             wallSlideStopwatch.Reset();
         }
 
-        if(Input.GetAxisRaw("Jump") != 0)
+        if(Input.GetAxisRaw("Jump") > 0)
         {
             myRB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
         }
@@ -134,6 +135,7 @@ public class CooperPlayerController : MonoBehaviour
         {
             myRB.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
+        prevJump = Input.GetAxisRaw("Jump") > 0;
     }
 
     // Update is called once per physics frame
@@ -280,18 +282,21 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //activate jump if jumps remain
-        if (Input.GetAxisRaw("Jump") > 0 && extraJumps > 0)
+        if (Input.GetAxisRaw("Jump") > 0 && !prevJump && extraJumps > 0)
         {
-            isJumping = true;
+            if (extraJumps != maxJumps || isTouchingGround)
+            {
+                isJumping = true;
 
-            jumpSource.PlayOneShot(jumpSound);
+                jumpSource.PlayOneShot(jumpSound);
 
-            //reset jumptimecounter to the initial value to refresh it for the current jump
-            jumpTimeCounter = jumpTime;
+                //reset jumptimecounter to the initial value to refresh it for the current jump
+                jumpTimeCounter = jumpTime;
 
-            //apply movement and lower jump var
-            myRB.velocity = Vector2.up * jumpForce;
-            extraJumps--;
+                //apply movement and lower jump var
+                myRB.velocity = Vector2.up * jumpForce;
+                extraJumps--;
+            }
         }
 
         //allow player to jump higher within a timeframe as long as key is pressed
@@ -319,7 +324,7 @@ public class CooperPlayerController : MonoBehaviour
     void WallSlideCheck()
     {
         //set wallslide to true if parameters are met and vice versa
-        if (isTouchingWall)
+        if (isTouchingWall && myRB.velocity.y <= 0)
         {
             wallSliding = true;
 
@@ -349,17 +354,17 @@ public class CooperPlayerController : MonoBehaviour
                 myRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 
                 //If the player inputs to walljump, unfreeze constraints before the next if statement
-                if (Input.GetAxisRaw("Jump") > 0)
-                {
-                    myRB.velocity = new Vector2(myRB.velocity.x, Mathf.Clamp(myRB.velocity.y, -wallSlidingSpeed, float.MaxValue));
-                    myRB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-                }
+                //if (isTouchingWall && Input.GetAxisRaw("Jump") > 0 && !prevJump)
+                //{
+                    
+                //}
             }
         }
         
         //if player presses key while wall sliding, set wall jumping to true and set it to false after invoke time
-        if (Input.GetAxisRaw("Jump") > 0 && wallSliding)
+        if (Input.GetAxisRaw("Jump") > 0 && !prevJump && isTouchingWall)
         {
+            myRB.velocity = new Vector2(myRB.velocity.x, Mathf.Clamp(myRB.velocity.y, -wallSlidingSpeed, float.MaxValue));
             myRB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
 
             //check which direction the walljump should be in
@@ -397,7 +402,10 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //check if we're wallsliding still after the wall jump for jump chains
-        wallSliding = isTouchingWall;
+        if (!isTouchingWall)
+        {
+            wallSliding = false;
+        }
     }
 }
 
