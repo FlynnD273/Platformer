@@ -28,14 +28,14 @@ public class Projectile : MonoBehaviour
     //Kunai variable
     public int maxKunai = 20;
     public static int kunai = 0;
-    private static bool boolKunai;
+    public static bool boolKunai;
     public float cooldown = 1;
     private float cooldownSt;
     private bool startCount = false;
     //Shurikan variable
     public int maxShuriken = 30;
     public static int shuriken = 0;
-    private static bool boolShuriken;
+    public static bool boolShuriken;
     public int maxThrow = 4;
     //Energy Varaible (used for fireball)
     public float energyFireBall = 20;
@@ -62,9 +62,16 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        kunai = maxKunai;
-        shuriken = maxShuriken;
-        boolKunai = true;
+        //only give the max amount of kunai/shuriken when spawning if player has already picked one up before
+        if (boolKunai)
+        {
+            kunai = maxKunai;
+        }
+        if (boolShuriken)
+        {
+            shuriken = maxShuriken;
+        }
+        //boolKunai = true;
         projectile = FindObjectOfType<ProjectileMotion>();
         player = FindObjectOfType<NEWPlayerLogic>();
         myAnim = GetComponent<Animator>();

@@ -170,6 +170,16 @@ public class NEWPlayerLogic : MonoBehaviour
             
             health = maxHealth;
         }
+        //enable use of kunai and shuriken when picking up
+        if (collision.gameObject.CompareTag("kunai"))
+        {
+            Projectile.boolKunai = true;
+        }
+        if (collision.gameObject.CompareTag("Shuriken"))
+        {
+            Projectile.boolShuriken = true;
+        }
+
     }
 
     //Change in energy function (Used when energy is being needed to change)
