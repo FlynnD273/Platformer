@@ -93,8 +93,8 @@ MonoBehaviour:
   proj: {fileID: 7191949309268317104, guid: 2737d6c192d01c642a4ccb7b38315e12, type: 3}
   offset: 0
   temp: 0
-  waitBetweenShots: 1
-  player: {fileID: 6964840267461068283, guid: 61ffce8cc9951864b8c8b344ee26a26d, type: 3}
+  waitBetweenShots: 2.5
+  player: {fileID: 0}
   firePointRight: {fileID: 5045396143106259912}
   firePointLeft: {fileID: 5045396141195443447}
   boundary: {fileID: 0}

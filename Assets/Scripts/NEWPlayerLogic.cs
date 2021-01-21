@@ -293,6 +293,7 @@ public class NEWPlayerLogic : MonoBehaviour
             if(meleeCounter > 0)
             {
                 sword.SetActive(true);
+                MeleeDamage.swordAnimator.SetTrigger("Swing");
             }
             else
             {

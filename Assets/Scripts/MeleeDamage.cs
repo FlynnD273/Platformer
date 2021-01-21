@@ -9,7 +9,13 @@ using UnityEngine;
 
 public class MeleeDamage : MonoBehaviour
 {
+    public static Animator swordAnimator;
     public int damage = 15;
+
+    private void Start()
+    {
+        swordAnimator = GetComponent<Animator>();
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         //if the projectile hits an enemy, deal damage to it and despawn projectile

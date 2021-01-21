@@ -1630,6 +1630,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CooperPauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 1360361725144956835, guid: 62ec75e430810c54fb3d9f0bdda276ed,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1360361725144956862, guid: 62ec75e430810c54fb3d9f0bdda276ed,
         type: 3}
       propertyPath: m_Camera
@@ -1648,7 +1653,7 @@ PrefabInstance:
     - target: {fileID: 1360361725144956863, guid: 62ec75e430810c54fb3d9f0bdda276ed,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -179.94376
+      value: -62
       objectReference: {fileID: 0}
     - target: {fileID: 1360361725144956863, guid: 62ec75e430810c54fb3d9f0bdda276ed,
         type: 3}

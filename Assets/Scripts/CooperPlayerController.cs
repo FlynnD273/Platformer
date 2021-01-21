@@ -203,12 +203,12 @@ public class CooperPlayerController : MonoBehaviour
     {
         if (frontCheck.IsTouching(collision))
         {
-            if (!collision.isTrigger)
+            if (!collision.isTrigger && collision.CompareTag("Tilemap"))
             {
                 isTouchingWall = true;
             }
         }
-        if (groundCheck.IsTouching(collision))
+        if (groundCheck.IsTouching(collision) && collision.CompareTag("Tilemap"))
         {
             if (!collision.isTrigger)
             {
@@ -219,7 +219,7 @@ public class CooperPlayerController : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (frontCheck.IsTouching(collision))
+        if (frontCheck.IsTouching(collision) && collision.CompareTag("Tilemap"))
         {
             if (!collision.isTrigger)
             {
@@ -227,7 +227,7 @@ public class CooperPlayerController : MonoBehaviour
             }
 
         }
-        if (groundCheck.IsTouching(collision))
+        if (groundCheck.IsTouching(collision) && collision.CompareTag("Tilemap"))
         {
             if (!collision.isTrigger)
             {

@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b69db227926f55b45bf57e4c3cc34ee0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bf9c007097e71ab4e9c6bbfdee6be2e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
   maxHealth: 100
   lives: 5
   maxEnergy: 60
-  waitforRegen: 10
+  waitforRegen: 3
   sword: {fileID: 6310929744756812333}
   waitForMelee: 0.4
   regenCounter: 0
@@ -345,6 +345,7 @@ MonoBehaviour:
   jumpForce: 7
   jumpTime: 0.3
   maxJumps: 1
+  fallMultiplier: 1.5
   wallJumpTime: 2
   wallSlideTime: 0.5
   wallSlidingSpeed: 0.1
@@ -448,6 +449,7 @@ GameObject:
   - component: {fileID: 7889844186292632012}
   - component: {fileID: 8596611785654865144}
   - component: {fileID: 6115636797129535821}
+  - component: {fileID: 1513268968}
   m_Layer: 0
   m_Name: MeleeHitBox
   m_TagString: Untagged
@@ -481,7 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e8cf0fe28c521418d2579ecb4c5a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 20
 --- !u!61 &7889844186292632012
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -489,7 +491,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6310929744756812333}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -515,7 +517,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6310929744756812333}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -537,6 +539,25 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5210868, y: -0.17517711}
-  m_Size: {x: 0.78160435, y: 0.294011}
+  m_Offset: {x: 0.6226035, y: 0.04235886}
+  m_Size: {x: 0.984637, y: 0.72908264}
   m_Direction: 1
+--- !u!95 &1513268968
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6310929744756812333}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

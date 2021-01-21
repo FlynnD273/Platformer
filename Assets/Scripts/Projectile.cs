@@ -26,14 +26,14 @@ public class Projectile : MonoBehaviour
     
     //Projectile variables
     //Kunai variable
-    public static int kunai = 20;
-    private bool boolKunai;
+    public static int kunai = 0;
+    private static bool boolKunai;
     public float cooldown = 1;
     private float cooldownSt;
     private bool startCount = false;
     //Shurikan variable
-    public static int shurikan = 30;
-    private bool boolShurikan;
+    public static int shurikan = 0;
+    private static bool boolShurikan;
     public int maxThrow = 4;
     //Energy Varaible (used for fireball)
     public float energyFireBall = 20;
@@ -45,8 +45,8 @@ public class Projectile : MonoBehaviour
     public GameObject cursur;
     private Vector3 cursurPos;
     private Vector3 cursurOg;
-    private bool fireLargeFireBall;
-
+    private static bool boolLargeFireball = false;
+    private static bool boolMiniFireball = false;
 
     private int temp;
 
@@ -54,12 +54,16 @@ public class Projectile : MonoBehaviour
     public AudioClip kunaiThrow; //sound for when player throws the kunai
     public AudioClip fireballSound; //sound for when player throws a fireball
 
+    //animator for throwing anim
+    private Animator myAnim;
+
     // Start is called before the first frame update
     void Start()
     {
         boolKunai = true;
         projectile = FindObjectOfType<ProjectileMotion>();
         player = FindObjectOfType<NEWPlayerLogic>();
+        myAnim = GetComponent<Animator>();
         //display = FindObjectOfType<NEWFollowingCamera>();
         cursurOg = cursur.transform.position;
         //cooldown timer set
@@ -131,6 +135,8 @@ public class Projectile : MonoBehaviour
     {
         //projectile logic
         Instantiate(proj, firePoint.position, firePoint.rotation);
+        //do the throw anim
+        myAnim.SetTrigger("Throw");
     }
 
     //increase kunai based on event
@@ -184,27 +190,34 @@ public class Projectile : MonoBehaviour
         }
         if (switchProj == 3)
         {
-            cooldownSt = cooldown - 0.3f;
-            startCount = true;
-            MouseTarget();
-            if (player.EnergyChange(true, energyMiniBall, switchProj) == true)
+            if (boolMiniFireball)
             {
-                Instantiate(proj3, firePoint.position, transform.rotation);
-                player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
+                cooldownSt = cooldown - 0.3f;
+                startCount = true;
+                MouseTarget();
+                if (player.EnergyChange(true, energyMiniBall, switchProj) == true)
+                {
+                    Instantiate(proj3, firePoint.position, transform.rotation);
+                    player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
+                }
+                transform.rotation = rotateFreeze;
             }
-            transform.rotation = rotateFreeze;
         }
         if (switchProj == 4)
         {
-            cooldownSt = cooldown * 3;
-            startCount = true;
-            MouseTarget();
-            if (player.EnergyChange(true, energyFireBall, switchProj) == true)
+            if (boolLargeFireball)
             {
-                Instantiate(proj4, firePoint.position, transform.rotation);
-                player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
+                cooldownSt = cooldown * 3;
+                startCount = true;
+                MouseTarget();
+                if (player.EnergyChange(true, energyFireBall, switchProj) == true)
+                {
+                    Instantiate(proj4, firePoint.position, transform.rotation);
+                    player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
+                }
+                transform.rotation = rotateFreeze;
             }
-            transform.rotation = rotateFreeze;
+            
         }
     }
 }
