@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8708946878784888794}
   - component: {fileID: 1691138574020259209}
   m_Layer: 0
-  m_Name: Shurikan
+  m_Name: Shuriken
   m_TagString: Shuriken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: d4555714e6ee88e46a4857d10bbf27c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

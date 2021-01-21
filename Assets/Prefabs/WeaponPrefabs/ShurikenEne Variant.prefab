@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1221758511702409808, guid: 6e537eadf4be50e418aecfbb56e4832f,
         type: 3}
       propertyPath: m_Name
-      value: ShurikanEne Variant
+      value: ShurikenEne Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1221758511702409808, guid: 6e537eadf4be50e418aecfbb56e4832f,
         type: 3}
