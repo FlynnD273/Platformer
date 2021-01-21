@@ -47,11 +47,12 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Sword"))
+        //Changed by Cooper, redundant and causes double hits of damage
+        /*if (collision.gameObject.CompareTag("Sword"))
         {
             TakeDamage(15);
             Debug.Log("Hit");
-        }
+        }*/
     }
 
     void FixedUpdate()

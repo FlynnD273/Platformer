@@ -48,6 +48,7 @@ public class NEWPlayerLogic : MonoBehaviour
     private Projectile projectile;
     private FBProjectileMotion FireBall;
     private GameManager gameManager;
+    private Animator playerAnim;
 
     public Rigidbody2D myRB;
 
@@ -70,25 +71,13 @@ public class NEWPlayerLogic : MonoBehaviour
         //timer
         regenCounter = waitforRegen;
         meleeCounter = waitForMelee;
+        playerAnim = GetComponent<Animator>();
 
     }
 
     //Checking for all collisions
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //For Lava
-        if (collision.gameObject.CompareTag("Death"))
-        {
-            //Reset Player
-            transform.position = respawnPos;
-            lives--;
-            health = maxHealth;
-        }
-        //For TileMap
-        else if (collision.gameObject.CompareTag("Moving"))
-        {
-            transform.SetParent(collision.transform);
-        }
         //ALL projectile collisions
         if (collision.gameObject.CompareTag("Kunai"))
         {
@@ -167,6 +156,20 @@ public class NEWPlayerLogic : MonoBehaviour
                 health = maxHealth;
             }
         }
+        //For deathobjects
+        if (collision.gameObject.CompareTag("Death"))
+        {
+            //Reset Player
+            //only subtract lives once, even if multiple collisions occur. (From Cooper)
+            //since we move the player to their respawn once, we subtract lives once. Therefore, any multiple life losses don't happen.
+            if (transform.position != respawnPos)
+            {
+                lives--;
+            }
+            transform.position = respawnPos;
+            
+            health = maxHealth;
+        }
     }
 
     //Change in energy function (Used when energy is being needed to change)
@@ -238,7 +241,6 @@ public class NEWPlayerLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(lives);
         //Checks for respawn
         if (health <= 0)
         {
@@ -261,7 +263,7 @@ public class NEWPlayerLogic : MonoBehaviour
         //When lives = 0 
         if (lives <= 0)
         {
-            SceneManager.LoadScene(2);
+            GameManager.Manager.SendToLoseLevel();
             energy = maxEnergy;
             health = maxHealth;
             lives = 5;
@@ -291,7 +293,9 @@ public class NEWPlayerLogic : MonoBehaviour
             if(meleeCounter > 0)
             {
                 sword.SetActive(true);
-                MeleeDamage.swordAnimator.SetTrigger("Swing");
+                playerAnim.SetTrigger("Sword");
+                //MeleeDamage.swordAnimator.SetTrigger("Sword");
+                
             }
             else
             {
