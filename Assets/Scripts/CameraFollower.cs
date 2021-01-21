@@ -7,8 +7,6 @@
 
 
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollower : MonoBehaviour
@@ -33,7 +31,6 @@ public class CameraFollower : MonoBehaviour
             newPos.z = transform.position.z;
             //use linear interpolation to smoothly go to the target
             transform.position = Vector3.Lerp(transform.position, newPos, smoothVal);
-
         }
     }
 }

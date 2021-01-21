@@ -32,8 +32,8 @@ public class Projectile : MonoBehaviour
     private float cooldownSt;
     private bool startCount = false;
     //Shurikan variable
-    public static int shurikan = 0;
-    private static bool boolShurikan;
+    public static int shuriken = 0;
+    private static bool boolShuriken;
     public int maxThrow = 4;
     //Energy Varaible (used for fireball)
     public float energyFireBall = 20;
@@ -84,7 +84,7 @@ public class Projectile : MonoBehaviour
         {
             cursur.transform.position = cursurOg;
         }
-        if (Input.GetMouseButtonDown(2) && PauseMenu.isPaused == false)
+        if (Input.GetMouseButtonDown(2) && !PauseMenu.isPaused)
         {
             switchProj++;
             if (switchProj >= switchLimit)
@@ -95,24 +95,10 @@ public class Projectile : MonoBehaviour
         //projectile.GetSwitch(switchProj);
 
         //Checks if there are avaialble kunai
-        if (kunai <= 0)
-        {
-            boolKunai = false;
-        }
-        else
-        {
-            boolKunai = true;
-        }
-        if (shurikan <= 0)
-        {
-            boolShurikan = false;
-        }
-        else
-        {
-            boolShurikan = true;
-        }
+        boolKunai = kunai > 0;
+        boolShuriken = shuriken > 0;
 
-        if (startCount == true)
+        if (startCount)
         {
             cooldownSt -= Time.deltaTime;
             if (cooldownSt <= 0)
@@ -124,7 +110,7 @@ public class Projectile : MonoBehaviour
         }
 
         //checks when to fire
-        if (Input.GetMouseButtonDown(0) && PauseMenu.isPaused == false && startCount == false)
+        if (Input.GetMouseButtonDown(0) && !PauseMenu.isPaused && !startCount)
         {
             Switch();
         }
@@ -142,13 +128,11 @@ public class Projectile : MonoBehaviour
     //increase kunai based on event
     public void IncreaseKun(int amount)
     {
-        temp = kunai + amount;
-        kunai = temp;
+        kunai += amount;
     }
     public void IncreaseSha(int amount)
     {
-        temp = shurikan + amount;
-        shurikan = temp;
+        shuriken = amount;
     }
     
     void MouseTarget()
@@ -162,62 +146,60 @@ public class Projectile : MonoBehaviour
 
     void Switch()
     {
-        if (switchProj == 1)
+        switch (switchProj)
         {
-            if(boolKunai == true)
-            {
-                kunai--;
-                cooldownSt = cooldown - 0.3f;
-                startCount = true;
-                Fire(proj1);
-                player.GetComponent<AudioSource>().PlayOneShot(kunaiThrow);
-
-            }
-        }
-        if (switchProj == 2)
-        {
-            if(boolShurikan == true)
-            {
-                shurikan--;
-                maxThrow--;
-                if (maxThrow <= 0)
+            case 1:
+                if (boolKunai)
                 {
+                    kunai--;
+                    cooldownSt = cooldown - 0.3f;
                     startCount = true;
+                    Fire(proj1);
+                    player.GetComponent<AudioSource>().PlayOneShot(kunaiThrow);
+
                 }
-                Fire(proj2);
-                player.GetComponent<AudioSource>().PlayOneShot(shurikenThrow);
-            }
-        }
-        if (switchProj == 3)
-        {
-            if (boolMiniFireball)
-            {
-                cooldownSt = cooldown - 0.3f;
-                startCount = true;
-                MouseTarget();
-                if (player.EnergyChange(true, energyMiniBall, switchProj) == true)
+                break;
+            case 2:
+                if (boolShuriken)
                 {
-                    Instantiate(proj3, firePoint.position, transform.rotation);
-                    player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
+                    shuriken--;
+                    maxThrow--;
+                    if (maxThrow <= 0)
+                    {
+                        startCount = true;
+                    }
+                    Fire(proj2);
+                    player.GetComponent<AudioSource>().PlayOneShot(shurikenThrow);
                 }
-                transform.rotation = rotateFreeze;
-            }
-        }
-        if (switchProj == 4)
-        {
-            if (boolLargeFireball)
-            {
-                cooldownSt = cooldown * 3;
-                startCount = true;
-                MouseTarget();
-                if (player.EnergyChange(true, energyFireBall, switchProj) == true)
+                break;
+            case 3:
+                if (boolMiniFireball)
                 {
-                    Instantiate(proj4, firePoint.position, transform.rotation);
-                    player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
+                    cooldownSt = cooldown - 0.3f;
+                    startCount = true;
+                    MouseTarget();
+                    if (player.EnergyChange(-energyMiniBall, switchProj))
+                    {
+                        Instantiate(proj3, firePoint.position, transform.rotation);
+                        player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
+                    }
+                    transform.rotation = rotateFreeze;
                 }
-                transform.rotation = rotateFreeze;
-            }
-            
+                break;
+            case 4:
+                if (boolLargeFireball)
+                {
+                    cooldownSt = cooldown * 3;
+                    startCount = true;
+                    MouseTarget();
+                    if (player.EnergyChange(-energyFireBall, switchProj))
+                    {
+                        Instantiate(proj4, firePoint.position, transform.rotation);
+                        player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
+                    }
+                    transform.rotation = rotateFreeze;
+                }
+                break;
         }
     }
 }

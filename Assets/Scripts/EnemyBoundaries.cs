@@ -90,12 +90,12 @@ public class EnemyBoundaries : MonoBehaviour
     void Update()
     {
         shotCounter -= Time.deltaTime;
-        if (shoot == true && shotCounter < 0)
+        if (shoot && shotCounter < 0)
         {
             FireAtPlayer();
             shotCounter = waitBetweenShots;
         }
-        if (shoot == false)
+        if (!shoot)
         {
             transform.rotation = Quaternion.Euler(0f, 0f, 0);
         }

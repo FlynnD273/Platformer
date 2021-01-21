@@ -7,20 +7,21 @@ TagManager:
   - Ground
   - Dangerous
   - Tilemap
-  - kunai
-  - shurikan
-  - fireBall
   - Moving
   - Enemy
   - Death
   - CheckPoint
-  - kunaiEnemy
-  - shurikanEnemy
   - Boundary
-  - fireBallMini
-  - shurikenEnemy
-  - sword
   - Melee
+  - Kunai
+  - FireBall
+  - KunaiEnemy
+  - FireBallMini
+  - Sword
+  - Switch
+  - Health
+  - ShurikenEnemy
+  - Shuriken
   layers:
   - Default
   - TransparentFX

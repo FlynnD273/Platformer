@@ -81,7 +81,7 @@ public class CooperPlayerController : MonoBehaviour
         if (!wallSliding)
         {
             //reset the stopwatch if not wallsliding
-            wallSlideStopwatch.Reset();
+            
         }
 
         //stop holding the player in place if they stop holding horizontally
@@ -89,10 +89,11 @@ public class CooperPlayerController : MonoBehaviour
         {
             myRB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
             wallSliding = false;
+            wallSlideStopwatch.Reset();
         }
 
         //stop inverting input if the player stops holding a direction so the player has responsive control
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        if (Input.GetAxisRaw("Horizontal") != 0)
         {
             invertInput = false;
             myRB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
@@ -105,7 +106,7 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //check for wall slide/ wall jump when moving into a wall above ground, check for normal jumps if criteria not met
-        if (isTouchingWall == true && isTouchingGround == false && moveInput != 0)
+        if (isTouchingWall && !isTouchingGround && moveInput != 0)
         {
             WallSlideCheck();
         }
@@ -133,9 +134,6 @@ public class CooperPlayerController : MonoBehaviour
         {
             myRB.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
-
-        
-
     }
 
     // Update is called once per physics frame
@@ -149,22 +147,19 @@ public class CooperPlayerController : MonoBehaviour
 
         myAnim.SetBool("OnGround", isTouchingGround);
 
+        moveInput = Input.GetAxisRaw("Horizontal");
+
         //allows player to hold one direction while wall jumping, making timing easier
-        if (invertInput == true)
+        if (invertInput)
         {
             //invert the player's input
-            moveInput = -Input.GetAxisRaw("Horizontal");
-        }
-        else if (!invertInput)
-        {
-            //get input
-            moveInput = Input.GetAxisRaw("Horizontal");
+            moveInput *= -1;
         }
 
         //set wall jump bool to false when player hits ground or another wall if function is not invoked by then
-        if (isTouchingGround == true)
+        if (isTouchingGround)
         {
-            SetWallJumpingToFalse();
+            wallJumping = false;
         }
 
         //don't let player input interfere while wall jumping
@@ -174,29 +169,20 @@ public class CooperPlayerController : MonoBehaviour
             myRB.velocity = new Vector2(moveInput * speed, myRB.velocity.y);
         }
 
-        //determine the walking animation
-        if(moveInput == 0)
-        {
-            myAnim.SetBool("Walking", false);
-        }
-        else
-        {
-            myAnim.SetBool("Walking", true);
-        }
+        myAnim.SetBool("Walking", moveInput != 0);
 
         //when player isn't wall jumping or sliding, allow for flipping to occur with movement
         if (!wallJumping && !wallSliding)
         {
-            if (facingRight == false && moveInput > 0)
+            if (!facingRight && moveInput > 0)
             {
                 Flip();
             }
-            else if (facingRight == true && moveInput < 0)
+            else if (facingRight && moveInput < 0)
             {
                 Flip();
             }
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -225,7 +211,6 @@ public class CooperPlayerController : MonoBehaviour
             {
                 isTouchingWall = true;
             }
-
         }
         if (groundCheck.IsTouching(collision) && collision.CompareTag("Tilemap"))
         {
@@ -244,7 +229,6 @@ public class CooperPlayerController : MonoBehaviour
             {
                 isTouchingWall = false;
             }
-            
         }
         if (!groundCheck.IsTouching(collision))
         {
@@ -252,20 +236,13 @@ public class CooperPlayerController : MonoBehaviour
                 isTouchingGround = false;
             }
         }
-        
     }
 
     //Flip the sprite based on movement direction
     void Flip() 
     {
         facingRight = !facingRight;
-        transform.Rotate(0f, 180, 0f);
-    }
-
-    //set the wall jumping bool to false after invoke method calls function
-    void SetWallJumpingToFalse()
-    {
-        wallJumping = false;
+        transform.Rotate(0, 180, 0);
     }
 
     //function to time a walljump, sets walljumping to false when timer reaches 0
@@ -286,27 +263,24 @@ public class CooperPlayerController : MonoBehaviour
     {
         if (isTouchingWall)
         {
-            SetWallJumpingToFalse();
+            wallJumping = false;
             return true;
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     //check conditions for jumping and handle jumping
     void JumpCheck()
     {
         //refresh jumps when on ground
-        if (isTouchingGround == true)
+        if (isTouchingGround)
         {
             invertInput = false;
             extraJumps = maxJumps;
         }
 
         //activate jump if jumps remain
-        if ((Input.GetKeyDown(KeyCode.Space) && extraJumps > 0) || (Input.GetKeyDown(KeyCode.W) && extraJumps > 0))
+        if (Input.GetAxisRaw("Jump") > 0 && extraJumps > 0)
         {
             isJumping = true;
 
@@ -321,7 +295,7 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //allow player to jump higher within a timeframe as long as key is pressed
-        if ((Input.GetKey(KeyCode.Space) == true && isJumping == true) || (Input.GetKey(KeyCode.W) == true && isJumping == true))
+        if (Input.GetAxisRaw("Jump") > 0 && isJumping)
         {
             if (jumpTimeCounter > 0)
             {
@@ -335,7 +309,7 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //when the key is released, set isJumping to false
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W))
+        if (Input.GetAxisRaw("Jump") <= 0)
         {
             isJumping = false;
         }
@@ -345,7 +319,7 @@ public class CooperPlayerController : MonoBehaviour
     void WallSlideCheck()
     {
         //set wallslide to true if parameters are met and vice versa
-        if (isTouchingWall == true)
+        if (isTouchingWall)
         {
             wallSliding = true;
 
@@ -354,7 +328,7 @@ public class CooperPlayerController : MonoBehaviour
                 wallSlideStopwatch.Start();
             }
         }
-        else if(isTouchingWall == false)
+        else
         {
             wallSliding = false;
         }
@@ -375,7 +349,7 @@ public class CooperPlayerController : MonoBehaviour
                 myRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 
                 //If the player inputs to walljump, unfreeze constraints before the next if statement
-                if (Input.GetAxisRaw("Jump") != 0)
+                if (Input.GetAxisRaw("Jump") > 0)
                 {
                     myRB.velocity = new Vector2(myRB.velocity.x, Mathf.Clamp(myRB.velocity.y, -wallSlidingSpeed, float.MaxValue));
                     myRB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
@@ -384,19 +358,12 @@ public class CooperPlayerController : MonoBehaviour
         }
         
         //if player presses key while wall sliding, set wall jumping to true and set it to false after invoke time
-        if ((Input.GetKeyDown(KeyCode.Space) && wallSliding == true) || (Input.GetKeyDown(KeyCode.W) && wallSliding == true))
+        if (Input.GetAxisRaw("Jump") > 0 && wallSliding)
         {
             myRB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
 
             //check which direction the walljump should be in
-            if (facingRight == true)
-            {
-                storedMoveInput = -1;
-            }
-            else if (facingRight == false)
-            {
-                storedMoveInput = 1;
-            }
+            storedMoveInput = facingRight ? -1 : 1;
 
             //flip the player before the next movement
             Flip();
@@ -421,7 +388,7 @@ public class CooperPlayerController : MonoBehaviour
         if (wallJumping)
         {
             //stop inverting input if the player changes input directions while wall jumping
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            if (Input.GetAxisRaw("Horizontal") != 0)
             {
                 invertInput = false;
             }
@@ -430,14 +397,7 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //check if we're wallsliding still after the wall jump for jump chains
-        if (isTouchingWall == true)
-        {
-            wallSliding = true;
-        }
-        else if (isTouchingWall == false)
-        {
-            wallSliding = false;
-        }
+        wallSliding = isTouchingWall;
     }
 }
 

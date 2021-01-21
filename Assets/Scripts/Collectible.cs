@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/************
+ * Author: Flynn Duniho
+ * Purpose: changes the score when touches the player. 
+************/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

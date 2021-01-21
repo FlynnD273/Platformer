@@ -59,7 +59,7 @@ public class ProjectileMotion : MonoBehaviour
         if (collision.gameObject.CompareTag("Tilemap"))
         {
             //stop the projectile if it hits tiles
-            if (isEnemyWeapon == false)
+            if (!isEnemyWeapon)
             {
                 myRB.constraints = RigidbodyConstraints2D.FreezeAll;
                 boolRotate = false;
@@ -72,9 +72,9 @@ public class ProjectileMotion : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        if (collision.gameObject.CompareTag("kunaiEnemy") || collision.gameObject.CompareTag("shurikenEnemy"))
+        if (collision.gameObject.CompareTag("KunaiEnemy") || collision.gameObject.CompareTag("ShurikenEnemy"))
         {
-            if (strength == true)
+            if (strength)
             {
                 Destroy(collision.gameObject);
             }
@@ -84,9 +84,9 @@ public class ProjectileMotion : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        if ((collision.gameObject.CompareTag("kunai") || collision.gameObject.CompareTag("shurikan")) && isEnemyWeapon == true)
+        if ((collision.gameObject.CompareTag("Kunai") || collision.gameObject.CompareTag("Shuriken")) && isEnemyWeapon)
         {
-            if (strength == true)
+            if (strength)
             {
                 Destroy(collision.gameObject);
             }
@@ -95,7 +95,7 @@ public class ProjectileMotion : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        if (collision.gameObject.CompareTag("sword"))
+        if (collision.gameObject.CompareTag("Sword"))
         {
             Destroy(gameObject);
         }
@@ -104,7 +104,7 @@ public class ProjectileMotion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (boolRotate == true)
+        if (boolRotate)
         {
             transform.Rotate(0, 0, rotationSpeed);
         }

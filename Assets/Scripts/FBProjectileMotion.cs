@@ -48,13 +48,13 @@ public class FBProjectileMotion : MonoBehaviour
         {
             myEnemy.TakeDamage(damage);
         }
-        if (collision.gameObject.CompareTag("kunaiEnemy") || collision.gameObject.CompareTag("shurikenEnemy"))
+        if (collision.gameObject.CompareTag("KunaiEnemy") || collision.gameObject.CompareTag("ShurikenEnemy"))
         {
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if(boolMini == true)
+            if(boolMini)
             {
                 Destroy(gameObject);
             }
@@ -68,18 +68,18 @@ public class FBProjectileMotion : MonoBehaviour
         deathTime -= Time.deltaTime;
         lifeTime += Time.deltaTime;
 
-        if (boolRotate == true)
+        if (boolRotate)
         {
             transform.Rotate(0, 0, rotationSpeed);
         }
 
-        if (isExplosion == true)
+        if (isExplosion)
         {
             Vector2 newSize = new Vector2((transform.localScale.x + lifeTime) * 0.8f, (transform.localScale.y + lifeTime) * 0.8f);
             transform.localScale = newSize;
         }
 
-        if (deathTime <= 0 && boolMini == false && isExplosion == false)
+        if (deathTime <= 0 && !boolMini && !isExplosion)
         { 
             Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);

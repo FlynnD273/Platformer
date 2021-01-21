@@ -53,7 +53,7 @@ public class PauseMenu : MonoBehaviour
             isPaused = !isPaused;
             PauseGame();
         }
-        if (PauseMenuButtons.buttonPressed == true)
+        if (PauseMenuButtons.buttonPressed)
         {
             PauseGame();
             PauseMenuButtons.buttonPressed = false;

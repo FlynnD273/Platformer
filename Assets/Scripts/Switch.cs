@@ -15,13 +15,13 @@ public class Switch : MonoBehaviour
     //Checks if collision with kunai happens
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("kunai"))
+        if (collision.gameObject.CompareTag("Kunai"))
         {
-            if (doDestroyORCreate == true)
+            if (doDestroyORCreate)
             {
                 Destroy(wall);
             }
-            if (doDestroyORCreate == false)
+            if (!doDestroyORCreate)
             {
                 wall.SetActive(true);
             }

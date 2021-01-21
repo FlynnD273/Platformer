@@ -36,8 +36,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-    public static int kunaiAmmo
+    public static int KunaiAmmo
     {
         get => Projectile.kunai;
         set
@@ -47,12 +46,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static int shurikenAmmo
+    public static int ShurikenAmmo
     {
-        get => Projectile.shurikan;
+        get => Projectile.shuriken;
         set
         {
-            Projectile.shurikan = value;
+            Projectile.shuriken = value;
             OnKunaiAmmoChange.Invoke();
         }
     }

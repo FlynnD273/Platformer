@@ -3,8 +3,6 @@
 //Date: 1/12/2020
 //Description: Enemy logic fpr 2D game.
 //////////////////
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -49,7 +47,7 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("sword"))
+        if (collision.gameObject.CompareTag("Sword"))
         {
             TakeDamage(15);
             Debug.Log("Hit");
@@ -58,7 +56,7 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isEnemy == true)
+        if (isEnemy)
         {
             //get a vector to the next waypoint from our position
             Vector3 toWaypoint = waypoints[currentWayPoint] - transform.position;
@@ -95,7 +93,7 @@ public class Enemy : MonoBehaviour
     void Death()
     {
         transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-        if (isEnemy == true)
+        if (isEnemy)
         {
             randomRate = Random.Range(1, dropRate);
             for (int i = 0; i < randomRate; i++)
@@ -115,7 +113,7 @@ public class Enemy : MonoBehaviour
                 Instantiate(proj1, transform.position, transform.rotation);
             }
         }
-        //if(isEnemy == true)
+        //if(isEnemy)
         //{
             //Instantiate(deathEffect, transform.position, Quaternion.identity);
         //}

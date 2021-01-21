@@ -45,15 +45,15 @@ public class UIManager : MonoBehaviour
         energySlider.value = NEWPlayerLogic.energy;
 
         tmpKunai.text = "" + Projectile.kunai;
-        tmpShuriken.text = "" + Projectile.shurikan;
+        tmpShuriken.text = "" + Projectile.shuriken;
 
         ProjectileSwitch();
     }
 
     private void UpdateText()
     {
-        tmpKunai.text = "" + GameManager.kunaiAmmo;
-        tmpShuriken.text = "" + GameManager.shurikenAmmo;
+        tmpKunai.text = "" + GameManager.KunaiAmmo;
+        tmpShuriken.text = "" + GameManager.ShurikenAmmo;
     }
 
 

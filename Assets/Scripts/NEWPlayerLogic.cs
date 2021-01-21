@@ -90,21 +90,21 @@ public class NEWPlayerLogic : MonoBehaviour
             transform.SetParent(collision.transform);
         }
         //ALL projectile collisions
-        if (collision.gameObject.CompareTag("kunai"))
+        if (collision.gameObject.CompareTag("Kunai"))
         {
             projectile.IncreaseKun(1);
         }
-        if (collision.gameObject.CompareTag("shurikan"))
+        if (collision.gameObject.CompareTag("Shuriken"))
         {
             projectile.IncreaseSha(1);
         }
-        if (collision.gameObject.CompareTag("kunaiEnemy"))
+        if (collision.gameObject.CompareTag("KunaiEnemy"))
         {
             Subhealth(30);
             //healthBar.MoveHealthbar(30, true);
             StartCoroutine(ChangePlayerColor());
         }
-        if (collision.gameObject.CompareTag("shurikenEnemy"))
+        if (collision.gameObject.CompareTag("ShurikenEnemy"))
         {
             Subhealth(10);
             StartCoroutine(ChangePlayerColor());
@@ -170,7 +170,7 @@ public class NEWPlayerLogic : MonoBehaviour
     }
 
     //Change in energy function (Used when energy is being needed to change)
-    public bool EnergyChange(bool decORIncEne, float amount, int switchProj)
+    public bool EnergyChange(float amount, int switchProj)
     {
         //Checking if using FireBall is possible
         if (energy >= 60 && switchProj == 4)
@@ -181,27 +181,27 @@ public class NEWPlayerLogic : MonoBehaviour
             return true;
         }
         //changing energy's value
-        float energyIntial = energy;
-        if (decORIncEne == true)
-        {
-            temp = energy - amount;
-        }
-        if (decORIncEne == false)
-        {
-            temp = energy + amount;
-        }
-        energy = temp;
+        //float energyIntial = energy;
+        //if (decORIncEne)
+        //{
+        //    temp = energy - amount;
+        //}
+        //else
+        //{
+        //    temp = energy + amount;
+        //}
+        energy += amount;
         //Checking if firing projectile is possible
         if (energy >= 0)
         {
             //healthBar.MoveEnergybar(amount, true);
-            if (startRegen == false)
+            if (!startRegen)
             {
                 Debug.Log("set Timer " + energy);
                 startRegen = true;
             }
             //Happens when Regen Counter is active
-            if (startRegen == true)
+            else
             {
                 Debug.Log("restart timer " + energy);
                 regenCounter = waitforRegen;
@@ -222,10 +222,8 @@ public class NEWPlayerLogic : MonoBehaviour
     //subtracting health
     void Subhealth(float amount)
     {
-        temp = health - amount;
-        health = temp;
+        health -= amount;
         gameObject.GetComponent<AudioSource>().PlayOneShot(playerHurtSound);
-
     }
 
     //Changes color on the event that player is hit by enemy weapon
@@ -253,9 +251,9 @@ public class NEWPlayerLogic : MonoBehaviour
         {
             startRegen = true;
         }
-        if(Input.GetMouseButtonDown(1) && canUseMelee == true)
+        if(Input.GetMouseButtonDown(1) && canUseMelee)
         {
-            if (EnergyChange(true, 5, 1) == true)
+            if (EnergyChange(5, 1))
             {
                 inMeleeFrame = true;
             }
@@ -269,7 +267,7 @@ public class NEWPlayerLogic : MonoBehaviour
             lives = 5;
         }
         //energy Timer starting
-        if (startRegen == true)
+        if (startRegen)
         {
             regenCounter -= Time.deltaTime;
             if (regenCounter <= 0)
@@ -286,7 +284,7 @@ public class NEWPlayerLogic : MonoBehaviour
             }
         }
         //Melee timer starting
-        if (inMeleeFrame == true)
+        if (inMeleeFrame)
         {
             canUseMelee = false;
             meleeCounter -= Time.deltaTime;
