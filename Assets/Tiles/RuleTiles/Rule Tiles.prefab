@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 996862318604445926}
   - component: {fileID: 6368418956837005215}
   - component: {fileID: 7372680579360023832}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: Layer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8605729987380109254}
   - component: {fileID: 713680228888128695}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: Rule Tiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

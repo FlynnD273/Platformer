@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1542771565904239432}
   - component: {fileID: 8766408849255170615}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: Tutorial Pallete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 7497037038300874747}
   - component: {fileID: 3705940955486169053}
   - component: {fileID: 4394630929066501360}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: Layer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

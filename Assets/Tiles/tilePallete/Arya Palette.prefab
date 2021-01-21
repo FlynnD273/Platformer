@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3755631483981912428}
   - component: {fileID: 612347112086029256}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: Arya Palette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 3287711704999320479}
   - component: {fileID: 2975281671216807247}
   - component: {fileID: 2375406431087212594}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: Layer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

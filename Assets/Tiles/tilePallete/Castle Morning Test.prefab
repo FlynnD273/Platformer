@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8538114732342076254}
   - component: {fileID: 683768791234759416}
   - component: {fileID: 6610129488089296901}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: Layer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2881,7 +2881,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6727255391243679569}
   - component: {fileID: 4793598409983329150}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: Castle Morning Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
