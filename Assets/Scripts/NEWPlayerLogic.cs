@@ -79,7 +79,7 @@ public class NEWPlayerLogic : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //ALL projectile collisions
-        if (collision.gameObject.CompareTag("kunai"))
+        if (collision.gameObject.CompareTag("Kunai"))
         {
             projectile.IncreaseKun(1);
         }
@@ -87,13 +87,13 @@ public class NEWPlayerLogic : MonoBehaviour
         {
             projectile.IncreaseSha(1);
         }
-        if (collision.gameObject.CompareTag("kunaiEnemy"))
+        if (collision.gameObject.CompareTag("KunaiEnemy"))
         {
             Subhealth(30);
             //healthBar.MoveHealthbar(30, true);
             StartCoroutine(ChangePlayerColor());
         }
-        if (collision.gameObject.CompareTag("shurikenEnemy"))
+        if (collision.gameObject.CompareTag("ShurikenEnemy"))
         {
             Subhealth(10);
             StartCoroutine(ChangePlayerColor());
@@ -185,8 +185,15 @@ public class NEWPlayerLogic : MonoBehaviour
         }
         //changing energy's value
         //float energyIntial = energy;
-        temp = energy - amount;
-        energy = temp;
+        //if (decORIncEne)
+        //{
+        //    temp = energy - amount;
+        //}
+        //else
+        //{
+        //    temp = energy + amount;
+        //}
+        energy += amount;
         //Checking if firing projectile is possible
         if (energy >= 0)
         {
@@ -195,7 +202,6 @@ public class NEWPlayerLogic : MonoBehaviour
             {
                 Debug.Log("set Timer " + energy);
                 startRegen = true;
-                return true;
             }
             //Happens when Regen Counter is active
             else
@@ -204,6 +210,7 @@ public class NEWPlayerLogic : MonoBehaviour
                 regenCounter = waitforRegen;
                 return true;
             }
+            return true;
         }
         if (energy < 0)
         {
@@ -256,7 +263,7 @@ public class NEWPlayerLogic : MonoBehaviour
         //When lives = 0 
         if (lives <= 0)
         {
-            SceneManager.LoadScene("LoseScene");
+            GameManager.Manager.SendToLoseLevel();
             energy = maxEnergy;
             health = maxHealth;
             lives = 5;

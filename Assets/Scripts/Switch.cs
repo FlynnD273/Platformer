@@ -12,11 +12,10 @@ public class Switch : MonoBehaviour
     public GameObject wall;
     public Color checkActive = new Color(1, 0, 1, 1);
     public bool doDestroyORCreate = true;
-
     //Checks if collision with kunai happens
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Melee") || collision.gameObject.CompareTag("kunai"))
+        if (collision.gameObject.CompareTag("Kunai"))
         {
             if (doDestroyORCreate)
             {
@@ -27,10 +26,7 @@ public class Switch : MonoBehaviour
                 wall.SetActive(true);
             }
             gameObject.GetComponent<SpriteRenderer>().color = checkActive;
-            if (collision.gameObject.CompareTag("kunai"))
-            {
-                Destroy(collision.gameObject);
-            }
+            Destroy(collision.gameObject);
         }
     }
 }

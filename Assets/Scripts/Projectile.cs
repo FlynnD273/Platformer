@@ -23,17 +23,15 @@ public class Projectile : MonoBehaviour
     public ProjectileMotion projectile;
     public NEWPlayerLogic player;
     //public NEWFollowingCamera display;
-
+    
     //Projectile variables
     //Kunai variable
-    public int maxKunai = 20;
     public static int kunai = 0;
     private static bool boolKunai;
     public float cooldown = 1;
     private float cooldownSt;
     private bool startCount = false;
     //Shurikan variable
-    public int maxShuriken = 30;
     public static int shuriken = 0;
     private static bool boolShuriken;
     public int maxThrow = 4;
@@ -47,8 +45,8 @@ public class Projectile : MonoBehaviour
     public GameObject cursur;
     private Vector3 cursurPos;
     private Vector3 cursurOg;
-    //private static bool boolLargeFireball = false;
-    //private static bool boolMiniFireball = false;
+    private static bool boolLargeFireball = false;
+    private static bool boolMiniFireball = false;
 
     private int temp;
 
@@ -62,8 +60,6 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        kunai = maxKunai;
-        shuriken = maxShuriken;
         boolKunai = true;
         projectile = FindObjectOfType<ProjectileMotion>();
         player = FindObjectOfType<NEWPlayerLogic>();
@@ -136,7 +132,7 @@ public class Projectile : MonoBehaviour
     }
     public void IncreaseSha(int amount)
     {
-        shuriken += amount;
+        shuriken = amount;
     }
     
     void MouseTarget()
@@ -177,33 +173,32 @@ public class Projectile : MonoBehaviour
                 }
                 break;
             case 3:
-        
-                    Debug.Log("Happen");
+                if (boolMiniFireball)
+                {
                     cooldownSt = cooldown - 0.3f;
                     startCount = true;
                     MouseTarget();
-                    if (player.EnergyChange(energyMiniBall, switchProj))
+                    if (player.EnergyChange(-energyMiniBall, switchProj))
                     {
-                        Debug.Log("Happens");
                         Instantiate(proj3, firePoint.position, transform.rotation);
                         player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
                     }
                     transform.rotation = rotateFreeze;
-        
+                }
                 break;
             case 4:
-                
+                if (boolLargeFireball)
+                {
                     cooldownSt = cooldown * 3;
                     startCount = true;
                     MouseTarget();
-                    if (player.EnergyChange(energyFireBall, switchProj))
+                    if (player.EnergyChange(-energyFireBall, switchProj))
                     {
-                        Debug.Log("Happens");
                         Instantiate(proj4, firePoint.position, transform.rotation);
                         player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
                     }
                     transform.rotation = rotateFreeze;
-                
+                }
                 break;
         }
     }
