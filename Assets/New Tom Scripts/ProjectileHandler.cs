@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿//////////////////////
+///Name: Thomas Allen
+///Date: 1/22/21
+///Desc: Manages projectile firing and ammo
+/////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +15,7 @@ public class ProjectileHandler : MonoBehaviour
 
     [Header("")]
     public static int currentWeapon = 1; //int to represent currently equipped weapon
-    public int maxWeapons = 1; //limit on weapons player can access
+    public static int maxWeapons = 1; //limit on weapons player can access
 
     [Header("Weapon Prefabs")]
     public GameObject[] weapons; //array to put weapons prefabs in
@@ -29,32 +35,39 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeField] float fireCooldownShuriken = 2; //cooldown to fire shuriken;
 
     [Header("Ammo")]
-    public static int kunaiCount = 30;
-    public static int shurikenCount = 30;
+    public static int kunaiCount = 30; //kunai ammo
+    public static int shurikenCount = 30; //shuriken ammo
 
+    /// <summary>
+    /// stuff for aiming fireball
+    /// </summary>
     private Vector3 difference;
     private float rotz;
     private Quaternion rotateFreeze;
     private float offset;
     public GameObject cursur;
 
-    private bool hasKunAmmo;
+    //are true if player has one or more ammo of respective type.
+    private bool hasKunAmmo; 
     private bool hasShuAmmo;
 
-    [SerializeField] int shurikenBurst = 3;
+    [SerializeField] int shurikenBurst = 3; //how many shurikens player can shoot before having to "reload"
     [Header("Timer")]
-    public float timer;
+    public float timer; //timer for cooldowns
+
+    private float energyCost = 15;
     // Start is called before the first frame update
     void Start()
     {
-        myAnim = GetComponent<Animator>();
-        playerLogic = FindObjectOfType<NEWPlayerLogic>();
+        myAnim = GetComponent<Animator>(); //get animator
+        playerLogic = FindObjectOfType<NEWPlayerLogic>(); //get player logic script
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        //update ammo bools
         if (kunaiCount > 0)
             hasKunAmmo = true;
         else
@@ -64,60 +77,74 @@ public class ProjectileHandler : MonoBehaviour
             hasShuAmmo = true;
         else
             hasShuAmmo = false;
+
+        //update timer
         timer += Time.deltaTime;
 
+        //get mouse click input
         if(Input.GetMouseButtonDown(0))
         {
-            /*
-            if (currentWeapon > 2)
-                MouseTarget();
-            Fire(weapons[currentWeapon - 1]);
-            if (currentWeapon > 2)
-                transform.rotation = rotateFreeze;
-            AmmoHandler(currentWeapon);
-            */
-            
+            //switch on teh current weapon to decide which weapon to fire
             switch (currentWeapon)
             {
-                case 1:
-                    if (timer >= fireCooldownKunai && hasKunAmmo)
+                case 1: //kunai
+                    if (timer >= fireCooldownKunai && hasKunAmmo) //make sure cooldown is over and that they have ammo
                     {
-                        Fire(weapons[currentWeapon - 1]);
+                        //fire
+                        Fire(weapons[currentWeapon - 1]); 
                         //do the throw anim
                         myAnim.SetTrigger("Throw");
+                        //reduec ammo
                         AmmoHandler(currentWeapon);
+                        //player sound
                         gameObject.GetComponent<AudioSource>().PlayOneShot(kunaiSound);
+                        //reset timer
                         timer = 0;
                     }
                     break;
-                case 2:
-                    if (shurikenBurst > 0 && hasShuAmmo)
+                case 2: //suriken
+                    if (shurikenBurst > 0 && hasShuAmmo) //make sure player has ammo left in the busrt and that they have ammo overall
                     {
+                        //shoot it
                         Fire(weapons[currentWeapon - 1]);
+                        //reduce ammo
                         AmmoHandler(currentWeapon);
                         //do the throw anim
                         myAnim.SetTrigger("Throw");
+                        //reduce the burst
                         shurikenBurst--;
+                        //play the sound
                         gameObject.GetComponent<AudioSource>().PlayOneShot(shurikenSOund);
                     }
                     break;
 
-                case 3:
-                    MouseTarget();
-                    Fire(weapons[currentWeapon - 1]);
-                    transform.rotation = rotateFreeze;
-                    gameObject.GetComponent<AudioSource>().PlayOneShot(fireballSound);
+                case 3: //fireball
+                    if (NEWPlayerLogic.energy >= energyCost) //make sure player has energy
+                    {
+                        //set the target to the mouse
+                        MouseTarget();
+                        //fire 
+                        Fire(weapons[currentWeapon - 1]);
+                        //reduce player energy
+                        NEWPlayerLogic.energy -= energyCost;
+                        //freeze player rotation so that they don't go wonk
+                        transform.rotation = rotateFreeze;
+                        //play sound
+                        gameObject.GetComponent<AudioSource>().PlayOneShot(fireballSound);
+                    }
                     break;
             }
         }
 
         if (Input.GetMouseButtonDown(2))
-        {
+        { 
+            //switches current weapon
             SwitchWeapon();
         }
 
         if (timer > fireCooldownShuriken)
         {
+            //reset timer and burst once the burst is out
             shurikenBurst = 3;
             timer = 0;
         }
@@ -125,17 +152,16 @@ public class ProjectileHandler : MonoBehaviour
 
     void Fire(GameObject proj)
     {
-        //projectile logic
+        //clone prefab into scene
         Instantiate(proj, firePoint.position, firePoint.rotation);
-        /*
-        //do the throw anim
-        myAnim.SetTrigger("Throw");
-        */
+       
     }
 
     void SwitchWeapon()
     {
+        //up index of current weapon
         currentWeapon++;
+        //roll over if over the max
         if (currentWeapon > maxWeapons)
         {
             currentWeapon = 1;
@@ -144,6 +170,7 @@ public class ProjectileHandler : MonoBehaviour
 
     void AmmoHandler(int weapon)
     {
+        //reduce ammo to respective weapon
         switch (weapon)
         {
             case 1:
@@ -156,20 +183,22 @@ public class ProjectileHandler : MonoBehaviour
     }
 
     public void IncreaseKun(int amount)
-    {
+    { 
+        //up the kunai ammo
         kunaiCount += amount;
     }
     public void IncreaseSha(int amount)
     {
+        //up the shuriken count
         shurikenCount += amount;
     }
 
     void MouseTarget()
     {
-        rotateFreeze = transform.rotation;
-        difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotz + offset);
+        rotateFreeze = transform.rotation; //freeze roation
+        difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position; //find diff between position and mouse position
+        rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg; //apply the difference
+        transform.rotation = Quaternion.Euler(0f, 0f, rotz + offset); ////set the roation of player
     }
 
 }
