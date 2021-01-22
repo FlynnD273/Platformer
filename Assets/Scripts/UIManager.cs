@@ -17,9 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] public Slider helthSlider;
     [SerializeField] public Slider energySlider;
 
-    [Header("Scripts from Player")]
-    [SerializeField] public NEWPlayerLogic playerLogic;
-    [SerializeField] public Projectile projectile;
+    
 
     [Header("Weapon UI Elements")]
     public Image kunai;
@@ -33,9 +31,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerLogic = GameObject.Find("Player").GetComponent<NEWPlayerLogic>();
-        projectile = GameObject.Find("Player").GetComponent<Projectile>();
-
+        
         GameManager.OnKunaiAmmoChange.AddListener(UpdateText);
     }
 
@@ -44,8 +40,8 @@ public class UIManager : MonoBehaviour
         helthSlider.value = NEWPlayerLogic.health;
         energySlider.value = NEWPlayerLogic.energy;
 
-        tmpKunai.text = "" + Projectile.kunai;
-        tmpShuriken.text = "" + Projectile.shuriken;
+        tmpKunai.text = "" + ProjectileHandler.kunaiCount;
+        tmpShuriken.text = "" + ProjectileHandler.shurikenCount;
 
         ProjectileSwitch();
     }
@@ -59,7 +55,7 @@ public class UIManager : MonoBehaviour
 
     public void ProjectileSwitch()
     {
-        switch (projectile.switchProj)
+        switch (ProjectileHandler.currentWeapon)
         {
             case 1:
                 kunai.enabled = true;
@@ -98,7 +94,7 @@ public class UIManager : MonoBehaviour
                 tmpShuriken.enabled = false;
                 break;
             default:
-                Debug.LogError("USER REACHED INVALID WEAPON INDEX: " + projectile.switchProj);
+                Debug.LogError("USER REACHED INVALID WEAPON INDEX: " + ProjectileHandler.currentWeapon);
                 break;
         }
     }

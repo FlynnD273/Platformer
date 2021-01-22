@@ -37,7 +37,7 @@ public class NEWPlayerLogic : MonoBehaviour
     [Header("Energy")]
     //Energy Timer variables
     [SerializeField] private float regenCounter;
-    private bool startRegen = false;
+    public static bool startRegen = false;
     //Melee Timer variables
     private float meleeCounter;
     private bool inMeleeFrame = false;
@@ -45,7 +45,7 @@ public class NEWPlayerLogic : MonoBehaviour
 
     //Classes being initialized
     private GameObject currentCheckPoint;
-    private Projectile projectile;
+    private ProjectileHandler projectile;
     private FBProjectileMotion FireBall;
     private GameManager gameManager;
     private Animator playerAnim;
@@ -65,7 +65,7 @@ public class NEWPlayerLogic : MonoBehaviour
         //respawn point
         respawnPos = transform.position;
         //set object class
-        projectile = FindObjectOfType<Projectile>();
+        projectile = FindObjectOfType<ProjectileHandler>();
         FireBall = FindObjectOfType<FBProjectileMotion>();
         gameManager = FindObjectOfType<GameManager>();
         //timer

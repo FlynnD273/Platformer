@@ -105,6 +105,8 @@ MonoBehaviour:
   deathTime: 8
   strength: 0
   myRB: {fileID: 8708946878784888794}
+  crateDrops: {fileID: 0}
+  myEnemy: {fileID: 0}
 --- !u!50 &8708946878784888794
 Rigidbody2D:
   serializedVersion: 4

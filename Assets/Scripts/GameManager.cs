@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
 
     public AudioMixer Audio;
 
-
     public static UnityEvent OnKunaiAmmoChange = new UnityEvent();
 
 
@@ -38,20 +37,20 @@ public class GameManager : MonoBehaviour
 
     public static int KunaiAmmo
     {
-        get => Projectile.kunai;
+        get => ProjectileHandler.kunaiCount;
         set
         {
-            Projectile.kunai = value;
+            ProjectileHandler.kunaiCount = value;
             OnKunaiAmmoChange.Invoke();
         }
     }
 
     public static int ShurikenAmmo
     {
-        get => Projectile.shuriken;
+        get => ProjectileHandler.shurikenCount;
         set
         {
-            Projectile.shuriken = value;
+            ProjectileHandler.shurikenCount = value;
             OnKunaiAmmoChange.Invoke();
         }
     }
