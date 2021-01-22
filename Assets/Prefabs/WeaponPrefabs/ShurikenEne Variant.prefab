@@ -87,10 +87,15 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1221758511702409811, guid: 6e537eadf4be50e418aecfbb56e4832f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 6301307775003073367, guid: 6e537eadf4be50e418aecfbb56e4832f,
         type: 3}
       propertyPath: damage
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6301307775003073367, guid: 6e537eadf4be50e418aecfbb56e4832f,
         type: 3}

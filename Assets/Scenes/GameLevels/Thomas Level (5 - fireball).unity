@@ -25641,12 +25641,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 335c43f63a14bfe41aba785de71f4f2f, type: 3}
---- !u!1 &1184659155 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7377586277091263357, guid: 8f78fe175f757a34eb138393109239e8,
-    type: 3}
-  m_PrefabInstance: {fileID: 105396068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1237662116 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7872455022251441700, guid: a65b359f11878574590fa944248e8aca,
@@ -27772,11 +27766,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3408084245055110848, guid: 756f198dad1e6fb408648e21a9ddb558,
-        type: 3}
-      propertyPath: proj2
-      value: 
-      objectReference: {fileID: 1184659155}
     - target: {fileID: 3408084245055110849, guid: 756f198dad1e6fb408648e21a9ddb558,
         type: 3}
       propertyPath: m_Name
@@ -27970,11 +27959,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel
       objectReference: {fileID: 0}
-    - target: {fileID: 5654370069162691599, guid: a41307736de88884b86f7781355892b9,
-        type: 3}
-      propertyPath: proj2
-      value: 
-      objectReference: {fileID: 1184659155}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a41307736de88884b86f7781355892b9, type: 3}
 --- !u!212 &7574544100666411470

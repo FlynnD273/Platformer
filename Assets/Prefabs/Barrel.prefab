@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   proj1: {fileID: 9031457613526283657, guid: 37beb4771497c774f86705ec37daf562, type: 3}
-  proj2: {fileID: 0}
+  proj2: {fileID: 1278394888584079965, guid: 1e093557e3cb2f649bb6f8e33894d881, type: 3}
   health: 1
   maxDrops: 6
   spawnNumber: 0

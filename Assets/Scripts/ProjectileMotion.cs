@@ -29,8 +29,8 @@ public class ProjectileMotion : MonoBehaviour
     public Rigidbody2D myRB;
     private Projectile projectile;
 
-    
-    
+    [SerializeField] CrateDrops crateDrops;
+    [SerializeField] Enemy myEnemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,13 +42,14 @@ public class ProjectileMotion : MonoBehaviour
     void OnTriggerEnter2D (Collider2D collision)
     {
         //if the projectile hits an enemy, deal damage to it and despawn projectile
-        Enemy myEnemy = collision.GetComponent<Enemy>();
-        CrateDrops crateDrops = collision.GetComponent<CrateDrops>();
+        myEnemy = collision.GetComponent<Enemy>();
+       
         if (myEnemy != null)
         {
             myEnemy.TakeDamage(damage);
             Destroy(gameObject);
         }
+        crateDrops = collision.GetComponent<CrateDrops>();
         if (crateDrops != null)
         {
             crateDrops.TakeDamage(damage);
