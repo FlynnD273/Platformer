@@ -185,13 +185,11 @@ public class Projectile : MonoBehaviour
                 break;
             case 3:
         
-                    Debug.Log("Happen");
                     cooldownSt = cooldown - 0.3f;
                     startCount = true;
                     MouseTarget();
                     if (player.EnergyChange(energyMiniBall, switchProj))
                     {
-                        Debug.Log("Happens");
                         Instantiate(proj3, firePoint.position, transform.rotation);
                         player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
                     }
@@ -205,7 +203,6 @@ public class Projectile : MonoBehaviour
                     MouseTarget();
                     if (player.EnergyChange(energyFireBall, switchProj))
                     {
-                        Debug.Log("Happens");
                         Instantiate(proj4, firePoint.position, transform.rotation);
                         player.GetComponent<AudioSource>().PlayOneShot(fireballSound);
                     }

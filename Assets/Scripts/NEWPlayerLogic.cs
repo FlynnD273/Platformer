@@ -31,15 +31,15 @@ public class NEWPlayerLogic : MonoBehaviour
     public float waitforRegen = 20;
     //Melee
     [Header("Melee")]
-    public GameObject sword;
-    public float waitForMelee = 1;
+    public GameObject Sword;
+    public float WaitForMelee = 1;
 
     [Header("Energy")]
     //Energy Timer variables
     [SerializeField] private float regenCounter;
     private bool startRegen = false;
     //Melee Timer variables
-    private float meleeCounter;
+    //private float meleeCounter;
     private bool inMeleeFrame = false;
     private bool canUseMelee = true;
 
@@ -50,9 +50,9 @@ public class NEWPlayerLogic : MonoBehaviour
     private GameManager gameManager;
     private Animator playerAnim;
 
-    public Rigidbody2D myRB;
+    public Rigidbody2D MyRB;
 
-    public AudioClip playerHurtSound; //sound for when player is hurt or takes damage
+    public AudioClip PlayerHurtSound; //sound for when player is hurt or takes damage
 
 
     // Start is called before the first frame update
@@ -70,7 +70,7 @@ public class NEWPlayerLogic : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         //timer
         regenCounter = waitforRegen;
-        meleeCounter = waitForMelee;
+        //meleeCounter = WaitForMelee;
         playerAnim = GetComponent<Animator>();
 
     }
@@ -207,14 +207,12 @@ public class NEWPlayerLogic : MonoBehaviour
             //healthBar.MoveEnergybar(amount, true);
             if (!startRegen)
             {
-                Debug.Log("set Timer " + energy);
                 startRegen = true;
                 return true;
             }
             //Happens when Regen Counter is active
             else
             {
-                Debug.Log("restart timer " + energy);
                 regenCounter = waitforRegen;
                 return true;
             }
@@ -222,7 +220,6 @@ public class NEWPlayerLogic : MonoBehaviour
         if (energy < 0)
         {
             energy = 0;
-            Debug.Log("no energy " + energy);
             //energy = energyIntial;
         }
         return false;
@@ -233,7 +230,7 @@ public class NEWPlayerLogic : MonoBehaviour
     void Subhealth(float amount)
     {
         health -= amount;
-        gameObject.GetComponent<AudioSource>().PlayOneShot(playerHurtSound);
+        gameObject.GetComponent<AudioSource>().PlayOneShot(PlayerHurtSound);
     }
 
     //Changes color on the event that player is hit by enemy weapon
@@ -295,22 +292,21 @@ public class NEWPlayerLogic : MonoBehaviour
         //Melee timer starting
         if (inMeleeFrame)
         {
-            canUseMelee = false;
-            meleeCounter -= Time.deltaTime;
-            if(meleeCounter > 0)
+            if (canUseMelee)
             {
-                sword.SetActive(true);
+                canUseMelee = false;
+                Sword.SetActive(true);
                 playerAnim.SetTrigger("Sword");
-                //MeleeDamage.swordAnimator.SetTrigger("Sword");
-                
+                Sword.GetComponent<Animator>().SetTrigger("Sword");
             }
-            else
+            else if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("SwordAttack"))
             {
-                sword.SetActive(false);
+                Sword.SetActive(false);
                 inMeleeFrame = false;
                 canUseMelee = true;
-                meleeCounter = waitForMelee;
+                //meleeCounter = WaitForMelee;
             }
+            //meleeCounter -= Time.deltaTime;
         }
     }
 }
