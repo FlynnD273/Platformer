@@ -79,7 +79,7 @@ public class NEWPlayerLogic : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //ALL projectile collisions
-        if (collision.gameObject.CompareTag("kunai"))
+        if (collision.gameObject.CompareTag("Kunai"))
         {
             projectile.IncreaseKun(1);
         }
@@ -87,17 +87,17 @@ public class NEWPlayerLogic : MonoBehaviour
         {
             projectile.IncreaseSha(1);
         }
-        if (collision.gameObject.CompareTag("fireballEnemy"))
+        if (collision.gameObject.CompareTag("FireballEnemy"))
         {
             Subhealth(60);
             StartCoroutine(ChangePlayerColor());
         }
-        if (collision.gameObject.CompareTag("kunaiEnemy"))
+        if (collision.gameObject.CompareTag("KunaiEnemy"))
         {
             Subhealth(30);
             StartCoroutine(ChangePlayerColor());
         }
-        if (collision.gameObject.CompareTag("shurikenEnemy"))
+        if (collision.gameObject.CompareTag("ShurikenEnemy"))
         {
             Subhealth(10);
             StartCoroutine(ChangePlayerColor());
@@ -175,7 +175,7 @@ public class NEWPlayerLogic : MonoBehaviour
             health = maxHealth;
         }
         //enable use of kunai and shuriken when picking up
-        if (collision.gameObject.CompareTag("kunai"))
+        if (collision.gameObject.CompareTag("Kunai"))
         {
             Projectile.boolKunai = true;
         }

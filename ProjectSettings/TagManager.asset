@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Dangerous
   - Tilemap
   - Moving
   - Enemy
@@ -18,19 +17,11 @@ TagManager:
   - KunaiEnemy
   - FireBallMini
   - Sword
-  - Switch
-  - Health
   - ShurikenEnemy
   - Shuriken
-  - switch
-  - fireBall
-  - kunaiEnemy
-  - kunai
-  - shurikan
-  - fireBallMini
-  - shurikenEnemy
-  - fireballEnemy
   - Crate
+  - Health
+  - FireballEnemy
   layers:
   - Default
   - TransparentFX
