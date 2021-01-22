@@ -87,11 +87,11 @@ public class NEWPlayerLogic : MonoBehaviour
         {
             projectile.IncreaseSha(1);
         }
-        if (collision.gameObject.CompareTag("FireballEnemy"))
-        {
-            Subhealth(60);
-            StartCoroutine(ChangePlayerColor());
-        }
+        //if (collision.gameObject.CompareTag("FireballEnemy"))
+        //{
+        //    Subhealth(60);
+        //    StartCoroutine(ChangePlayerColor());
+        //}
         if (collision.gameObject.CompareTag("KunaiEnemy"))
         {
             Subhealth(30);
@@ -113,10 +113,10 @@ public class NEWPlayerLogic : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         //checking for tilemap
-        if (collision.gameObject.CompareTag("Moving"))
-        {
-            transform.SetParent(null);
-        }
+        //if (collision.gameObject.CompareTag("Moving"))
+        //{
+        //    transform.SetParent(null);
+        //}
     }
 
     //Looking for Level Door
