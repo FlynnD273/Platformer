@@ -56,7 +56,7 @@ public class ProjectileHandler : MonoBehaviour
     public float timer; //timer for cooldowns
 
     private float energyCost = 15;
-    private float bigFireballEnergyCost = 15;
+    private float bigFireballEnergyCost = 60;
     // Start is called before the first frame update
     void Start()
     {
@@ -142,7 +142,7 @@ public class ProjectileHandler : MonoBehaviour
                         //fire 
                         Fire(weapons[currentWeapon - 1]);
                         //reduce player energy
-                        NEWPlayerLogic.energy -= energyCost;
+                        NEWPlayerLogic.energy -= bigFireballEnergyCost;
                         //freeze player rotation so that they don't go wonk
                         transform.rotation = rotateFreeze;
                         //play sound

@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     public GameObject proj2;
     public int dropRate = 5;
     public bool isEnemy = true;
+    public bool dropsAmmo = true;
     public bool shootingTypeEnemy = true;
     private int randomRate;
     public Transform healthBar;
@@ -116,7 +117,7 @@ public class Enemy : MonoBehaviour
     void Death()
     {
         transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-        if (isEnemy)
+        if (isEnemy && dropsAmmo)
         {
             randomRate = Random.Range(1, dropRate);
             for (int i = 0; i < randomRate; i++)

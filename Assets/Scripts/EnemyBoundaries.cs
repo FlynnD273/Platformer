@@ -20,7 +20,7 @@ public class EnemyBoundaries : MonoBehaviour
     private float shotCounter;
 
     private bool shoot;
-    public GameObject player;
+    private GameObject player;
     private Quaternion originalPos;
     public Transform firePointRight;
     public Transform firePointLeft;
@@ -91,7 +91,7 @@ public class EnemyBoundaries : MonoBehaviour
             isFacingRight = true;
             Instantiate(proj, firePointLeft.position, transform.rotation);
         }
-        Debug.Log(isFacingRight);
+
     }
     void Flip()
     {
@@ -104,6 +104,7 @@ public class EnemyBoundaries : MonoBehaviour
     {
         originalPos = transform.rotation;
         shotCounter = waitBetweenShots;
+        player = GameObject.FindGameObjectWithTag("Player");
         flipping = GetComponent<Enemy>();
     }
 

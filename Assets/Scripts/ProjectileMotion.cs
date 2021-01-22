@@ -114,7 +114,7 @@ public class ProjectileMotion : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Sword"))
         {
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     }
 
