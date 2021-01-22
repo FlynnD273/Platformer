@@ -1,5 +1,5 @@
 ﻿//////////////////////
-///Name: Thomas Allen
+///Name: Thomas Allen and Dev Dhawan
 ///Date: 1/22/21
 ///Desc: Manages projectile firing and ammo
 /////////////////////
@@ -68,6 +68,11 @@ public class ProjectileHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentWeapon > maxWeapons)
+        {
+            currentWeapon = 1;
+        }
+
         //update ammo bools
         if (kunaiCount > 0)
             hasKunAmmo = true;
@@ -85,6 +90,7 @@ public class ProjectileHandler : MonoBehaviour
         //get mouse click input
         if(Input.GetMouseButtonDown(0))
         {
+            
             //switch on teh current weapon to decide which weapon to fire
             switch (currentWeapon)
             {
@@ -153,7 +159,7 @@ public class ProjectileHandler : MonoBehaviour
             
         }
 
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.E))
         {
             //switches current weapon
             SwitchWeapon();

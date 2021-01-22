@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
         tmpKunai.text = "" + ProjectileHandler.kunaiCount;
         tmpShuriken.text = "" + ProjectileHandler.shurikenCount;
 
+
        
     }
 
