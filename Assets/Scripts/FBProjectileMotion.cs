@@ -48,16 +48,16 @@ public class FBProjectileMotion : MonoBehaviour
         {
             myEnemy.TakeDamage(damage);
         }
-        if (collision.gameObject.CompareTag("kunaiEnemy") || collision.gameObject.CompareTag("shurikenEnemy"))
+        if (collision.gameObject.CompareTag("KunaiEnemy") || collision.gameObject.CompareTag("ShurikenEnemy"))
         {
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.CompareTag("fireballEnemy") && boolMini == false)
+        if (collision.gameObject.CompareTag("FireballEnemy") && boolMini == false)
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
-        if (collision.gameObject.CompareTag("fireballEnemy") && boolMini == true)
+        if (collision.gameObject.CompareTag("FireballEnemy") && boolMini == true)
         {
             Destroy(gameObject);
         }
