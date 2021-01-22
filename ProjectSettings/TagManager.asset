@@ -22,6 +22,12 @@ TagManager:
   - Health
   - ShurikenEnemy
   - Shuriken
+  - kunai
+  - fireBall
+  - fireBallMini
+  - kunaiEnemy
+  - shurikenEnemy
+  - fireballEnemy
   layers:
   - Default
   - TransparentFX

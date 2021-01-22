@@ -16,6 +16,7 @@ public class ProjectileMotion : MonoBehaviour
     //rotation variables
     public bool boolRotate = false;
     public bool isEnemyWeapon = false;
+    public bool ignoreTileMap = false;
     public float rotationSpeed = -5f;
 
     //Death Time
@@ -65,14 +66,14 @@ public class ProjectileMotion : MonoBehaviour
                 boolRotate = false;
                 damage = 0;
             }
-            else
+            if(isEnemyWeapon == true && ignoreTileMap == false)
             {
                 boolRotate = false;
                 damage = 0;
                 Destroy(gameObject);
             }
         }
-        if (collision.gameObject.CompareTag("KunaiEnemy") || collision.gameObject.CompareTag("ShurikenEnemy"))
+        if (collision.gameObject.CompareTag("KunaiEnemy") || collision.gameObject.CompareTag("ShurikenEnemy") && ignoreTileMap == false)
         {
             if (strength)
             {
@@ -84,7 +85,7 @@ public class ProjectileMotion : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        if ((collision.gameObject.CompareTag("Kunai") || collision.gameObject.CompareTag("Shuriken")) && isEnemyWeapon)
+        if ((collision.gameObject.CompareTag("Kunai") || collision.gameObject.CompareTag("Shuriken")) && isEnemyWeapon && ignoreTileMap == false)
         {
             if (strength)
             {
@@ -94,6 +95,14 @@ public class ProjectileMotion : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+        if ((collision.gameObject.CompareTag("Kunai") || collision.gameObject.CompareTag("Shuriken")) && isEnemyWeapon && ignoreTileMap == true)
+        {
+                Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("FireBall") && ignoreTileMap == true &&  isEnemyWeapon == true)
+        {
+            Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Sword"))
         {

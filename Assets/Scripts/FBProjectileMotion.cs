@@ -52,6 +52,15 @@ public class FBProjectileMotion : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.CompareTag("fireballEnemy") && boolMini == false)
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("fireballEnemy") && boolMini == true)
+        {
+            Destroy(gameObject);
+        }
         if (collision.gameObject.CompareTag("Enemy"))
         {
             if(boolMini)

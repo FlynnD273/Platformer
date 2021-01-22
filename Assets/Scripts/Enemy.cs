@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     public GameObject proj2;
     public int dropRate = 5;
     public bool isEnemy = true;
+    public bool shootingTypeEnemy = true;
     private int randomRate;
     public Transform healthBar;
 
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour
     private int currentWayPoint = 0;
     public float speed = 1;
     public float closeEnough = 0.1f;
+    private bool flip;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +55,7 @@ public class Enemy : MonoBehaviour
             TakeDamage(15);
             Debug.Log("Hit");
         }*/
+        flip = true;
     }
 
     void FixedUpdate()
@@ -67,9 +70,28 @@ public class Enemy : MonoBehaviour
                 //if so target next waypoint
                 ++currentWayPoint;
                 //if end reset to 0th waypoint
-                if (currentWayPoint >= waypoints.Length)
+                if (shootingTypeEnemy == false)
                 {
-                    currentWayPoint = 0;
+                    if (currentWayPoint >= waypoints.Length)
+                    {
+                        Flip();
+                        flip = true;
+                        Debug.Log(flip);
+                        currentWayPoint = 0;
+                    }
+                    else
+                    {
+                        Flip();
+                        flip = false;
+                        Debug.Log(flip);
+                    }
+                }
+                else
+                {
+                    if (currentWayPoint >= waypoints.Length)
+                    {
+                        currentWayPoint = 0;
+                    }
                 }
                 //recalculate the vector
                 toWaypoint = waypoints[currentWayPoint] - transform.position;
@@ -120,6 +142,20 @@ public class Enemy : MonoBehaviour
         //}
         Destroy(gameObject);
     }
-
-
+    void Flip()
+    { 
+        transform.Rotate(0, 180, 0);
+    }
+    
+    public bool IsFlip()
+    {
+        if(flip == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
