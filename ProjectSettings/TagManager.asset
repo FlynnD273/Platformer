@@ -22,10 +22,12 @@ TagManager:
   - Health
   - ShurikenEnemy
   - Shuriken
-  - kunai
+  - switch
   - fireBall
-  - fireBallMini
   - kunaiEnemy
+  - kunai
+  - shurikan
+  - fireBallMini
   - shurikenEnemy
   - fireballEnemy
   layers:
