@@ -150,10 +150,11 @@ public class ProjectileHandler : MonoBehaviour
                     }
                     break;
             }
+            
         }
 
         if (Input.GetMouseButtonDown(2))
-        { 
+        {
             //switches current weapon
             SwitchWeapon();
         }
@@ -165,7 +166,6 @@ public class ProjectileHandler : MonoBehaviour
             timer = 0;
         }
     }
-
     void Fire(GameObject proj)
     {
         //clone prefab into scene
