@@ -38,14 +38,16 @@ public class ProjectileHandler : MonoBehaviour
     public static int kunaiCount = 0; //kunai ammo
     public static int shurikenCount = 0; //shuriken ammo
 
-    /// <summary>
     /// stuff for aiming fireball
-    /// </summary>
     private Vector3 difference;
     private float rotz;
     private Quaternion rotateFreeze;
     private float offset = 0;
-    public GameObject cursur;
+
+    //Cursor
+    public GameObject cursor;
+    private Vector3 cursorPos;
+    private Vector3 cursorOg;
 
     //are true if player has one or more ammo of respective type.
     private bool hasKunAmmo; 
@@ -62,6 +64,7 @@ public class ProjectileHandler : MonoBehaviour
     {
         myAnim = GetComponent<Animator>(); //get animator
         playerLogic = FindObjectOfType<NEWPlayerLogic>(); //get player logic script
+        cursorOg = cursor.transform.position;
 
     }
 
@@ -156,7 +159,6 @@ public class ProjectileHandler : MonoBehaviour
                     }
                     break;
             }
-            
         }
 
         if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.E))
@@ -170,6 +172,17 @@ public class ProjectileHandler : MonoBehaviour
             //reset timer and burst once the burst is out
             shurikenBurst = 3;
             timer = 0;
+        }
+
+        //cursor
+        if (currentWeapon == 3 || currentWeapon == 4)
+        {
+            cursorPos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 1);
+            cursor.transform.position = cursorPos;
+        }
+        else
+        {
+            cursor.transform.position = cursorOg;
         }
     }
     void Fire(GameObject proj)
