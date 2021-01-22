@@ -60,6 +60,11 @@ public class UIManager : MonoBehaviour
 
     public void ProjectileSwitch()
     {
+        if (ProjectileHandler.currentWeapon > 4)
+        {
+            ProjectileHandler.currentWeapon = 1;
+        }
+
         switch (ProjectileHandler.currentWeapon)
         {
             case 1:
