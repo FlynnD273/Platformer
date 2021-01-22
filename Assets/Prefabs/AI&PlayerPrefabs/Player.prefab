@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 2009786581153239853}
   - component: {fileID: 2009786579980632807}
   - component: {fileID: 2009786579980632804}
-  - component: {fileID: 2009786579980632805}
   - component: {fileID: 2009786579980632810}
   - component: {fileID: 2009786579980632811}
   - component: {fileID: 2009786579980632808}
@@ -276,39 +275,6 @@ RelativeJoint2D:
   m_AutoConfigureOffset: 1
   m_LinearOffset: {x: 6.0078635, y: 0.17487743}
   m_AngularOffset: 0.017453149
---- !u!114 &2009786579980632805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009786579980632809}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 677be025f17e59b48b5910748d66fbc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 2009786581966748507}
-  switchProj: 1
-  switchLimit: 5
-  proj1: {fileID: 1448262376143027643, guid: 00cba1fc27206784aa01735123bde903, type: 3}
-  proj2: {fileID: 1221758511702409808, guid: 6e537eadf4be50e418aecfbb56e4832f, type: 3}
-  proj3: {fileID: 7260996731256116273, guid: d5d5dd8f0f74e4a5d9d81e1d36459fea, type: 3}
-  proj4: {fileID: 5140067678613221594, guid: 2e31629fe22cd2446937d22e46017116, type: 3}
-  projectile: {fileID: 6301307775003073367, guid: 6e537eadf4be50e418aecfbb56e4832f,
-    type: 3}
-  player: {fileID: 2009786579980632810}
-  maxKunai: 20
-  cooldown: 1
-  maxShuriken: 30
-  maxThrow: 3
-  energyFireBall: 60
-  energyMiniBall: 10
-  offset: 0
-  cursur: {fileID: 0}
-  shurikenThrow: {fileID: 8300000, guid: e3a8c60c0f8a21c4d95786012d6433fd, type: 3}
-  kunaiThrow: {fileID: 8300000, guid: da0ade2c753e11c4381c2eaf423b8d85, type: 3}
-  fireballSound: {fileID: 8300000, guid: df7c83b1e3b332c43b5b0bcb6399c076, type: 3}
 --- !u!114 &2009786579980632810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,9 +293,9 @@ MonoBehaviour:
   maxHealth: 100
   lives: 5
   maxEnergy: 60
-  waitforRegen: 3
+  waitforRegen: 10
   Sword: {fileID: 6310929744756812333}
-  WaitForMelee: 1
+  WaitForMelee: 1.2
   regenCounter: 0
   MyRB: {fileID: 0}
   PlayerHurtSound: {fileID: 0}

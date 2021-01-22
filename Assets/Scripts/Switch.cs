@@ -16,7 +16,7 @@ public class Switch : MonoBehaviour
     //Checks if collision with kunai happens
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Melee") || collision.gameObject.CompareTag("Kunai"))
+        if (collision.gameObject.CompareTag("Sword") || collision.gameObject.CompareTag("Kunai"))
         {
             if (doDestroyORCreate)
             {
