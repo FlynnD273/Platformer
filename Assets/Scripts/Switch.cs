@@ -16,7 +16,7 @@ public class Switch : MonoBehaviour
     //Checks if collision with kunai happens
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Melee") || collision.gameObject.CompareTag("kunai"))
+        if (collision.gameObject.CompareTag("Melee") || collision.gameObject.CompareTag("Kunai"))
         {
             if (doDestroyORCreate)
             {
@@ -27,7 +27,7 @@ public class Switch : MonoBehaviour
                 wall.SetActive(true);
             }
             gameObject.GetComponent<SpriteRenderer>().color = checkActive;
-            if (collision.gameObject.CompareTag("kunai"))
+            if (collision.gameObject.CompareTag("Kunai"))
             {
                 Destroy(collision.gameObject);
             }

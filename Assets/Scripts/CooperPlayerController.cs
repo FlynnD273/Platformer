@@ -79,10 +79,11 @@ public class CooperPlayerController : MonoBehaviour
     void Update()
     {
         myAnim.SetBool("WallSlide", wallSliding);
+
         if (!wallSliding)
         {
             //reset the stopwatch if not wallsliding
-            
+            wallSlideStopwatch.Reset();
         }
 
         //stop holding the player in place if they stop holding horizontally
@@ -98,7 +99,6 @@ public class CooperPlayerController : MonoBehaviour
         {
             invertInput = false;
             myRB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-            wallSlideStopwatch.Reset();
         }
 
         if(Input.GetAxisRaw("Jump") > 0)
@@ -126,7 +126,7 @@ public class CooperPlayerController : MonoBehaviour
         //use walljump timer while wall jumping to control the length
         if (wallJumping)
         {
-            WallJumpTimer();
+            //WallJumpTimer();
             //Reset the stopwatch on walljump
             wallSlideStopwatch.Reset();
         }
@@ -202,7 +202,6 @@ public class CooperPlayerController : MonoBehaviour
             if (!collision.isTrigger)
             {
                 isTouchingGround = true;
-                //CooperPlayerController.myAnim.SetBool("Grounded", true);
             }
         }
     }
@@ -226,14 +225,14 @@ public class CooperPlayerController : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!frontCheck.IsTouching(collision))
+        if (!frontCheck.IsTouching(collision) && collision.CompareTag("Tilemap"))
         {
             if (!collision.isTrigger)
             {
                 isTouchingWall = false;
             }
         }
-        if (!groundCheck.IsTouching(collision))
+        if (!groundCheck.IsTouching(collision) && collision.CompareTag("Tilemap"))
         {
             if (!collision.isTrigger) {
                 isTouchingGround = false;
@@ -249,7 +248,7 @@ public class CooperPlayerController : MonoBehaviour
     }
 
     //function to time a walljump, sets walljumping to false when timer reaches 0
-    void WallJumpTimer()
+    /*void WallJumpTimer()
     {
         if (wallJumpTime <= 0)
         {
@@ -258,7 +257,7 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         wallJumpTime -= Time.deltaTime;
-    }
+    }*/
 
     
     //function that checks if there is wall the player is touching

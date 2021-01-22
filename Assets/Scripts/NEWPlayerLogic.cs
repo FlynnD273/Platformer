@@ -72,6 +72,7 @@ public class NEWPlayerLogic : MonoBehaviour
         regenCounter = waitforRegen;
         //meleeCounter = WaitForMelee;
         playerAnim = GetComponent<Animator>();
+        
 
     }
 
