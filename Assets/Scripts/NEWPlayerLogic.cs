@@ -87,10 +87,14 @@ public class NEWPlayerLogic : MonoBehaviour
         {
             projectile.IncreaseSha(1);
         }
+        if (collision.gameObject.CompareTag("fireballEnemy"))
+        {
+            Subhealth(60);
+            StartCoroutine(ChangePlayerColor());
+        }
         if (collision.gameObject.CompareTag("kunaiEnemy"))
         {
             Subhealth(30);
-            //healthBar.MoveHealthbar(30, true);
             StartCoroutine(ChangePlayerColor());
         }
         if (collision.gameObject.CompareTag("shurikenEnemy"))

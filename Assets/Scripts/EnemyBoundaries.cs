@@ -26,6 +26,9 @@ public class EnemyBoundaries : MonoBehaviour
     public Transform firePointLeft;
     public CircleCollider2D boundary;
 
+    private Enemy flipping;
+    private bool isFacingRight;
+
 
     // Start is called before the first frame update
 
@@ -58,32 +61,50 @@ public class EnemyBoundaries : MonoBehaviour
         difference = player.transform.position - transform.position;
         rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotz + offset);
+        bool facing = isFacingRight;
         fire();
+        if (isFacingRight != facing)
+        {
+            Flip();
+        }
         transform.rotation = originalPos;
     }
     void fire()
     {
         if (rotz >= 90 && rotz >= 0)
         {
+            isFacingRight = false;
             Instantiate(proj, firePointRight.position, transform.rotation);
         }
         if (rotz <= 90 && rotz >= 0)
         {
+            isFacingRight = false;
             Instantiate(proj, firePointLeft.position, transform.rotation);
         }
-        if (rotz <= -90 && rotz <=0)
+        if (rotz <= -90 && rotz <= 0)
         {
+            isFacingRight = true;
             Instantiate(proj, firePointRight.position, transform.rotation);
         }
         if (rotz >= -90 && rotz <= 0)
         {
+            isFacingRight = true;
             Instantiate(proj, firePointLeft.position, transform.rotation);
         }
+        Debug.Log(isFacingRight);
     }
+    void Flip()
+    {
+        Vector2 scaler = transform.localScale;
+        scaler.x *= -1;
+        transform.localScale = scaler;
+    }
+
     void Start()
     {
         originalPos = transform.rotation;
         shotCounter = waitBetweenShots;
+        flipping = GetComponent<Enemy>();
     }
 
     // Update is called once per frame
