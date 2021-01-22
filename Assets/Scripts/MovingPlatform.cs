@@ -8,20 +8,26 @@ public class MovingPlatform : MonoBehaviour
     [Tooltip("How fast should the platform move if moving?")]
     public float moveSpeed = 1f;
     private bool moveRight = true;
-    private float startingPos;
+    private bool moveUp = true;
+    private float startingPosx;
+    private float startingPosy;
 
     [Tooltip("How many units should the platform travel in one direction before switching directions or stopping?")]
     public float leftBound;
+    public float upBound;
 
     [Tooltip("How many units should the platform travel in one direction before switching directions or stopping?")]
     public float rightBound;
+    public float downBound;
 
     [Tooltip("How long should the player hold down to fall through the platform?")]
     public float waitTimeToFall;
     private float fallWait;
 
     [Tooltip("Does the platform Move? Moving Platforms cannot be fallen through.")]
-    public bool moving = false;
+    public bool platformLeftRight;
+    [Tooltip("Does the platform Move? Moving Platforms cannot be fallen through.")]
+    public bool platformUpDown;
 
     [Tooltip("Should the platform not move until player has touched the platform?")]
     public bool waitForPlayer = false;
@@ -33,38 +39,61 @@ public class MovingPlatform : MonoBehaviour
     [Tooltip("Freeze Platform if it hits the Left/Right Bounds?")]
     public bool endIfMaxLeft = false;
 
+    [Tooltip("Freeze Platform if it hits the Up/Down Bounds?")]
+    public bool endIfMaxUp = false;
+    [Tooltip("Freeze Platform if it hits the Up/Down Bounds?")]
+    public bool endIfMaxDown = false;
+
     private bool Freeze = false;
 
     [Tooltip("Should the platform be fall-through? Only non-moving platforms can use fallThrough.")]
-    public bool fallThrough;
+    public bool fallThrough = false;
+
+    [Tooltip("Should the platform be one-way? Needs to be enabled if using fallthrough.")]
+    public bool oneWay = false;
+
+    
 
     //Effector for fallthrough
     private PlatformEffector2D effector;
 
     private void Start()
     {
-        startingPos = transform.position.x;
+        startingPosx = transform.position.x;
+        startingPosy = transform.position.y;
         effector = gameObject.GetComponent<PlatformEffector2D>();
         fallWait = waitTimeToFall;
 
+        if (!oneWay)
+        {
+            effector.useOneWay = false;
+        }
+
+        if(fallThrough && !oneWay)
+        {
+            Debug.Log("Fallthrough will not work without oneWay turned on.");
+        }
     }
     
     private void FixedUpdate()
     {
         //If we don't wait for the player, check for moving normally, else check if we're not waiting before moving
-        if (!waitForPlayer)
+        if (!waitForPlayer && platformLeftRight)
         {
-            if (moving)
-            {
-                MovePlatform();
-            }
+            MovePlatformLeftRight();
         }
-        else
+        else if (platformLeftRight && !waiting)
         {
-            if (moving && !waiting)
-            {
-                MovePlatform();
-            }
+            MovePlatformLeftRight();
+        }
+
+        if(platformUpDown && !waitForPlayer)
+        {
+            MovePlatformUpDown();
+        }
+        else if (platformUpDown && !waiting)
+        {
+            MovePlatformUpDown();
         }
         
         //call fallthrough method if fallThrough is true
@@ -74,24 +103,24 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
-    private void MovePlatform()
+    private void MovePlatformLeftRight()
     {
         //check if the platform passes the right bound and decide to stop or switch directions
-        if (transform.position.x > (startingPos + rightBound) && !endIfMaxRight)
+        if (transform.position.x > (startingPosx + rightBound) && !endIfMaxRight)
         {
             moveRight = false;
         }
-        else if(transform.position.x > (startingPos + rightBound) && endIfMaxRight)
+        else if (transform.position.x > (startingPosx + rightBound) && endIfMaxRight)
         {
             Freeze = true;
         }
 
         //check if the platform passes the left bound and decide to stop or switch directions
-        if (transform.position.x < (startingPos - leftBound) && !endIfMaxLeft)
+        if (transform.position.x < (startingPosx - leftBound) && !endIfMaxLeft)
         {
             moveRight = true;
         }
-        else if (transform.position.x > (startingPos + rightBound) && endIfMaxLeft)
+        else if (transform.position.x < (startingPosx + rightBound) && endIfMaxLeft)
         {
             Freeze = true;
         }
@@ -108,8 +137,6 @@ public class MovingPlatform : MonoBehaviour
                 transform.position = new Vector2(transform.position.x - moveSpeed * Time.deltaTime, transform.position.y);
             }
         }
-        
-            
 
     }
 
@@ -146,6 +173,43 @@ public class MovingPlatform : MonoBehaviour
             effector.rotationalOffset = 0f;
         }
 
+    }
+
+    private void MovePlatformUpDown()
+    {
+        //check if the platform passes the right bound and decide to stop or switch directions
+        if (transform.position.y > (startingPosy + upBound) && !endIfMaxUp)
+        {
+            moveUp = false;
+        }
+        else if (transform.position.y > (startingPosy + upBound) && endIfMaxUp)
+        {
+            Freeze = true;
+        }
+
+        //check if the platform passes the left bound and decide to stop or switch directions
+        if (transform.position.y < (startingPosy - downBound) && !endIfMaxDown)
+        {
+            moveUp = true;
+        }
+        else if (transform.position.y < (startingPosy + downBound) && endIfMaxDown)
+        {
+            Freeze = true;
+        }
+
+        //Don't move if frozen, allow if not frozen
+        if (!Freeze)
+        {
+            if (moveUp)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y + moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y - moveSpeed * Time.deltaTime);
+            }
+        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

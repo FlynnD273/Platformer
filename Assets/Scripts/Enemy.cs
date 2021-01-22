@@ -117,30 +117,30 @@ public class Enemy : MonoBehaviour
     void Death()
     {
         transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-        if (isEnemy && dropsAmmo)
+        if (dropsAmmo)
         {
-            randomRate = Random.Range(1, dropRate);
-            for (int i = 0; i < randomRate; i++)
+            if (isEnemy)
             {
-                Instantiate(proj1, transform.position, transform.rotation);
+                randomRate = Random.Range(1, dropRate);
+                for (int i = 0; i < randomRate; i++)
+                {
+                    Instantiate(proj1, transform.position, transform.rotation);
+                }
+                randomRate = Random.Range(1, dropRate);
+                for (int i = 0; i < randomRate; i++)
+                {
+                    Instantiate(proj2, transform.position, transform.rotation);
+                }
             }
-            randomRate = Random.Range(1, dropRate);
-            for (int i = 0; i < randomRate; i++)
+            else
             {
-                Instantiate(proj2, transform.position, transform.rotation);
+                for (int i = 0; i < dropRate; i++)
+                {
+                    Instantiate(proj1, transform.position, transform.rotation);
+                }
             }
         }
-        else
-        {
-            for (int i = 0; i < dropRate; i++)
-            {
-                Instantiate(proj1, transform.position, transform.rotation);
-            }
-        }
-        //if(isEnemy)
-        //{
-            //Instantiate(deathEffect, transform.position, Quaternion.identity);
-        //}
+        
         Destroy(gameObject);
     }
     void Flip()

@@ -35,8 +35,8 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeField] float fireCooldownShuriken = 2; //cooldown to fire shuriken;
 
     [Header("Ammo")]
-    public static int kunaiCount = 30; //kunai ammo
-    public static int shurikenCount = 30; //shuriken ammo
+    public static int kunaiCount = 0; //kunai ammo
+    public static int shurikenCount = 0; //shuriken ammo
 
     /// <summary>
     /// stuff for aiming fireball
@@ -44,7 +44,7 @@ public class ProjectileHandler : MonoBehaviour
     private Vector3 difference;
     private float rotz;
     private Quaternion rotateFreeze;
-    private float offset;
+    private float offset = 0;
     public GameObject cursur;
 
     //are true if player has one or more ammo of respective type.
