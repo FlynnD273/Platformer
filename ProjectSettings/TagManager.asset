@@ -15,6 +15,13 @@ TagManager:
   - ShurikenEnemy
   - Boundary
   - Enemy
+  - CheckPoint
+  - Death
+  - Sword
+  - FireballEnemy
+  - Tilemap
+  - Ground
+  - Crate
   layers:
   - Default
   - TransparentFX

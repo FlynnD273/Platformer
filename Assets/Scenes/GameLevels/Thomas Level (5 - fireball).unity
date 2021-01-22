@@ -6131,6 +6131,12 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!4 &885960900 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2009786581966748507, guid: 39504ef80e584477f9edc638510b9ce0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1293984684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &899343109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47321,6 +47327,11 @@ PrefabInstance:
       propertyPath: cursur
       value: 
       objectReference: {fileID: 1963787390}
+    - target: {fileID: 2009786579980632805, guid: 39504ef80e584477f9edc638510b9ce0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2009786579980632809, guid: 39504ef80e584477f9edc638510b9ce0,
         type: 3}
       propertyPath: m_Name
@@ -47455,7 +47466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1563737925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68653,6 +68664,32 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1293984684}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2011823935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011823934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573d1c99a68c523478926dfed5b58ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 885960900}
+  maxWeapons: 1
+  weapons:
+  - {fileID: 1448262376143027643, guid: 00cba1fc27206784aa01735123bde903, type: 3}
+  - {fileID: 1221758511702409808, guid: 6e537eadf4be50e418aecfbb56e4832f, type: 3}
+  - {fileID: 7260996731256116273, guid: d5d5dd8f0f74e4a5d9d81e1d36459fea, type: 3}
+  shurikenSOund: {fileID: 8300000, guid: e3a8c60c0f8a21c4d95786012d6433fd, type: 3}
+  kunaiSound: {fileID: 8300000, guid: da0ade2c753e11c4381c2eaf423b8d85, type: 3}
+  fireballSound: {fileID: 8300000, guid: df7c83b1e3b332c43b5b0bcb6399c076, type: 3}
+  fireCooldownKunai: 0.5
+  fireCooldownShuriken: 1.5
+  cursur: {fileID: 1963787390}
+  shurikenBurst: 3
+  timer: 0
 --- !u!1001 &2067220691
 PrefabInstance:
   m_ObjectHideFlags: 0
