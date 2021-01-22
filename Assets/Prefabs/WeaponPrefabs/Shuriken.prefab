@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  damage: 20
+  damage: 15
   boolRotate: 1
   isEnemyWeapon: 0
   ignoreTileMap: 0
