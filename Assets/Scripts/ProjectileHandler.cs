@@ -56,6 +56,7 @@ public class ProjectileHandler : MonoBehaviour
     public float timer; //timer for cooldowns
 
     private float energyCost = 15;
+    private float bigFireballEnergyCost = 15;
     // Start is called before the first frame update
     void Start()
     {
@@ -120,6 +121,21 @@ public class ProjectileHandler : MonoBehaviour
 
                 case 3: //fireball
                     if (NEWPlayerLogic.energy >= energyCost) //make sure player has energy
+                    {
+                        //set the target to the mouse
+                        MouseTarget();
+                        //fire 
+                        Fire(weapons[currentWeapon - 1]);
+                        //reduce player energy
+                        NEWPlayerLogic.energy -= energyCost;
+                        //freeze player rotation so that they don't go wonk
+                        transform.rotation = rotateFreeze;
+                        //play sound
+                        gameObject.GetComponent<AudioSource>().PlayOneShot(fireballSound);
+                    }
+                    break;
+                case 4: //big fireball
+                    if (NEWPlayerLogic.energy >= bigFireballEnergyCost) //make sure player has energy
                     {
                         //set the target to the mouse
                         MouseTarget();
