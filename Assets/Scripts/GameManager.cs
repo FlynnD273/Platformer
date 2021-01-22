@@ -80,7 +80,6 @@ public class GameManager : MonoBehaviour
             a.Play();
         }
         Level = SceneManager.GetActiveScene().buildIndex;
-        Debug.Log(Level);
 }
 
     public void NextLevel()

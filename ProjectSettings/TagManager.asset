@@ -4,24 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
-  - Tilemap
-  - Moving
-  - Enemy
-  - Death
-  - CheckPoint
-  - Boundary
-  - Melee
   - Kunai
   - FireBall
-  - KunaiEnemy
-  - FireBallMini
-  - Sword
-  - ShurikenEnemy
-  - Shuriken
-  - Crate
+  - kunai
+  - fireballEnemy
   - Health
-  - FireballEnemy
+  - FireBallMini
+  - KunaiEnemy
+  - Shuriken
+  - ShurikenEnemy
+  - Boundary
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -31,8 +24,6 @@ TagManager:
   - UI
   - 
   - 
-  - Ground
-  - Boundaries
   - 
   - 
   - 
@@ -54,11 +45,13 @@ TagManager:
   - 
   - 
   - 
-  - health
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: above
-    uniqueID: 348788969
+  - name: Above
+    uniqueID: 1089053261
     locked: 0

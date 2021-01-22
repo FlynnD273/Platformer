@@ -148,6 +148,7 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         myAnim.SetBool("OnGround", isTouchingGround);
+        myAnim.SetBool("IsFalling", myRB.velocity.y < 0);
 
         moveInput = Input.GetAxisRaw("Horizontal");
 

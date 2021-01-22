@@ -61,7 +61,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -294,8 +294,9 @@ MonoBehaviour:
   proj2: {fileID: 1221758511702409808, guid: 6e537eadf4be50e418aecfbb56e4832f, type: 3}
   proj3: {fileID: 7260996731256116273, guid: d5d5dd8f0f74e4a5d9d81e1d36459fea, type: 3}
   proj4: {fileID: 5140067678613221594, guid: 2e31629fe22cd2446937d22e46017116, type: 3}
-  projectile: {fileID: 0}
-  player: {fileID: 0}
+  projectile: {fileID: 6301307775003073367, guid: 6e537eadf4be50e418aecfbb56e4832f,
+    type: 3}
+  player: {fileID: 2009786579980632810}
   maxKunai: 20
   cooldown: 1
   maxShuriken: 30
@@ -303,7 +304,7 @@ MonoBehaviour:
   energyFireBall: 60
   energyMiniBall: 10
   offset: 0
-  cursur: {fileID: 0}
+  cursur: {fileID: 2009786581966748504}
   shurikenThrow: {fileID: 8300000, guid: e3a8c60c0f8a21c4d95786012d6433fd, type: 3}
   kunaiThrow: {fileID: 8300000, guid: da0ade2c753e11c4381c2eaf423b8d85, type: 3}
   fireballSound: {fileID: 8300000, guid: df7c83b1e3b332c43b5b0bcb6399c076, type: 3}
@@ -326,11 +327,11 @@ MonoBehaviour:
   lives: 5
   maxEnergy: 60
   waitforRegen: 3
-  sword: {fileID: 6310929744756812333}
-  waitForMelee: 0.4
+  Sword: {fileID: 6310929744756812333}
+  WaitForMelee: 1
   regenCounter: 0
-  myRB: {fileID: 2009786581153239853}
-  playerHurtSound: {fileID: 8300000, guid: 2bce5f26c6fa1834dbaca896d4616a2a, type: 3}
+  MyRB: {fileID: 0}
+  PlayerHurtSound: {fileID: 0}
 --- !u!114 &2009786579980632811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,11 +448,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 160470263020817021}
+  - component: {fileID: 40127031}
+  - component: {fileID: 1513268968}
   - component: {fileID: 5788215007258897028}
   - component: {fileID: 7889844186292632012}
   - component: {fileID: 8596611785654865144}
   - component: {fileID: 6115636797129535821}
-  - component: {fileID: 1513268968}
   m_Layer: 0
   m_Name: MeleeHitBox
   m_TagString: Untagged
@@ -467,12 +469,81 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6310929744756812333}
   m_LocalRotation: {x: 0, y: 0, z: 0.008726558, w: 0.999962}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2009786579980632803}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1}
+--- !u!212 &40127031
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6310929744756812333}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1089053261
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 25dd95435c568b2498d2638872b56db5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 6.015625, y: 6.015625}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!95 &1513268968
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6310929744756812333}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f2992ade035a8a341b4b96df7a0aeef2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5788215007258897028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,10 +573,10 @@ BoxCollider2D:
   m_Offset: {x: 0.20598608, y: 0.0017605424}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6.015625, y: 6.015625}
+    newSize: {x: 6.015625, y: 6.015625}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -544,22 +615,3 @@ CapsuleCollider2D:
   m_Offset: {x: 0.6226035, y: 0.04235886}
   m_Size: {x: 0.984637, y: 0.72908264}
   m_Direction: 1
---- !u!95 &1513268968
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6310929744756812333}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
