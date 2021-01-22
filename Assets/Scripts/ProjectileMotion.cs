@@ -43,11 +43,18 @@ public class ProjectileMotion : MonoBehaviour
     {
         //if the projectile hits an enemy, deal damage to it and despawn projectile
         Enemy myEnemy = collision.GetComponent<Enemy>();
+        CrateDrops crateDrops = collision.GetComponent<CrateDrops>();
         if (myEnemy != null)
         {
             myEnemy.TakeDamage(damage);
             Destroy(gameObject);
         }
+        if (crateDrops != null)
+        {
+            crateDrops.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+        
     }
 
     private void OnCollisionEnter2D (Collision2D collision)

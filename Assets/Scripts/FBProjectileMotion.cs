@@ -68,6 +68,12 @@ public class FBProjectileMotion : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        CrateDrops crateDrops = collision.GetComponent<CrateDrops>();
+        if (crateDrops != null)
+        {
+            crateDrops.TakeDamage(damage);
+            Destroy(gameObject);
+        }
     }
 
 
