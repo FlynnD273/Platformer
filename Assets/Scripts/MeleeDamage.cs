@@ -24,6 +24,13 @@ public class MeleeDamage : MonoBehaviour
         {
             myEnemy.TakeDamage(damage);
         }
+        CrateDrops crateDrops;
+        crateDrops = collision.GetComponent<CrateDrops>();
+        if (crateDrops != null)
+        {
+            crateDrops.TakeDamage(damage);
+            Destroy(gameObject);
+        }
         if (collision.gameObject.CompareTag("KunaiEnemy") || collision.gameObject.CompareTag("ShurikenEnemy"))
         {
             Destroy(collision.gameObject);

@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 1221758511702409808, guid: 6e537eadf4be50e418aecfbb56e4832f,
         type: 3}
       propertyPath: m_TagString
-      value: shurikenEnemy
+      value: ShurikenEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 1221758511702409810, guid: 6e537eadf4be50e418aecfbb56e4832f,
         type: 3}
