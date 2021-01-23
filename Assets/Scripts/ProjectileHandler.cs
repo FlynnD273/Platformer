@@ -129,14 +129,14 @@ public class ProjectileHandler : MonoBehaviour
                     break;
 
                 case 3: //fireball
-                    if (NEWPlayerLogic.energy >= energyCost) //make sure player has energy
+                    if (playerLogic.EnergyChange(energyCost, 3) == true) //make sure player has energy
                     {
                         //set the target to the mouse
                         MouseTarget();
                         //fire 
                         Fire(weapons[currentWeapon - 1]);
                         //reduce player energy
-                        NEWPlayerLogic.energy -= energyCost;
+                        //NEWPlayerLogic.energy -= energyCost;
                         //freeze player rotation so that they don't go wonk
                         transform.rotation = rotateFreeze;
                         //play sound
@@ -144,14 +144,15 @@ public class ProjectileHandler : MonoBehaviour
                     }
                     break;
                 case 4: //big fireball
-                    if (NEWPlayerLogic.energy >= bigFireballEnergyCost) //make sure player has energy
+                    if (playerLogic.EnergyChange(bigFireballEnergyCost, 4) == true) //make sure player has energy
                     {
                         //set the target to the mouse
                         MouseTarget();
                         //fire 
                         Fire(weapons[currentWeapon - 1]);
                         //reduce player energy
-                        NEWPlayerLogic.energy -= bigFireballEnergyCost;
+                        //NEWPlayerLogic.energy -= bigFireballEnergyCost;
+                        playerLogic.FBregen();
                         //freeze player rotation so that they don't go wonk
                         transform.rotation = rotateFreeze;
                         //play sound
