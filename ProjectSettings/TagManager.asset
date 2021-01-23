@@ -7,7 +7,6 @@ TagManager:
   - Kunai
   - FireBall
   - kunai
-  - fireballEnemy
   - Health
   - FireBallMini
   - KunaiEnemy
@@ -22,6 +21,8 @@ TagManager:
   - Tilemap
   - Ground
   - Crate
+  - switch
+  - Key
   layers:
   - Default
   - TransparentFX

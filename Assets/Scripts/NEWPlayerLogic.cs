@@ -196,6 +196,11 @@ public class NEWPlayerLogic : MonoBehaviour
 
     }
 
+    public void FBregen()
+    {
+        regenCounter = waitforRegen * 3;
+    }
+
     //Change in energy function (Used when energy is being needed to change)
     public bool EnergyChange(float amount, int switchProj)
     {
@@ -262,11 +267,6 @@ public class NEWPlayerLogic : MonoBehaviour
             transform.position = respawnPos;
             health = maxHealth;
         }
-        //for starting the timer
-        if (energy <= 0)
-        {
-            startRegen = true;
-        }
         if(Input.GetMouseButtonDown(1) && canUseMelee)
         {
             if (EnergyChange(5, 1))
@@ -288,7 +288,7 @@ public class NEWPlayerLogic : MonoBehaviour
             regenCounter -= Time.deltaTime;
             if (regenCounter <= 0)
             {
-                float inc = (Time.deltaTime * 20);
+                float inc = (Time.deltaTime * 5);
                 temp = temp + inc;
                 energy = temp;
                 //Stop Timer once energy reaches its limit       
