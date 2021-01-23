@@ -35,13 +35,10 @@ public class EndGateLvl5 : MonoBehaviour
             else
                 withoutKeyPopup.enabled = true;
         }
-        async = SceneManager.LoadSceneAsync(SceneManager.sceneCountInBuildSettings + 1);
-        async.allowSceneActivation = false;
-
+        
         if (Input.GetKey(KeyCode.Return) && NEWPlayerLogic.hasKey)
         {
-            async.allowSceneActivation = true;
-            print("Works");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
