@@ -61,10 +61,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: MedusaIsWalking
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: MedusaIsHurt
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 440683928798438151}
@@ -89,10 +89,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: MedusaIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonDeathTriggered
+    m_ConditionEvent: MedusaDeathTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1909797534519662896}
@@ -115,7 +115,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DemonWalk
+  m_Name: MedusaWalk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -131,7 +131,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ba4112d21dea64caf983f4d1b06e9b37, type: 2}
+  m_Motion: {fileID: 7400000, guid: e163b402aeff64262855692f91119256, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -146,10 +146,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: MedusaAttackTrigerred
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: MedusaIsHurt
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 440683928798438151}
@@ -174,10 +174,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: MedusaAttackTrigerred
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonDeathTriggered
+    m_ConditionEvent: MedusaDeathTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1909797534519662896}
@@ -202,10 +202,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: MedusaIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: MedusaIsIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -230,10 +230,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: MedusaAttackTrigerred
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: MedusaIsIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -258,10 +258,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: MedusaIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: MedusaIsWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6363243171472886369}
@@ -286,10 +286,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: MedusaIsIdle
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: MedusaAttackTrigerred
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1562375716000566876}
@@ -311,34 +311,34 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Demon
+  m_Name: MedusaAnimator
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: DemonIsIdle
+  - m_Name: MedusaIsIdle
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: DemonIsWalking
+  - m_Name: MedusaIsWalking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: DemonAttackTrigerred
+  - m_Name: MedusaAttackTrigerred
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: DemonDeathTriggered
+  - m_Name: MedusaDeathTriggered
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: DemonIsHurt
+  - m_Name: MedusaIsHurt
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -366,10 +366,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: MedusaIsIdle
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonDeathTriggered
+    m_ConditionEvent: MedusaDeathTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1909797534519662896}
@@ -394,10 +394,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: MedusaAttackTrigerred
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: MedusaIsWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6363243171472886369}
@@ -420,7 +420,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DemonHurtAnim
+  m_Name: MedusaHurt
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -437,7 +437,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 42ad0131afaad4c9b986e84f1b88b346, type: 2}
+  m_Motion: {fileID: 7400000, guid: b88faf220502249448a14eaee91aa47a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -452,10 +452,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: MedusaIsIdle
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: MedusaIsWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6363243171472886369}
@@ -480,10 +480,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: MedusaIsIdle
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: MedusaIsHurt
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 440683928798438151}
@@ -506,7 +506,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DemonAttack
+  m_Name: MedusaAttack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -523,7 +523,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 87781156924994f6e96e630c2572edcb, type: 2}
+  m_Motion: {fileID: 7400000, guid: 02c75ac90418544c7a7a17a31182d9d1, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -538,10 +538,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: MedusaIsWalking
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: MedusaIsIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -564,7 +564,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Demon Death
+  m_Name: MedusaDeath
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -577,7 +577,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ad72aacdae2034781bb5c73a18843db7, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9301c06782cff4c0ba345c4fced56fca, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -626,10 +626,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: MedusaIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: MedusaAttackTrigerred
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1562375716000566876}
@@ -652,7 +652,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DemonIdle
+  m_Name: Medusadle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -669,7 +669,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8669d7df150c14116a86b2d99bec0dd0, type: 2}
+  m_Motion: {fileID: 7400000, guid: d4f96a7d445a64962826aa12e13d39e6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -684,10 +684,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: MedusaIsWalking
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonDeathTriggered
+    m_ConditionEvent: MedusaDeathTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1909797534519662896}

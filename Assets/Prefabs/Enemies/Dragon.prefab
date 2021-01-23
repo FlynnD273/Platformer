@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 14
   m_Sprite: {fileID: 21300000, guid: 544038ea863e148aa819ebf5b858e85b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -93,7 +93,7 @@ Animator:
   m_GameObject: {fileID: 7649478021221578530}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ab1032660e8ee44c6903957fedb8d1de, type: 2}
+  m_Controller: {fileID: 9100000, guid: a52cef74fded840399a1892d8055b743, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -120,6 +120,8 @@ MonoBehaviour:
   proj2: {fileID: 0}
   dropRate: 5
   isEnemy: 1
+  dropsAmmo: 1
+  shootingTypeEnemy: 1
   healthBar: {fileID: 0}
   waypoints:
   - {x: 0, y: 0, z: 0}

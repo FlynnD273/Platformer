@@ -61,10 +61,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: SmallDragonIsWalking
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: SmallDragonIsHurt
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 440683928798438151}
@@ -89,10 +89,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: SmallDragonIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonDeathTriggered
+    m_ConditionEvent: SmallDragonDeathTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1909797534519662896}
@@ -115,7 +115,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DemonWalk
+  m_Name: SmallDragonWalk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -131,7 +131,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ba4112d21dea64caf983f4d1b06e9b37, type: 2}
+  m_Motion: {fileID: 7400000, guid: 20be9258a61fe4ec68c3dad59ceae92a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -146,10 +146,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: SmallDragonAttackTrigerred
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: SmallDragonIsHurt
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 440683928798438151}
@@ -174,10 +174,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: SmallDragonAttackTrigerred
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonDeathTriggered
+    m_ConditionEvent: SmallDragonDeathTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1909797534519662896}
@@ -202,10 +202,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: SmallDragonIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: SmallDragonsIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -230,10 +230,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: SmallDragonAttackTrigerred
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: SmallDragonsIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -258,10 +258,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: SmallDragonIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: SmallDragonIsWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6363243171472886369}
@@ -286,10 +286,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: SmallDragonsIdle
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: SmallDragonAttackTrigerred
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1562375716000566876}
@@ -311,34 +311,34 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Demon
+  m_Name: SmallDragonAnimator
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: DemonIsIdle
+  - m_Name: SmallDragonsIdle
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: DemonIsWalking
+  - m_Name: SmallDragonIsWalking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: DemonAttackTrigerred
+  - m_Name: SmallDragonAttackTrigerred
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: DemonDeathTriggered
+  - m_Name: SmallDragonDeathTriggered
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: DemonIsHurt
+  - m_Name: SmallDragonIsHurt
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -366,10 +366,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: SmallDragonsIdle
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonDeathTriggered
+    m_ConditionEvent: SmallDragonDeathTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1909797534519662896}
@@ -394,10 +394,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: SmallDragonAttackTrigerred
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: SmallDragonIsWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6363243171472886369}
@@ -420,7 +420,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DemonHurtAnim
+  m_Name: SmallDragonHurt
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -437,7 +437,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 42ad0131afaad4c9b986e84f1b88b346, type: 2}
+  m_Motion: {fileID: 7400000, guid: 05dffa2e3a49345878893c6a0b8c5a9e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -452,10 +452,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: SmallDragonsIdle
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: SmallDragonIsWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6363243171472886369}
@@ -480,10 +480,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: SmallDragonsIdle
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: SmallDragonIsHurt
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 440683928798438151}
@@ -506,7 +506,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DemonAttack
+  m_Name: SmallDragonAttack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -523,7 +523,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 87781156924994f6e96e630c2572edcb, type: 2}
+  m_Motion: {fileID: 7400000, guid: e61f5f9b2969b47e8b211c0e3f2f3e20, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -538,10 +538,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: SmallDragonIsWalking
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: SmallDragonsIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -564,7 +564,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Demon Death
+  m_Name: SmallDragonDeath
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -577,7 +577,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ad72aacdae2034781bb5c73a18843db7, type: 2}
+  m_Motion: {fileID: 7400000, guid: 543e6d18a6fa8492c8c8e32d4d482fe3, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -626,10 +626,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: SmallDragonIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: SmallDragonAttackTrigerred
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1562375716000566876}
@@ -652,7 +652,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DemonIdle
+  m_Name: SmallDragonIdle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -669,7 +669,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8669d7df150c14116a86b2d99bec0dd0, type: 2}
+  m_Motion: {fileID: 7400000, guid: 50ba2911178db4e5eac7c8ced6d7be0a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -684,10 +684,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: SmallDragonIsWalking
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonDeathTriggered
+    m_ConditionEvent: SmallDragonDeathTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1909797534519662896}

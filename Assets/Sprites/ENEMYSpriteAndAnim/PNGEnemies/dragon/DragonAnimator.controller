@@ -61,10 +61,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: DragonIsWalking
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: DragonIsHurt
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 440683928798438151}
@@ -89,10 +89,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: DragonIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonDeathTriggered
+    m_ConditionEvent: DragonDeathTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1909797534519662896}
@@ -115,7 +115,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DemonWalk
+  m_Name: DragonWalk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -131,7 +131,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ba4112d21dea64caf983f4d1b06e9b37, type: 2}
+  m_Motion: {fileID: 7400000, guid: 13067e061011b450cb8d793e1f2d68eb, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -146,10 +146,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: DragonAttackTrigerred
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: DragonIsHurt
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 440683928798438151}
@@ -174,10 +174,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: DragonAttackTrigerred
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonDeathTriggered
+    m_ConditionEvent: DragonDeathTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1909797534519662896}
@@ -202,10 +202,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: DragonIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: DragonIsIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -230,10 +230,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: DragonAttackTrigerred
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: DragonIsIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -258,10 +258,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: DragonIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: DragonIsWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6363243171472886369}
@@ -286,10 +286,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: DragonIsIdle
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: DragonAttackTrigerred
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1562375716000566876}
@@ -311,39 +311,39 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Demon
+  m_Name: DragonAnimator
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: DemonIsIdle
+  - m_Name: DragonIsIdle
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: DemonIsWalking
+    m_Controller: {fileID: 9100000}
+  - m_Name: DragonIsWalking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: DemonAttackTrigerred
+    m_Controller: {fileID: 9100000}
+  - m_Name: DragonAttackTrigerred
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: DemonDeathTriggered
+    m_Controller: {fileID: 9100000}
+  - m_Name: DragonDeathTriggered
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: DemonIsHurt
+    m_Controller: {fileID: 9100000}
+  - m_Name: DragonIsHurt
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -366,10 +366,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: DragonIsIdle
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonDeathTriggered
+    m_ConditionEvent: DragonDeathTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1909797534519662896}
@@ -394,10 +394,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: DragonAttackTrigerred
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: DragonIsWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6363243171472886369}
@@ -420,7 +420,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DemonHurtAnim
+  m_Name: DragonHurt
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -437,7 +437,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 42ad0131afaad4c9b986e84f1b88b346, type: 2}
+  m_Motion: {fileID: 7400000, guid: 79990d502fc1d45e2b4fe0908eb090a1, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -452,10 +452,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: DragonIsIdle
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: DragonIsWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6363243171472886369}
@@ -480,10 +480,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: DragonIsIdle
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: DragonIsHurt
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 440683928798438151}
@@ -506,7 +506,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DemonAttack
+  m_Name: DragonAttac
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -523,7 +523,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 87781156924994f6e96e630c2572edcb, type: 2}
+  m_Motion: {fileID: 7400000, guid: d7838da6439d24208a9b68d941a91b4e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -538,10 +538,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: DragonIsWalking
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsIdle
+    m_ConditionEvent: DragonIsIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -564,7 +564,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Demon Death
+  m_Name: DragonDeath
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -577,7 +577,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ad72aacdae2034781bb5c73a18843db7, type: 2}
+  m_Motion: {fileID: 7400000, guid: 484603b5b42e34384980d09e56ee7684, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -626,10 +626,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsHurt
+    m_ConditionEvent: DragonIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: DragonAttackTrigerred
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1562375716000566876}
@@ -652,7 +652,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DemonIdle
+  m_Name: DragonIdle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -669,7 +669,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8669d7df150c14116a86b2d99bec0dd0, type: 2}
+  m_Motion: {fileID: 7400000, guid: c79c2ef006a3c499bb60c6bbaf4efe36, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -684,10 +684,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsWalking
+    m_ConditionEvent: DragonIsWalking
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonDeathTriggered
+    m_ConditionEvent: DragonDeathTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1909797534519662896}
