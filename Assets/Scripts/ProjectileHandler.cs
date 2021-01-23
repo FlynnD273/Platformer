@@ -1,5 +1,5 @@
 ﻿//////////////////////
-///Name: Thomas Allen
+///Name: Thomas Allen and Dev Dhawan
 ///Date: 1/22/21
 ///Desc: Manages projectile firing and ammo
 /////////////////////
@@ -35,17 +35,19 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeField] float fireCooldownShuriken = 2; //cooldown to fire shuriken;
 
     [Header("Ammo")]
-    public static int kunaiCount = 30; //kunai ammo
-    public static int shurikenCount = 30; //shuriken ammo
+    public static int kunaiCount = 0; //kunai ammo
+    public static int shurikenCount = 0; //shuriken ammo
 
-    /// <summary>
     /// stuff for aiming fireball
-    /// </summary>
     private Vector3 difference;
     private float rotz;
     private Quaternion rotateFreeze;
-    private float offset;
-    public GameObject cursur;
+    private float offset = 0;
+
+    //Cursor
+    public GameObject cursor;
+    private Vector3 cursorPos;
+    private Vector3 cursorOg;
 
     //are true if player has one or more ammo of respective type.
     private bool hasKunAmmo; 
@@ -62,12 +64,18 @@ public class ProjectileHandler : MonoBehaviour
     {
         myAnim = GetComponent<Animator>(); //get animator
         playerLogic = FindObjectOfType<NEWPlayerLogic>(); //get player logic script
+        cursorOg = cursor.transform.position;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (currentWeapon > maxWeapons)
+        {
+            currentWeapon = 1;
+        }
+
         //update ammo bools
         if (kunaiCount > 0)
             hasKunAmmo = true;
@@ -85,6 +93,7 @@ public class ProjectileHandler : MonoBehaviour
         //get mouse click input
         if(Input.GetMouseButtonDown(0))
         {
+            
             //switch on teh current weapon to decide which weapon to fire
             switch (currentWeapon)
             {
@@ -150,10 +159,9 @@ public class ProjectileHandler : MonoBehaviour
                     }
                     break;
             }
-            
         }
 
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.E))
         {
             //switches current weapon
             SwitchWeapon();
@@ -164,6 +172,17 @@ public class ProjectileHandler : MonoBehaviour
             //reset timer and burst once the burst is out
             shurikenBurst = 3;
             timer = 0;
+        }
+
+        //cursor
+        if (currentWeapon == 3 || currentWeapon == 4)
+        {
+            cursorPos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 1);
+            cursor.transform.position = cursorPos;
+        }
+        else
+        {
+            cursor.transform.position = cursorOg;
         }
     }
     void Fire(GameObject proj)

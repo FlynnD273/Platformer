@@ -50,7 +50,7 @@ PrefabInstance:
     - target: {fileID: 1448262376143027643, guid: 00cba1fc27206784aa01735123bde903,
         type: 3}
       propertyPath: m_TagString
-      value: fireballEnemy
+      value: FireballEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 1448262376143027776, guid: 00cba1fc27206784aa01735123bde903,
         type: 3}

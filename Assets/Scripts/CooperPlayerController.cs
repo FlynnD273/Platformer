@@ -126,7 +126,6 @@ public class CooperPlayerController : MonoBehaviour
         //use walljump timer while wall jumping to control the length
         if (wallJumping)
         {
-            //WallJumpTimer();
             //Reset the stopwatch on walljump
             wallSlideStopwatch.Reset();
         }
@@ -166,7 +165,7 @@ public class CooperPlayerController : MonoBehaviour
         }
 
         //don't let player input interfere while wall jumping
-        if (!wallJumping)
+        if (!wallJumping && !(wallSliding || invertInput))
         {
             //set velocity for left right movement
             myRB.velocity = new Vector2(moveInput * speed, myRB.velocity.y);
@@ -324,7 +323,7 @@ public class CooperPlayerController : MonoBehaviour
     void WallSlideCheck()
     {
         //set wallslide to true if parameters are met and vice versa
-        if (isTouchingWall && myRB.velocity.y <= 0)
+        if (isTouchingWall)
         {
             wallSliding = true;
 
@@ -354,10 +353,10 @@ public class CooperPlayerController : MonoBehaviour
                 myRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 
                 //If the player inputs to walljump, unfreeze constraints before the next if statement
-                //if (isTouchingWall && Input.GetAxisRaw("Jump") > 0 && !prevJump)
-                //{
-                    
-                //}
+                if (isTouchingWall && Input.GetAxisRaw("Jump") > 0)
+                {
+                   myRB.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation; 
+                }
             }
         }
         

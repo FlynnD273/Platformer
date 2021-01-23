@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
         tmpKunai.text = "" + ProjectileHandler.kunaiCount;
         tmpShuriken.text = "" + ProjectileHandler.shurikenCount;
 
+
        
     }
 
@@ -60,6 +61,11 @@ public class UIManager : MonoBehaviour
 
     public void ProjectileSwitch()
     {
+        if (ProjectileHandler.currentWeapon > 4)
+        {
+            ProjectileHandler.currentWeapon = 1;
+        }
+
         switch (ProjectileHandler.currentWeapon)
         {
             case 1:
