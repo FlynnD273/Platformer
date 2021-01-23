@@ -53,7 +53,7 @@ public class NEWPlayerLogic : MonoBehaviour
     public Rigidbody2D MyRB;
 
     public AudioClip PlayerHurtSound; //sound for when player is hurt or takes damage
-    private bool hasKey;
+    public static bool hasKey;
     public AudioClip keySound;
     public GameObject key;
 

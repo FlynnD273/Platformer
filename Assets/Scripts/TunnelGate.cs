@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TunnelGate : MonoBehaviour
@@ -11,13 +12,26 @@ public class TunnelGate : MonoBehaviour
     public GameObject basementEntrance;
     public GameObject basementExit;
 
-    [SerializeField] bool isInCollider = false;
     [SerializeField] bool inBasement = false;
+
+    public Vector3 playerPos;
+    public Vector3 doorPos;
+
+    public GameObject player;
 
     private void Start()
     {
         entrancePopup.enabled = false;
-        exitPopup.enabled = false;
+        exitPopup.enabled = false;        
+    }
+
+    private void Update()
+    {
+        if (player.transform.position.x < 0)
+            inBasement = true;
+        else
+            inBasement = false;
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -25,26 +39,22 @@ public class TunnelGate : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             entrancePopup.enabled = true;
-            exitPopup.enabled = true;
-            
+            exitPopup.enabled = true; 
         }
-        if (Input.GetKeyDown(KeyCode.E) && !inBasement)
+        if (Input.GetKey(KeyCode.F))
         {
-            //Next Level
-            collision.gameObject.transform.position = basementExit.transform.position;
-            inBasement = true;
-            print("Entrance");
+            if (inBasement)
+            {
+                player.transform.position = basementEntrance.transform.position;
+            }
+            else
+            {
+                player.transform.position = basementExit.transform.position;
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.E) && inBasement)
-        {
-            //Next Level
-            collision.gameObject.transform.position = basementEntrance.transform.position;
-            inBasement = false;
-            print("Exit");
-
-        }
-
     }
+
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -52,7 +62,6 @@ public class TunnelGate : MonoBehaviour
         {
             entrancePopup.enabled = false;
             exitPopup.enabled = false;
-            isInCollider = false;
         }
     }
 }
