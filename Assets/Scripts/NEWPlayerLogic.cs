@@ -53,7 +53,9 @@ public class NEWPlayerLogic : MonoBehaviour
     public Rigidbody2D MyRB;
 
     public AudioClip PlayerHurtSound; //sound for when player is hurt or takes damage
-
+    private bool hasKey;
+    public AudioClip keySound;
+    public GameObject key;
 
     // Start is called before the first frame update
     void Start()
@@ -185,6 +187,13 @@ public class NEWPlayerLogic : MonoBehaviour
             Projectile.boolShuriken = true;
         }
 
+        if (collision.gameObject.CompareTag("Key"))
+        {
+            hasKey = true;
+            collision.gameObject.transform.parent = gameObject.transform;
+            gameObject.GetComponent<AudioSource>().PlayOneShot(keySound);
+        }
+
     }
 
     //Change in energy function (Used when energy is being needed to change)
@@ -308,6 +317,11 @@ public class NEWPlayerLogic : MonoBehaviour
                 //meleeCounter = WaitForMelee;
             }
             //meleeCounter -= Time.deltaTime;
+        }
+        if (hasKey)
+        {
+            key.transform.localPosition = new Vector3(0, 1, 1);
+
         }
     }
 }
