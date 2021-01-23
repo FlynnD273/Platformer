@@ -24,6 +24,8 @@ public class CooperPlayerController : MonoBehaviour
     public float wallSlidingSpeed;
     public float xWallForce;
     public float yWallForce;
+    //ladder
+    [SerializeField] float climbSpeed = 5f;
     //adds a delay before sliding happens when player is on clinging to the wall
     public Stopwatch wallSlideStopwatch;
 
@@ -268,6 +270,23 @@ public class CooperPlayerController : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void ClimbLadder()
+    {
+        if (!groundCheck.IsTouchingLayers(LayerMask.GetMask("Climbing"))) { myAnim.SetBool("ClimbingLadder", false); myRB.gravityScale = 1; ; return; }
+
+        float moveUp = Input.GetAxis("Vertical");
+        Vector2 climbVel = new Vector2(myRB.velocity.x, moveUp * climbSpeed);
+        myRB.velocity = climbVel;
+        myRB.gravityScale = 0;
+        bool verSpeed = Mathf.Abs(myRB.velocity.y) > Mathf.Epsilon;
+        myAnim.SetBool("ClimbingLadder", verSpeed);
+        myAnim.ResetTrigger("Jump");
+
+
+
+
     }
 
     //check conditions for jumping and handle jumping
