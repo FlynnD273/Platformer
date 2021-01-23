@@ -75,8 +75,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.4624207, y: 1.3671464}
-  m_Size: {x: 9.996193, y: 3.729801}
+  m_Offset: {x: 1.5149391, y: 0.8302376}
+  m_Size: {x: 8.164471, y: 2.7823682}
   m_Direction: 1
 --- !u!114 &312776293489450608
 MonoBehaviour:
@@ -93,8 +93,7 @@ MonoBehaviour:
   proj: {fileID: 7191949309268317104, guid: 2737d6c192d01c642a4ccb7b38315e12, type: 3}
   offset: 0
   temp: 0
-  waitBetweenShots: 2.5
-  player: {fileID: 0}
+  waitBetweenShots: 3
   firePointRight: {fileID: 312776293222022963}
   firePointLeft: {fileID: 312776294037501964}
   boundary: {fileID: 0}
@@ -261,11 +260,12 @@ MonoBehaviour:
   proj2: {fileID: 1278394888584079965, guid: 1e093557e3cb2f649bb6f8e33894d881, type: 3}
   dropRate: 5
   isEnemy: 1
+  dropsAmmo: 0
   shootingTypeEnemy: 1
   healthBar: {fileID: 312776292632037189}
   waypoints:
+  - {x: -4, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: 4, y: 0, z: 0}
   speed: 1
   closeEnough: 0.1
 --- !u!58 &2713336028124719818
@@ -292,7 +292,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4078667465851088671}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
