@@ -293,7 +293,7 @@ MonoBehaviour:
   maxHealth: 100
   lives: 5
   maxEnergy: 60
-  waitforRegen: 10
+  waitforRegen: 4
   Sword: {fileID: 6310929744756812333}
   WaitForMelee: 1.2
   regenCounter: 0
@@ -397,10 +397,10 @@ MonoBehaviour:
   shurikenSOund: {fileID: 8300000, guid: e3a8c60c0f8a21c4d95786012d6433fd, type: 3}
   kunaiSound: {fileID: 8300000, guid: da0ade2c753e11c4381c2eaf423b8d85, type: 3}
   fireballSound: {fileID: 8300000, guid: df7c83b1e3b332c43b5b0bcb6399c076, type: 3}
-  fireCooldownKunai: 0.5
-  fireCooldownShuriken: 1.5
-  cursur: {fileID: 0}
-  shurikenBurst: 3
+  fireCooldownKunai: 0.7
+  fireCooldownShuriken: 1.2
+  cursor: {fileID: 2337305290693064177, guid: 8ef4fcc872d5214458f6e7d413b0b610, type: 3}
+  shurikenBurst: 4
   timer: 0
 --- !u!1 &2009786581966748504
 GameObject:
@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 6115636797129535821}
   m_Layer: 0
   m_Name: MeleeHitBox
-  m_TagString: Untagged
+  m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -113,15 +113,6 @@ public class NEWPlayerLogic : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        //checking for tilemap
-        //if (collision.gameObject.CompareTag("Moving"))
-        //{
-        //    transform.SetParent(null);
-        //}
-    }
-
     //Looking for Level Door
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -230,6 +221,8 @@ public class NEWPlayerLogic : MonoBehaviour
         if (energy < 0)
         {
             energy = 0;
+            startRegen = true;
+            regenCounter = waitforRegen * 3;
             //energy = energyIntial;
         }
         return false;
