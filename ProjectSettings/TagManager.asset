@@ -23,6 +23,12 @@ TagManager:
   - Crate
   - switch
   - Key
+  - Demon
+  - Djinn
+  - Dragon
+  - Lizard
+  - Medusa
+  - SmallDragon
   layers:
   - Default
   - TransparentFX
