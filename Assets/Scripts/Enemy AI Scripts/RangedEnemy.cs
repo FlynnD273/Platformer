@@ -164,35 +164,30 @@ public class RangedEnemy : MonoBehaviour
         enemyAnim.SetBool(attack, false);
         //start death animation
         enemyAnim.SetBool(death, true);
-
         //hurt enemy
         hurting = true;
-
-        //make sure they ren't already dead
-        //if (!dead)
-        //{
-            //spawn drops
-            gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyDeath);
-            
-            spawnNumber = Random.Range(1, maxDrops);
-            for (int i = 0; i < spawnNumber; i++)
-            {
-                Instantiate(drop1, transform.position, transform.rotation);
-            }
-            spawnNumber = Random.Range(1, maxDrops);
-            for (int i = 0; i < spawnNumber; i++)
-            {
-                Instantiate(drop2, transform.position, transform.rotation);
-            }
-        //}
         //enemy becomes dead
+        if (!dead)
+            //destory enemy after animation is done
+            Invoke("DestroyEnemy", 1f);
         dead = true;
-        //destory enemy after animation is done
-        Invoke("DestroyEnemy", 1f);
     }
 
     private void DestroyEnemy()
     {
+        //spawn drops
+        gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyDeath);
+
+        spawnNumber = Random.Range(1, maxDrops);
+        for (int i = 0; i < spawnNumber; i++)
+        {
+            Instantiate(drop1, transform.position, transform.rotation);
+        }
+        spawnNumber = Random.Range(1, maxDrops);
+        for (int i = 0; i < spawnNumber; i++)
+        {
+            Instantiate(drop2, transform.position, transform.rotation);
+        }
         //destroy enemy
         Destroy(gameObject);
     }

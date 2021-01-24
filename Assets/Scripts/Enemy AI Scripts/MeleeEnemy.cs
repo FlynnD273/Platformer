@@ -161,9 +161,19 @@ public class MeleeEnemy : MonoBehaviour
         //make sure they ren't already dead
         if (!dead)
             gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyDeath);
-        //spawn drops
+       
 
-        print("spawned");
+        //enemy becomes dead
+        
+        if (!dead)
+            //destory enemy after animation is done
+            Invoke("DestroyEnemy", 1f);
+        dead = true;
+    }
+
+    private void DestroyEnemy()
+    {
+        //spawn drops
         spawnNumber = Random.Range(1, maxDrops);
         for (int i = 0; i < spawnNumber; i++)
         {
@@ -174,16 +184,6 @@ public class MeleeEnemy : MonoBehaviour
         {
             Instantiate(drop2, transform.position, transform.rotation);
         }
-        //}
-        //enemy becomes dead
-        dead = true;
-        //destory enemy after animation is done
-        Invoke("DestroyEnemy", 1f);
-    }
-
-    private void DestroyEnemy()
-    {
-        //destroy enemy
         Destroy(gameObject);
     }
 
