@@ -77,7 +77,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 4
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -113,7 +113,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -132,9 +132,9 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 6ada49562efeada45b7718d357384943, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: ef29399da2c85a543a1fd2945860ab26, type: 3}
-  - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 4e6554271ea431a49bfd0c243bc7fc87, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: ef29399da2c85a543a1fd2945860ab26, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 32708429ecc364643b01d5e583a3fc7d, type: 3}
   - m_RefCount: 2
@@ -201,7 +201,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a71b98fe10da10a488ae6fae2b3f1f38, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -226,48 +226,32 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 3607411296907776146}
     m_ColliderPaths:
-    - - X: 140151463
-        Y: 60757661
-      - X: 139545371
-        Y: 60151573
-      - X: 139545356
-        Y: 60151536
-      - X: 139545356
-        Y: 40151496
-      - X: 139545371
-        Y: 40151459
-      - X: 140151463
-        Y: 39545371
-      - X: 140151500
-        Y: 39545356
-      - X: 180151540
-        Y: 39545356
-      - X: 180151577
-        Y: 39545371
-      - X: 180757669
-        Y: 40151459
-      - X: 180757684
-        Y: 40151496
-      - X: 180757684
-        Y: 60151536
-      - X: 180757669
-        Y: 60151573
-      - X: 180151577
-        Y: 60757661
-      - X: 180151540
-        Y: 60757676
-      - X: 140151500
-        Y: 60757676
+    - - X: 180151520
+        Y: 60757576
+      - X: 140151520
+        Y: 60757576
+      - X: 139545456
+        Y: 60151516
+      - X: 139545456
+        Y: 40151516
+      - X: 140151520
+        Y: 39545456
+      - X: 180151520
+        Y: 39545456
+      - X: 180757584
+        Y: 40151516
+      - X: 180757584
+        Y: 60151516
   m_CompositePaths:
     m_Paths:
-    - - {x: 18.015142, y: 3.9545357}
-      - {x: 18.075768, y: 4.0151606}
-      - {x: 18.07576, y: 6.015165}
-      - {x: 18.015142, y: 6.0757675}
-      - {x: 14.01514, y: 6.0757585}
-      - {x: 13.954536, y: 6.015143}
-      - {x: 13.954544, y: 4.0151386}
-      - {x: 14.0151615, y: 3.9545357}
+    - - {x: 18.01514, y: 3.9545457}
+      - {x: 18.075758, y: 4.0151625}
+      - {x: 18.07575, y: 6.015159}
+      - {x: 18.01514, y: 6.0757575}
+      - {x: 14.015144, y: 6.07575}
+      - {x: 13.954546, y: 6.015141}
+      - {x: 13.954554, y: 4.015144}
+      - {x: 14.015163, y: 3.9545457}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!19719996 &3607411296907776146
@@ -345,15 +329,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09eb49f81f8a12c4fba7b9ae44d99e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 1
   leftBound: 0
-  rightBound: 7
+  upBound: 10
+  rightBound: 0
+  downBound: 0
   waitTimeToFall: 0.5
-  moving: 1
+  platformLeftRight: 0
+  platformUpDown: 1
   waitForPlayer: 1
-  endIfMaxRight: 1
+  endIfMaxRight: 0
   endIfMaxLeft: 0
+  endIfMaxUp: 1
+  endIfMaxDown: 0
   fallThrough: 0
+  oneWay: 0
 --- !u!251 &3607411296907776142
 PlatformEffector2D:
   m_ObjectHideFlags: 0

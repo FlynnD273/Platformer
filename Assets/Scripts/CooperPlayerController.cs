@@ -1,5 +1,5 @@
 ﻿/*
- * Name : Cooper Spring and Thomas Allen
+ * Name : Cooper Spring, Thomas Allen and Abhi 
  * Date : 12/14/2020 
  * Description : Script to control player movement in a 2D platformer game
  */
@@ -26,6 +26,8 @@ public class CooperPlayerController : MonoBehaviour
     public float yWallForce;
     //ladder
     [SerializeField] float climbSpeed = 5f;
+    [SerializeField] bool onLadder;
+    [SerializeField] bool climbingLadder;
     //adds a delay before sliding happens when player is on clinging to the wall
     public Stopwatch wallSlideStopwatch;
 
@@ -34,8 +36,8 @@ public class CooperPlayerController : MonoBehaviour
     [SerializeField] private bool invertInput = false;
     [SerializeField] private bool isJumping = false;
     [SerializeField] private bool wallJumping = false;
-    [SerializeField] bool isTouchingWall;
-    [SerializeField] bool isTouchingGround;
+    [SerializeField] public bool isTouchingWall;
+    [SerializeField] public bool isTouchingGround;
 
     
     private float wallJumpTimeMax;
@@ -271,21 +273,35 @@ public class CooperPlayerController : MonoBehaviour
         }
         return false;
     }
-
+    
     public void ClimbLadder()
     {
-        if (!groundCheck.IsTouchingLayers(LayerMask.GetMask("Ladder"))) { myAnim.SetBool("ClimbingLadder", false); myRB.gravityScale = 1; ; return; }
-        if (groundCheck.IsTouchingLayers(LayerMask.GetMask("Ladder"))) {
-            print("Yes");
+        onLadder = true;
+      
+        myAnim.SetBool("OnLadder", onLadder);
+        if (!groundCheck.IsTouchingLayers(LayerMask.GetMask("Ladder"))) {
+            onLadder = false;
+            climbingLadder = false;
+            myAnim.SetBool("OnLadder", onLadder);
+            myAnim.SetBool("ClimbingLadder", onLadder);
+            myRB.gravityScale = 1; ;
+            return;
         }
-        float moveUp = Input.GetAxis("Vertical");
-        Vector2 climbVel = new Vector2(myRB.velocity.x, moveUp * climbSpeed);
-        myRB.velocity = climbVel;
-        myRB.gravityScale = 0;
-        bool verSpeed = Mathf.Abs(myRB.velocity.y) > Mathf.Epsilon;
-        myAnim.SetBool("ClimbingLadder", verSpeed);
-        myAnim.ResetTrigger("Jump");
 
+        if(groundCheck.IsTouchingLayers(LayerMask.GetMask("Ladder"))){
+            jumpSource.Stop();
+        }
+            float moveUp = Input.GetAxis("Vertical");
+            Vector2 climbVel = new Vector2(myRB.velocity.x, moveUp * climbSpeed);
+            myRB.velocity = climbVel;
+            myRB.gravityScale = 0;
+            bool verSpeed = Mathf.Abs(myRB.velocity.y) > Mathf.Epsilon;
+
+            climbingLadder = verSpeed;
+
+            myAnim.SetBool("ClimbingLadder", climbingLadder);
+            
+       
 
 
 

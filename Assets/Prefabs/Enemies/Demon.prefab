@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 459167296515437503}
   - component: {fileID: 459167296515437502}
   - component: {fileID: 459167296515437501}
+  - component: {fileID: -5960630959670740953}
   m_Layer: 0
   m_Name: Demon
   m_TagString: Demon
@@ -130,6 +131,44 @@ MonoBehaviour:
   - {x: 4, y: 0, z: 0}
   speed: 1
   closeEnough: 0.1
+--- !u!114 &-5960630959670740953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459167296515437500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fff9e9e2210f7c46accfd16a664146a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftWaypoint: {fileID: 0}
+  RightWaypoint: {fileID: 0}
+  player: {fileID: 0}
+  playerTransform: {fileID: 0}
+  enemyAnim: {fileID: 0}
+  myRB: {fileID: 0}
+  moveSpeed: 0
+  attackDamage: 0
+  hitPoints: 0
+  attackDistance: 0
+  attackCooldown: 0
+  dirRight: 1
+  EnemyName: 
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  rayCastLength: 0
+  rayCast: {fileID: 0}
+  distance: 0
+  hurting: 0
+  AttackCollider: {fileID: 0}
+  timer: 0
+  drop1: {fileID: 0}
+  drop2: {fileID: 0}
+  maxDrops: 0
+  spawnNumber: 0
 --- !u!1001 &3573074467291725599
 PrefabInstance:
   m_ObjectHideFlags: 0
