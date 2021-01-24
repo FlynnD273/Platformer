@@ -159,21 +159,21 @@ public class MeleeEnemy : MonoBehaviour
         hurting = true;
 
         //make sure they ren't already dead
-        //if (!dead)
-        //{
-            //spawn drops
+        if (!dead)
             gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyDeath);
-            print("spawned");
-            spawnNumber = Random.Range(1, maxDrops);
-            for (int i = 0; i < spawnNumber; i++)
-            {
-                Instantiate(drop1, transform.position, transform.rotation);
-            }
-            spawnNumber = Random.Range(1, maxDrops);
-            for (int i = 0; i < spawnNumber; i++)
-            {
-                Instantiate(drop2, transform.position, transform.rotation);
-            }
+        //spawn drops
+
+        print("spawned");
+        spawnNumber = Random.Range(1, maxDrops);
+        for (int i = 0; i < spawnNumber; i++)
+        {
+            Instantiate(drop1, transform.position, transform.rotation);
+        }
+        spawnNumber = Random.Range(1, maxDrops);
+        for (int i = 0; i < spawnNumber; i++)
+        {
+            Instantiate(drop2, transform.position, transform.rotation);
+        }
         //}
         //enemy becomes dead
         dead = true;
