@@ -177,7 +177,9 @@ public class CooperPlayerController : MonoBehaviour
 
         myAnim.SetBool("Walking", moveInput != 0);
 
-        //when player isn't wall jumping or sliding, allow for flipping to occur with movement
+        //when player isn't wall jumping or sliding, allow for 
+        
+        //ping to occur with movement
         if (!wallJumping && !wallSliding)
         {
             if (!facingRight && moveInput > 0)

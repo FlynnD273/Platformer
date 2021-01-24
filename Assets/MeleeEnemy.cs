@@ -42,10 +42,7 @@ public class MeleeEnemy : MonoBehaviour
 
     private RaycastHit2D hit;
 
-    public LayerMask raycastMask;
-    public float rayCastLength;
-    public Transform rayCast;
-    public float distance;
+    public Vector2 Distance;
     private Transform target;
 
     [SerializeField] bool hurting = false;
@@ -86,23 +83,15 @@ public class MeleeEnemy : MonoBehaviour
         timer += Time.deltaTime;
         if (transform.position.x >= waypoint2.x)
         {
-            dirRight = false;
             Flip();
         }
 
         if (transform.position.x <= waypoint1.x)
         {
-            dirRight = true;
             Flip();
         }
 
-
-        hit = Physics2D.Raycast(rayCast.position, transform.right, rayCastLength, raycastMask);
-
-        if (hit.collider != null)
-        {
-            distance = Vector2.Distance(transform.position, player.transform.position);
-        }
+        Distance = transform.position - player.transform.position;
 
         if (!hurting)
         {
@@ -110,14 +99,15 @@ public class MeleeEnemy : MonoBehaviour
             {
                 Idle();
             }
-
-            else if (distance <= attackDistance)
+            else if (Distance.sqrMagnitude <= attackDistance * attackDistance)
             {
+                if (Mathf.Sign(Distance.x) == Mathf.Sign(transform.localScale.x))
+                {
+                    Flip();
+                }
                 Attack();
                 Invoke("ResetTimer", 1f);
             }
-            else if (distance <= attackDistance)
-                Idle();
             else
                 Walk();
         }
@@ -187,23 +177,20 @@ public class MeleeEnemy : MonoBehaviour
 
     void Walk()
     {
-        if (dirRight)
-            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-        else
-            transform.Translate(-Vector2.right * moveSpeed * Time.deltaTime);
+        Vector3 v = new Vector3(Mathf.Sign(transform.localScale.x), 0, 0);
+        transform.Translate(v * moveSpeed * Time.deltaTime);
 
         AttackCollider.enabled = false;
         enemyAnim.SetBool(attack, false);
         enemyAnim.SetBool(walking, true);
-
     }
 
     private void Flip()
     {
 
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
+        Vector3 temp = transform.localScale;
+        temp.x *= -1;
+        transform.localScale = temp;
     }
 
     public void TakeDamage(int damage)
