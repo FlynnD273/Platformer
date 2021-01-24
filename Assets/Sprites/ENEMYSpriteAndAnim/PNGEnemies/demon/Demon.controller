@@ -146,7 +146,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: DemonAttackTriggered
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DemonIsHurt
@@ -174,7 +174,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: DemonAttackTriggered
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DemonDeathTriggered
@@ -230,7 +230,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: DemonAttackTriggered
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DemonIsIdle
@@ -289,7 +289,7 @@ AnimatorStateTransition:
     m_ConditionEvent: DemonIsIdle
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: DemonAttackTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1562375716000566876}
@@ -326,7 +326,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: DemonAttackTrigerred
+  - m_Name: DemonAttackTriggered
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -394,7 +394,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: DemonAttackTriggered
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DemonIsWalking
@@ -629,7 +629,7 @@ AnimatorStateTransition:
     m_ConditionEvent: DemonIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DemonAttackTrigerred
+    m_ConditionEvent: DemonAttackTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1562375716000566876}
