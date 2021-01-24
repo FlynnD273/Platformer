@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080251146667455284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.01, y: -0.26, z: 0}
+  m_LocalPosition: {x: 1.511, y: -0.348, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4101384432631145663}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080251147296155401}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.241, y: -0.36700004, z: 0}
+  m_LocalPosition: {x: -1.755, y: -0.356, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4101384432631145663}
@@ -247,39 +247,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47f640011c27cd4ab946bd638b48638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyName: Medusa
   LeftWaypoint: {fileID: 1080251147296155401}
   RightWaypoint: {fileID: 1080251146667455284}
   player: {fileID: 0}
-  playerTransform: {fileID: 0}
   enemyAnim: {fileID: 4101384432631145656}
-  myRB: {fileID: 4101384432631145670}
   moveSpeed: 2
-  attackDamage: 10
   hitPoints: 100
   attackDistance: 4
   attackCooldown: 0.5
-  dirRight: 1
-  EnemyName: Medusa
-  Distance: {x: 0, y: 0}
-  raycastMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  rayCastLength: 10
-  rayCast: {fileID: 4101384432631145663}
-  distance: 0
-  hurting: 0
   AttackCollider: {fileID: 4101384432631145659}
-  timer: 0
-  drop1: {fileID: 9031457613526283657, guid: 37beb4771497c774f86705ec37daf562, type: 3}
-  drop2: {fileID: 1278394888584079965, guid: 1e093557e3cb2f649bb6f8e33894d881, type: 3}
-  maxDrops: 1
-  spawnNumber: 0
   projectile: {fileID: 7191949309268317104, guid: 2737d6c192d01c642a4ccb7b38315e12,
     type: 3}
-  offset: 0
-  temp: 0
+  drop1: {fileID: 9031457613526283657, guid: 37beb4771497c774f86705ec37daf562, type: 3}
+  drop2: {fileID: 1278394888584079965, guid: 1e093557e3cb2f649bb6f8e33894d881, type: 3}
+  maxDrops: 10
   EnemyHurt: {fileID: 8300000, guid: dc37517a71e6aa743bac53ad6945c5d1, type: 3}
   EnemyAttack: {fileID: 8300000, guid: 3060a7f5072e6bf40912b5bf18ecb68d, type: 3}
+  EnemyDeath: {fileID: 0}
 --- !u!70 &4101384432631145659
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

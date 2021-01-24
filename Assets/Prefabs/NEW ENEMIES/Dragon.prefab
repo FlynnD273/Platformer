@@ -350,33 +350,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd2f4fbf359a334dbbd7fd264c3e852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyName: Dragon
   LeftWaypoint: {fileID: 7368646259406847639}
   RightWaypoint: {fileID: 7368646258702529842}
   player: {fileID: 0}
   enemyAnim: {fileID: 8540171064391200483}
   moveSpeed: 3
-  attackDamage: 30
   hitPoints: 300
   attackDistance: 6
   attackCooldown: 1
-  dirRight: 1
-  EnemyName: Dragon
-  Distance: {x: 0, y: 0}
-  raycastMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  rayCastLength: 10
-  rayCast: {fileID: 8113398188082769866}
-  distance: 0
-  hurting: 0
   fireblast: {fileID: 539846550134453598}
-  timer: 0
   drop1: {fileID: 9031457613526283657, guid: 37beb4771497c774f86705ec37daf562, type: 3}
   drop2: {fileID: 1278394888584079965, guid: 1e093557e3cb2f649bb6f8e33894d881, type: 3}
   maxDrops: 6
-  spawnNumber: 0
   EnemyHurt: {fileID: 8300000, guid: 1c513d386f7c9164ea9c09e6e3307063, type: 3}
   EnemyAttack: {fileID: 8300000, guid: 13ac122934b1fd1459b3b34b2f5de5c9, type: 3}
+  EnemyDeath: {fileID: 0}
 --- !u!82 &1733091337
 AudioSource:
   m_ObjectHideFlags: 0
@@ -498,7 +487,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7368646258702529842}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.22, y: -0.9, z: -5.254656}
+  m_LocalPosition: {x: 3.04, y: -0.92, z: -5.254656}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 8113398188082769866}
@@ -528,7 +517,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7368646259406847639}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.43, y: -0.88, z: -5.254656}
+  m_LocalPosition: {x: -1.48, y: -0.89, z: -5.254656}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 8113398188082769866}

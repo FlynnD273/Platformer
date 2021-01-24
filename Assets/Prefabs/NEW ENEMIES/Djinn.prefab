@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482615225552881203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.99, y: -0.51, z: 0}
+  m_LocalPosition: {x: -1.118, y: -0.471, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 656458869355489055}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482615225645178182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.28, y: -0.55, z: 0}
+  m_LocalPosition: {x: 0.859, y: -0.441, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 656458869355489055}
@@ -180,39 +180,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47f640011c27cd4ab946bd638b48638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyName: Djinn
   LeftWaypoint: {fileID: 1482615225552881203}
   RightWaypoint: {fileID: 1482615225645178182}
   player: {fileID: 0}
-  playerTransform: {fileID: 0}
   enemyAnim: {fileID: 178303889278899630}
-  myRB: {fileID: 4235386865655940517}
   moveSpeed: 2
-  attackDamage: 10
   hitPoints: 100
   attackDistance: 7
   attackCooldown: 1
-  dirRight: 1
-  EnemyName: Djinn
-  Distance: {x: 0, y: 0}
-  raycastMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  rayCastLength: 10
-  rayCast: {fileID: 656458869355489055}
-  distance: 0
-  hurting: 0
   AttackCollider: {fileID: 4235386865655940518}
-  timer: 0
-  drop1: {fileID: 9031457613526283657, guid: 37beb4771497c774f86705ec37daf562, type: 3}
-  drop2: {fileID: 1278394888584079965, guid: 1e093557e3cb2f649bb6f8e33894d881, type: 3}
-  maxDrops: 0
-  spawnNumber: 0
   projectile: {fileID: 584537096124028294, guid: 5535ade30e5e7b54b964cfbd6ed0a16a,
     type: 3}
-  offset: 0
-  temp: 0
+  drop1: {fileID: 9031457613526283657, guid: 37beb4771497c774f86705ec37daf562, type: 3}
+  drop2: {fileID: 1278394888584079965, guid: 1e093557e3cb2f649bb6f8e33894d881, type: 3}
+  maxDrops: 10
   EnemyHurt: {fileID: 8300000, guid: dc37517a71e6aa743bac53ad6945c5d1, type: 3}
   EnemyAttack: {fileID: 8300000, guid: d55e58f6cff22084ab395a4e853d2f1d, type: 3}
+  EnemyDeath: {fileID: 0}
 --- !u!60 &4235386865655940516
 PolygonCollider2D:
   m_ObjectHideFlags: 0
