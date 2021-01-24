@@ -81,7 +81,7 @@ public class CooperPlayerController : MonoBehaviour
     void Update()
     {
         myAnim.SetBool("WallSlide", wallSliding);
-
+        ClimbLadder();
         if (!wallSliding)
         {
             //reset the stopwatch if not wallsliding
@@ -274,8 +274,10 @@ public class CooperPlayerController : MonoBehaviour
 
     public void ClimbLadder()
     {
-        if (!groundCheck.IsTouchingLayers(LayerMask.GetMask("Climbing"))) { myAnim.SetBool("ClimbingLadder", false); myRB.gravityScale = 1; ; return; }
-
+        if (!groundCheck.IsTouchingLayers(LayerMask.GetMask("Ladder"))) { myAnim.SetBool("ClimbingLadder", false); myRB.gravityScale = 1; ; return; }
+        if (groundCheck.IsTouchingLayers(LayerMask.GetMask("Ladder"))) {
+            print("Yes");
+        }
         float moveUp = Input.GetAxis("Vertical");
         Vector2 climbVel = new Vector2(myRB.velocity.x, moveUp * climbSpeed);
         myRB.velocity = climbVel;
