@@ -29,6 +29,7 @@ TagManager:
   - Lizard
   - Medusa
   - SmallDragon
+  - DragonFire
   layers:
   - Default
   - TransparentFX
@@ -39,10 +40,10 @@ TagManager:
   - 
   - 
   - Ladder
-  - 
-  - 
-  - 
-  - 
+  - Dragon
+  - Dragonfire
+  - DragonfireCollider
+  - Player
   - 
   - 
   - 

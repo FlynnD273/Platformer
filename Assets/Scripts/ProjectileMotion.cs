@@ -30,7 +30,10 @@ public class ProjectileMotion : MonoBehaviour
     private Projectile projectile;
 
     [SerializeField] CrateDrops crateDrops;
-    [SerializeField] MeleeEnemy myEnemy;
+    [SerializeField] MeleeEnemy meleeEnemy;
+    [SerializeField] RangedEnemy rangedEnemy;
+    [SerializeField] DragonEnemy dragonEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,19 +44,36 @@ public class ProjectileMotion : MonoBehaviour
 
     void OnTriggerEnter2D (Collider2D collision)
     {
-        //if the projectile hits an enemy, deal damage to it and despawn projectile
-        myEnemy = collision.GetComponent<MeleeEnemy>();
-       
-        if (myEnemy != null)
+        if (!isEnemyWeapon)
         {
-            myEnemy.TakeDamage(damage);
-            Destroy(gameObject);
-        }
-        crateDrops = collision.GetComponent<CrateDrops>();
-        if (crateDrops != null)
-        {
-            crateDrops.TakeDamage(damage);
-            Destroy(gameObject);
+            //if the projectile hits an enemy, deal damage to it and despawn projectile
+            meleeEnemy = collision.GetComponent<MeleeEnemy>();
+
+            if (meleeEnemy != null)
+            {
+                meleeEnemy.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+            if (meleeEnemy == null)
+                rangedEnemy = collision.GetComponent<RangedEnemy>();
+            if (rangedEnemy != null)
+            {
+                rangedEnemy.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+            if (rangedEnemy == null && rangedEnemy == null)
+                dragonEnemy = collision.GetComponent<DragonEnemy>();
+            if (dragonEnemy != null)
+            {
+                dragonEnemy.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+            crateDrops = collision.GetComponent<CrateDrops>();
+            if (crateDrops != null)
+            {
+                crateDrops.TakeDamage(damage);
+                Destroy(gameObject);
+            }
         }
         
     }

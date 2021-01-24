@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 2009786579980632808}
   - component: {fileID: 2009786579980632802}
   - component: {fileID: 2011823935}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.328
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -298,7 +298,13 @@ MonoBehaviour:
   WaitForMelee: 1.2
   regenCounter: 0
   MyRB: {fileID: 0}
-  PlayerHurtSound: {fileID: 0}
+  PlayerHurtSound: {fileID: 8300000, guid: 2bce5f26c6fa1834dbaca896d4616a2a, type: 3}
+  PlayerDeathSound: {fileID: 0}
+  SwordAttack: {fileID: 0}
+  keySound: {fileID: 8300000, guid: 9a6a688d81c56d442afe7e436347caca, type: 3}
+  key: {fileID: 0}
+  DamgeCooldown: 0
+  DeathScreen: {fileID: 0}
 --- !u!114 &2009786579980632811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,6 +327,9 @@ MonoBehaviour:
   wallSlidingSpeed: 0.1
   xWallForce: 10
   yWallForce: 10
+  climbSpeed: 5
+  onLadder: 0
+  climbingLadder: 0
   wallSliding: 0
   invertInput: 0
   isJumping: 0
@@ -399,7 +408,7 @@ MonoBehaviour:
   fireballSound: {fileID: 8300000, guid: df7c83b1e3b332c43b5b0bcb6399c076, type: 3}
   fireCooldownKunai: 0.7
   fireCooldownShuriken: 1.2
-  cursor: {fileID: 2337305290693064177, guid: 8ef4fcc872d5214458f6e7d413b0b610, type: 3}
+  cursor: {fileID: 0}
   shurikenBurst: 4
   timer: 0
 --- !u!1 &2009786581966748504
@@ -411,7 +420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2009786581966748507}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: firePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +456,7 @@ GameObject:
   - component: {fileID: 7889844186292632012}
   - component: {fileID: 8596611785654865144}
   - component: {fileID: 6115636797129535821}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MeleeHitBox
   m_TagString: Sword
   m_Icon: {fileID: 0}

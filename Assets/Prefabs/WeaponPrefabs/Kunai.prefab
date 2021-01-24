@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1448262376143027782}
   - component: {fileID: 1448262376143027781}
   - component: {fileID: 1448262376143027780}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Kunai
   m_TagString: Kunai
   m_Icon: {fileID: 0}
@@ -132,7 +132,9 @@ MonoBehaviour:
   strength: 1
   myRB: {fileID: 1448262376143027780}
   crateDrops: {fileID: 0}
-  myEnemy: {fileID: 0}
+  meleeEnemy: {fileID: 0}
+  rangedEnemy: {fileID: 0}
+  dragonEnemy: {fileID: 0}
 --- !u!50 &1448262376143027780
 Rigidbody2D:
   serializedVersion: 4

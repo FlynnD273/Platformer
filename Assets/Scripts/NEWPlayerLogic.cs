@@ -53,10 +53,15 @@ public class NEWPlayerLogic : MonoBehaviour
     public Rigidbody2D MyRB;
 
     public AudioClip PlayerHurtSound; //sound for when player is hurt or takes damage
+    public AudioClip PlayerDeathSound; //sound for player death
+    public AudioClip SwordAttack; 
     public static bool hasKey;
     public AudioClip keySound;
     public GameObject key;
+    public  float DamgeCooldown;
 
+
+    public GameObject DeathScreen;
     // Start is called before the first frame update
     void Start()
     {
@@ -74,8 +79,8 @@ public class NEWPlayerLogic : MonoBehaviour
         regenCounter = waitforRegen;
         //meleeCounter = WaitForMelee;
         playerAnim = GetComponent<Animator>();
-        
 
+        DeathScreen.SetActive(false);
     }
 
     //Checking for all collisions
@@ -92,7 +97,7 @@ public class NEWPlayerLogic : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("FireballEnemy"))
         {
-            Subhealth(60);
+            Subhealth(20);
             StartCoroutine(ChangePlayerColor());
         }
         if (collision.gameObject.CompareTag("KunaiEnemy"))
@@ -112,6 +117,7 @@ public class NEWPlayerLogic : MonoBehaviour
             
         }
     }
+
 
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -166,16 +172,10 @@ public class NEWPlayerLogic : MonoBehaviour
         //For deathobjects
         if (collision.gameObject.CompareTag("Death"))
         {
-            //Reset Player
-            //only subtract lives once, even if multiple collisions occur. (From Cooper)
-            //since we move the player to their respawn once, we subtract lives once. Therefore, any multiple life losses don't happen.
-            if (transform.position != respawnPos)
-            {
-                lives--;
-            }
-            transform.position = respawnPos;
-            
             health = maxHealth;
+            gameObject.GetComponent<AudioSource>().PlayOneShot(PlayerDeathSound);
+            DeathScreen.SetActive(true);
+            Invoke("Respawn", 3f);
         }
         //enable use of kunai and shuriken when picking up
         if (collision.gameObject.CompareTag("Kunai"))
@@ -193,9 +193,17 @@ public class NEWPlayerLogic : MonoBehaviour
             collision.gameObject.transform.parent = gameObject.transform;
             gameObject.GetComponent<AudioSource>().PlayOneShot(keySound);
         }
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && DamgeCooldown <= 0)
         {
+            DamgeCooldown = 1.5f;
             health -= 15;
+        }
+
+        if (collision.gameObject.CompareTag("DragonFire") && DamgeCooldown <= 0)
+        {
+            DamgeCooldown = 4;
+            Subhealth(34);
+            StartCoroutine(ChangePlayerColor());
         }
     }
 
@@ -263,14 +271,16 @@ public class NEWPlayerLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DamgeCooldown -= Time.deltaTime;
         //Checks for respawn
         if (health <= 0)
         {
-            lives--;
-            transform.position = respawnPos;
             health = maxHealth;
+            gameObject.GetComponent<AudioSource>().PlayOneShot(PlayerDeathSound);
+            DeathScreen.SetActive(true);
+            Invoke("Respawn", 3f);
         }
-        if(Input.GetMouseButtonDown(1) && canUseMelee)
+        if (Input.GetMouseButtonDown(1) && canUseMelee)
         {
             if (EnergyChange(5, 1))
             {
@@ -307,10 +317,13 @@ public class NEWPlayerLogic : MonoBehaviour
         {
             if (canUseMelee)
             {
+                if (canUseMelee)
+                    gameObject.GetComponent<AudioSource>().PlayOneShot(SwordAttack);
                 canUseMelee = false;
                 Sword.SetActive(true);
                 playerAnim.SetTrigger("Sword");
                 Sword.GetComponent<Animator>().SetTrigger("Sword");
+                
             }
             else if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("SwordAttack"))
             {
@@ -326,5 +339,12 @@ public class NEWPlayerLogic : MonoBehaviour
             key.transform.localPosition = new Vector3(0, 1, 1);
 
         }
+    }
+
+    private void Respawn()
+    {
+        transform.position = respawnPos;
+        DeathScreen.SetActive(false);
+        lives--;
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
     //enemy health
     public int health = 100;
     private int temp;

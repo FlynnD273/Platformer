@@ -30,8 +30,12 @@ public class FBProjectileMotion : MonoBehaviour
     private Projectile projectile;
     //explosion when gameobject death
     public GameObject explosion;
-    
-    
+
+    public bool isEnemyProj;
+
+    [SerializeField] RangedEnemy rangedEnemy;
+    [SerializeField] DragonEnemy dragonEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +46,10 @@ public class FBProjectileMotion : MonoBehaviour
 
     void OnTriggerEnter2D (Collider2D collision)
     {
+        
         //if the projectile hits an enemy, deal damage to it and despawn projectile
-        Enemy myEnemy = collision.GetComponent<Enemy>();
+        MeleeEnemy myEnemy = collision.GetComponent<MeleeEnemy>();
+            
         if (myEnemy != null)
         {
             myEnemy.TakeDamage(damage);
@@ -63,7 +69,7 @@ public class FBProjectileMotion : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if(boolMini)
+            if (boolMini)
             {
                 Destroy(gameObject);
             }
@@ -74,6 +80,22 @@ public class FBProjectileMotion : MonoBehaviour
             crateDrops.TakeDamage(damage);
             Destroy(gameObject);
         }
+        if (myEnemy == null)
+            rangedEnemy = collision.GetComponent<RangedEnemy>();
+        if (rangedEnemy != null)
+        {
+            rangedEnemy.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+        if (rangedEnemy == null && rangedEnemy == null)
+            dragonEnemy = collision.GetComponent<DragonEnemy>();
+        if (dragonEnemy != null)
+        {
+            dragonEnemy.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+
+
     }
 
 

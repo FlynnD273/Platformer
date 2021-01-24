@@ -10,7 +10,7 @@ public class CrateDrops : MonoBehaviour
     public int health = 100;
 
     public int maxDrops;
-    public float spawnNumber;
+    private float spawnNumber;
 
     // Start is called before the first frame update
     void Start()

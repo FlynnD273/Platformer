@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 8
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.59284186, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -127,6 +127,9 @@ MonoBehaviour:
   myRB: {fileID: 5594173120019483616}
   explosion: {fileID: 4697140370886517889, guid: 0197bb17f39d89448a5d581ad1cf18c2,
     type: 3}
+  isEnemyProj: 0
+  rangedEnemy: {fileID: 0}
+  dragonEnemy: {fileID: 0}
 --- !u!50 &5594173120019483616
 Rigidbody2D:
   serializedVersion: 4

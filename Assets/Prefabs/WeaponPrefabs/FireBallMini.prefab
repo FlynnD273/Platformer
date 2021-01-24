@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7260996731256116273}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.44832, y: -2.0848303, z: -5.254656}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 8
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.59284186, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -127,6 +127,9 @@ MonoBehaviour:
   myRB: {fileID: -1282557719215935733}
   explosion: {fileID: 4697140370886517889, guid: 0197bb17f39d89448a5d581ad1cf18c2,
     type: 3}
+  isEnemyProj: 0
+  rangedEnemy: {fileID: 0}
+  dragonEnemy: {fileID: 0}
 --- !u!50 &-1282557719215935733
 Rigidbody2D:
   serializedVersion: 4

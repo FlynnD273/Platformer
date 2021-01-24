@@ -146,7 +146,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DjinnAttackTrigerred
+    m_ConditionEvent: DjinnAttackTriggered
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DjinnIsHurt
@@ -174,7 +174,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DjinnAttackTrigerred
+    m_ConditionEvent: DjinnAttackTriggered
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DjinnDeathTriggered
@@ -204,9 +204,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: DjinnIsHurt
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: DjinnIsIdle
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
   m_Solo: 0
@@ -230,10 +227,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DjinnAttackTrigerred
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: DjinnIsIdle
+    m_ConditionEvent: DjinnAttackTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -285,11 +279,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DjinnIsIdle
-    m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DjinnAttackTrigerred
+    m_ConditionEvent: DjinnAttackTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1562375716000566876}
@@ -324,9 +315,9 @@ AnimatorController:
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
+    m_DefaultBool: 1
     m_Controller: {fileID: 0}
-  - m_Name: DjinnAttackTrigerred
+  - m_Name: DjinnAttackTriggered
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -365,9 +356,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DjinnIsIdle
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DjinnDeathTriggered
     m_EventTreshold: 0
@@ -394,7 +382,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DjinnAttackTrigerred
+    m_ConditionEvent: DjinnAttackTriggered
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DjinnIsWalking
@@ -451,9 +439,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DjinnIsIdle
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DjinnIsWalking
     m_EventTreshold: 0
@@ -479,9 +464,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DjinnIsIdle
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DjinnIsHurt
     m_EventTreshold: 0
@@ -539,9 +521,6 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: DjinnIsWalking
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: DjinnIsIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -629,7 +608,7 @@ AnimatorStateTransition:
     m_ConditionEvent: DjinnIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DjinnAttackTrigerred
+    m_ConditionEvent: DjinnAttackTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1562375716000566876}
