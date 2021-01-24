@@ -88,9 +88,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsHurt
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DemonDeathTriggered
     m_EventTreshold: 0
@@ -145,9 +142,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DemonAttackTriggered
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DemonIsHurt
     m_EventTreshold: 0
@@ -204,9 +198,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: DemonIsHurt
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsIdle
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
   m_Solo: 0
@@ -231,9 +222,6 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: DemonAttackTriggered
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -285,9 +273,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DemonAttackTriggered
     m_EventTreshold: 0
@@ -365,9 +350,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DemonDeathTriggered
     m_EventTreshold: 0
@@ -451,9 +433,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DemonIsWalking
     m_EventTreshold: 0
@@ -479,9 +458,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsIdle
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DemonIsHurt
     m_EventTreshold: 0
@@ -539,9 +515,6 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: DemonIsWalking
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: DemonIsIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -625,9 +598,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DemonIsHurt
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DemonAttackTriggered
     m_EventTreshold: 0

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -49,8 +48,16 @@ public class MeleeEnemy : MonoBehaviour
     public float distance;
     private Transform target;
 
+    [SerializeField] bool hurting = false;
+
     [SerializeField] CapsuleCollider2D AttackCollider;
     [SerializeField] float timer;
+
+
+    public GameObject drop1;
+    public GameObject drop2;
+    public int maxDrops;
+    public float spawnNumber;
 
     void Start()
     {
@@ -80,13 +87,13 @@ public class MeleeEnemy : MonoBehaviour
         if (transform.position.x >= waypoint2.x)
         {
             dirRight = false;
-            Invoke("Flip", 0.00001f);
+            Flip();
         }
 
         if (transform.position.x <= waypoint1.x)
         {
             dirRight = true;
-            Invoke("Flip", 0.00001f);
+            Flip();
         }
 
 
@@ -97,20 +104,58 @@ public class MeleeEnemy : MonoBehaviour
             distance = Vector2.Distance(transform.position, player.transform.position);
         }
 
-        if (timer < attackCooldown)
+        if (!hurting)
         {
-            Idle();
+            if (timer < attackCooldown)
+            {
+                Idle();
+            }
+
+            else if (distance <= attackDistance)
+            {
+                Attack();
+                Invoke("ResetTimer", 1f);
+            }
+            else if (distance <= attackDistance)
+                Idle();
+            else
+                Walk();
         }
 
-        else if (distance <= attackDistance)
+        if (hitPoints <= 0)
         {
-            Attack();
-            Invoke("ResetTimer", 1f);
+            Death();
         }
-        else if (distance <= attackDistance)
-            Idle();
-        else
-            Walk();
+    }
+
+    private void Death()
+    {
+        AttackCollider.enabled = false;
+        enemyAnim.SetBool(walking, false);
+        enemyAnim.SetBool(hurt, false);
+        enemyAnim.SetBool(attack, false);
+
+        hurting = true;
+
+        enemyAnim.SetBool(death, true);
+
+        spawnNumber = Random.Range(1, maxDrops);
+        for (int i = 0; i < spawnNumber; i++)
+        {
+            Instantiate(drop1, transform.position, transform.rotation);
+        }
+        spawnNumber = Random.Range(1, maxDrops);
+        for (int i = 0; i < spawnNumber; i++)
+        {
+            Instantiate(drop2, transform.position, transform.rotation);
+        }
+
+        Invoke("DestroyEnemy", 1f);
+    }
+
+    private void DestroyEnemy()
+    {
+        Destroy(gameObject);
     }
 
     private void ResetTimer()
@@ -125,6 +170,8 @@ public class MeleeEnemy : MonoBehaviour
         enemyAnim.SetBool(walking, false);
         enemyAnim.SetBool(hurt, false);
         enemyAnim.SetBool(attack, false);
+
+        hurting = false;
     }
 
     private void Attack()
@@ -159,12 +206,14 @@ public class MeleeEnemy : MonoBehaviour
         transform.localScale = Scaler;
     }
 
-    public void takeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         hitPoints -= damage;
         enemyAnim.SetBool(attack, false);
         enemyAnim.SetBool(walking, false);
         enemyAnim.SetBool(hurt, true);
+
+        hurting = true;
 
         Invoke("Idle", 0.5f);
     }

@@ -30,7 +30,7 @@ public class ProjectileMotion : MonoBehaviour
     private Projectile projectile;
 
     [SerializeField] CrateDrops crateDrops;
-    [SerializeField] Enemy myEnemy;
+    [SerializeField] MeleeEnemy myEnemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +42,7 @@ public class ProjectileMotion : MonoBehaviour
     void OnTriggerEnter2D (Collider2D collision)
     {
         //if the projectile hits an enemy, deal damage to it and despawn projectile
-        myEnemy = collision.GetComponent<Enemy>();
+        myEnemy = collision.GetComponent<MeleeEnemy>();
        
         if (myEnemy != null)
         {
