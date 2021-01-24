@@ -193,7 +193,10 @@ public class NEWPlayerLogic : MonoBehaviour
             collision.gameObject.transform.parent = gameObject.transform;
             gameObject.GetComponent<AudioSource>().PlayOneShot(keySound);
         }
-
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            health -= 15;
+        }
     }
 
     public void FBregen()

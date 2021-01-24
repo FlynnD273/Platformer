@@ -1,27 +1,56 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MeleeEnemy : EnemyHandler
+
+public class MeleeEnemy : MonoBehaviour
 {
 
-    //variables
-    public int _moveSpeed;
-    public int _attackDamage;
-    public int _lifePoints;
-    public float _attackRadius;
-
+    public GameObject LeftWaypoint;
+    public GameObject RightWaypoint;
 
     public GameObject player;
-    //movement
-    public float _followRadius;
-    //end
+
     [SerializeField] Transform playerTransform;
     [SerializeField] Animator enemyAnim;
+    [SerializeField] Rigidbody2D myRB;
     SpriteRenderer enemySR;
+
+
+    [SerializeField] public int moveSpeed;
+    [SerializeField] public int attackDamage;
+    [SerializeField] public int hitPoints;
+    [SerializeField] public float attackDistance;
+    [SerializeField] public float attackCooldown;
+
+    public bool dirRight = true;
+
+    public string EnemyName;
+
+    private string idle;
+    private string walking;
+    private string attack;
+    private string death;
+    private string hurt;
+
+    private Vector3 waypoint1;
+    private Vector3 waypoint2;
+
+    private RaycastHit2D hit;
+
+    public LayerMask raycastMask;
+    public float rayCastLength;
+    public Transform rayCast;
+    public float distance;
+    private Transform target;
+
+    [SerializeField] CapsuleCollider2D AttackCollider;
+    [SerializeField] float timer;
 
     void Start()
     {
@@ -30,65 +59,118 @@ public class MeleeEnemy : EnemyHandler
         //enemy animation and sprite renderer 
         enemyAnim = gameObject.GetComponent<Animator>();
         enemySR = GetComponent<SpriteRenderer>();
-        //set the variables
-        setMoveSpeed(_moveSpeed);
-        setAttackDamage(_attackDamage);
-        setLifePoints(_lifePoints);
-        setAttackRadius(_attackRadius);
-        setFollowRadius(_followRadius);
+        myRB = GetComponent<Rigidbody2D>();
+
+        AttackCollider.enabled = false;
+
+        idle = EnemyName + "IsIdle";
+        walking = EnemyName + "IsWalking";
+        attack = EnemyName + "AttackTriggered";
+        death = EnemyName + "DeathTriggered";
+        hurt = EnemyName + "IsHurt";
+
+        waypoint1 = LeftWaypoint.transform.position;
+        waypoint2 = RightWaypoint.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (checkFollowRadius(playerTransform.position.x, transform.position.x))
+        timer += Time.deltaTime;
+        if (transform.position.x >= waypoint2.x)
         {
-            //if player in front of the enemies
-            if (playerTransform.position.x < transform.position.x)
-            {
-
-                if (checkAttackRadius(playerTransform.position.x, transform.position.x))
-                {
-                    //for attack animation
-                    enemyAnim.SetBool("AttackA", true);
-                }
-                else
-                {
-                    this.transform.position += new Vector3(-getMoveSpeed() * Time.deltaTime, 0f, 0f);
-                    //for attack animation
-                    enemyAnim.SetBool("AttackA", false);
-                    //walk
-                    enemyAnim.SetBool("Walking", true);
-                    enemySR.flipX = true;
-                }
-
-            }
-            //if player is behind enemies
-            else if (playerTransform.position.x > transform.position.x)
-            {
-                if (checkAttackRadius(playerTransform.position.x, transform.position.x))
-                {
-                    //for attack animation
-                    enemyAnim.SetBool("AttackA", true);
-                }
-                else
-                {
-                    this.transform.position += new Vector3(getMoveSpeed() * Time.deltaTime, 0f, 0f);
-                    //for attack animation
-                    enemyAnim.SetBool("AttackA", false);
-                    //walk
-                    enemyAnim.SetBool("Walking", true);
-                    enemySR.flipX = false;
-                }
-
-
-            }
+            dirRight = false;
+            Invoke("Flip", 0.00001f);
         }
+
+        if (transform.position.x <= waypoint1.x)
+        {
+            dirRight = true;
+            Invoke("Flip", 0.00001f);
+        }
+
+
+        hit = Physics2D.Raycast(rayCast.position, transform.right, rayCastLength, raycastMask);
+
+        if (hit.collider != null)
+        {
+            distance = Vector2.Distance(transform.position, player.transform.position);
+        }
+
+        if (timer < attackCooldown)
+        {
+            Idle();
+        }
+
+        else if (distance <= attackDistance)
+        {
+            Attack();
+            Invoke("ResetTimer", 1f);
+        }
+        else if (distance <= attackDistance)
+            Idle();
         else
-        {
-            enemyAnim.SetBool("Walking", false);
-        }
+            Walk();
+    }
 
+    private void ResetTimer()
+    {
+        timer = 0;
+    }
 
+    private void Idle()
+    {
+        
+        AttackCollider.enabled = false;
+        enemyAnim.SetBool(walking, false);
+        enemyAnim.SetBool(hurt, false);
+        enemyAnim.SetBool(attack, false);
+    }
+
+    private void Attack()
+    {
+        
+        AttackCollider.enabled = true;
+
+        enemyAnim.SetBool(walking, false);
+        
+        enemyAnim.SetBool(attack, true);
+        
+    }
+
+    void Walk()
+    {
+        if (dirRight)
+            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+        else
+            transform.Translate(-Vector2.right * moveSpeed * Time.deltaTime);
+
+        AttackCollider.enabled = false;
+        enemyAnim.SetBool(attack, false);
+        enemyAnim.SetBool(walking, true);
+
+    }
+
+    private void Flip()
+    {
+
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
+    }
+
+    public void takeDamage(int damage)
+    {
+        hitPoints -= damage;
+        enemyAnim.SetBool(attack, false);
+        enemyAnim.SetBool(walking, false);
+        enemyAnim.SetBool(hurt, true);
+
+        Invoke("Idle", 0.5f);
+    }
+
+    private void resetAnim()
+    {
+        Idle();
     }
 }
