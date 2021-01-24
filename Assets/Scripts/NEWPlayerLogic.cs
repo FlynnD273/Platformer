@@ -195,14 +195,15 @@ public class NEWPlayerLogic : MonoBehaviour
             collision.gameObject.transform.parent = gameObject.transform;
             gameObject.GetComponent<AudioSource>().PlayOneShot(keySound);
         }
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && DamgeCooldown <= 0)
         {
+            DamgeCooldown = 4;
             health -= 15;
         }
 
         if (collision.gameObject.CompareTag("DragonFire") && DamgeCooldown <= 0)
         {
-            DamgeCooldown = 2;
+            DamgeCooldown = 4;
             Subhealth(34);
             StartCoroutine(ChangePlayerColor());
         }
