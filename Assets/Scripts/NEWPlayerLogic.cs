@@ -54,6 +54,7 @@ public class NEWPlayerLogic : MonoBehaviour
 
     public AudioClip PlayerHurtSound; //sound for when player is hurt or takes damage
     public AudioClip PlayerDeathSound; //sound for player death
+    public AudioClip SwordAttack; 
     public static bool hasKey;
     public AudioClip keySound;
     public GameObject key;
@@ -316,10 +317,13 @@ public class NEWPlayerLogic : MonoBehaviour
         {
             if (canUseMelee)
             {
+                if (canUseMelee)
+                    gameObject.GetComponent<AudioSource>().PlayOneShot(SwordAttack);
                 canUseMelee = false;
                 Sword.SetActive(true);
                 playerAnim.SetTrigger("Sword");
                 Sword.GetComponent<Animator>().SetTrigger("Sword");
+                
             }
             else if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("SwordAttack"))
             {

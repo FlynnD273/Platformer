@@ -11,6 +11,8 @@ public class MeleeDamage : MonoBehaviour
 {
     public static Animator swordAnimator;
     public int damage = 15;
+    private RangedEnemy rangedEnemy;
+    private DragonEnemy dragonEnemy;
 
     private void Start()
     {
@@ -19,10 +21,24 @@ public class MeleeDamage : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         //if the projectile hits an enemy, deal damage to it and despawn projectile
-        Enemy myEnemy = collision.GetComponent<Enemy>();
+        MeleeEnemy myEnemy = collision.GetComponent<MeleeEnemy>();
         if (myEnemy != null)
         {
             myEnemy.TakeDamage(damage);
+        }
+        if (myEnemy == null)
+            rangedEnemy = collision.GetComponent<RangedEnemy>();
+        if (rangedEnemy != null)
+        {
+            rangedEnemy.TakeDamage(damage);
+            
+        }
+        if (rangedEnemy == null && rangedEnemy == null)
+            dragonEnemy = collision.GetComponent<DragonEnemy>();
+        if (dragonEnemy != null)
+        {
+            dragonEnemy.TakeDamage(damage);
+            
         }
         CrateDrops crateDrops;
         crateDrops = collision.GetComponent<CrateDrops>();
