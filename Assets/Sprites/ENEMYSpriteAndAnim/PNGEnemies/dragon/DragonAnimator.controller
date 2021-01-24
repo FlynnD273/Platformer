@@ -146,7 +146,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DragonAttackTrigerred
+    m_ConditionEvent: DragonAttackTriggered
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DragonIsHurt
@@ -174,7 +174,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DragonAttackTrigerred
+    m_ConditionEvent: DragonAttackTriggered
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DragonDeathTriggered
@@ -204,9 +204,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: DragonIsHurt
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: DragonIsIdle
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
   m_Solo: 0
@@ -230,10 +227,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DragonAttackTrigerred
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: DragonIsIdle
+    m_ConditionEvent: DragonAttackTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -285,11 +279,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DragonIsIdle
-    m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DragonAttackTrigerred
+    m_ConditionEvent: DragonAttackTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1562375716000566876}
@@ -319,31 +310,31 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: DragonIsWalking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: DragonAttackTrigerred
+    m_Controller: {fileID: 0}
+  - m_Name: DragonAttackTriggered
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: DragonDeathTriggered
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: DragonIsHurt
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -365,9 +356,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DragonIsIdle
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DragonDeathTriggered
     m_EventTreshold: 0
@@ -394,7 +382,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: DragonAttackTrigerred
+    m_ConditionEvent: DragonAttackTriggered
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DragonIsWalking
@@ -451,9 +439,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DragonIsIdle
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DragonIsWalking
     m_EventTreshold: 0
@@ -479,9 +464,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DragonIsIdle
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DragonIsHurt
     m_EventTreshold: 0
@@ -539,9 +521,6 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: DragonIsWalking
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: DragonIsIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -629,7 +608,7 @@ AnimatorStateTransition:
     m_ConditionEvent: DragonIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: DragonAttackTrigerred
+    m_ConditionEvent: DragonAttackTriggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1562375716000566876}

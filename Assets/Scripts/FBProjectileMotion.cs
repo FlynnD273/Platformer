@@ -33,8 +33,9 @@ public class FBProjectileMotion : MonoBehaviour
 
     public bool isEnemyProj;
 
-    public RangedEnemy rangedEnemy;
-    
+    [SerializeField] RangedEnemy rangedEnemy;
+    [SerializeField] DragonEnemy dragonEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,8 +85,16 @@ public class FBProjectileMotion : MonoBehaviour
         if (rangedEnemy != null)
         {
             rangedEnemy.TakeDamage(damage);
+            Destroy(gameObject);
         }
-        
+        if (rangedEnemy == null && rangedEnemy == null)
+            dragonEnemy = collision.GetComponent<DragonEnemy>();
+        if (dragonEnemy != null)
+        {
+            dragonEnemy.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+
 
     }
 

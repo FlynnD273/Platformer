@@ -56,6 +56,7 @@ public class NEWPlayerLogic : MonoBehaviour
     public static bool hasKey;
     public AudioClip keySound;
     public GameObject key;
+    public  float DamgeCooldown;
 
     // Start is called before the first frame update
     void Start()
@@ -112,6 +113,7 @@ public class NEWPlayerLogic : MonoBehaviour
             
         }
     }
+
 
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -197,6 +199,13 @@ public class NEWPlayerLogic : MonoBehaviour
         {
             health -= 15;
         }
+
+        if (collision.gameObject.CompareTag("DragonFire") && DamgeCooldown <= 0)
+        {
+            DamgeCooldown = 2;
+            Subhealth(34);
+            StartCoroutine(ChangePlayerColor());
+        }
     }
 
     public void FBregen()
@@ -263,6 +272,7 @@ public class NEWPlayerLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DamgeCooldown -= Time.deltaTime;
         //Checks for respawn
         if (health <= 0)
         {
