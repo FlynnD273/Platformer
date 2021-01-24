@@ -61,7 +61,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: LizardsWalking
+    m_ConditionEvent: LizardIsWalking
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: LizardIsHurt
@@ -255,7 +255,7 @@ AnimatorStateTransition:
     m_ConditionEvent: LizardIsHurt
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: LizardsWalking
+    m_ConditionEvent: LizardIsWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6363243171472886369}
@@ -311,7 +311,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: LizardsWalking
+  - m_Name: LizardIsWalking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -385,7 +385,7 @@ AnimatorStateTransition:
     m_ConditionEvent: LizardAttackTriggered
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: LizardsWalking
+    m_ConditionEvent: LizardIsWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6363243171472886369}
@@ -440,7 +440,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: LizardsWalking
+    m_ConditionEvent: LizardIsWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6363243171472886369}
@@ -520,7 +520,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: LizardsWalking
+    m_ConditionEvent: LizardIsWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4240070109899697072}
@@ -663,7 +663,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: LizardsWalking
+    m_ConditionEvent: LizardIsWalking
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: LizardDeathTriggered
