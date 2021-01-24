@@ -92,7 +92,7 @@ public class NEWPlayerLogic : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("FireballEnemy"))
         {
-            Subhealth(60);
+            Subhealth(40);
             StartCoroutine(ChangePlayerColor());
         }
         if (collision.gameObject.CompareTag("KunaiEnemy"))
