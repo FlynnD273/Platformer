@@ -167,8 +167,8 @@ public class DragonEnemy : MonoBehaviour
         hurting = true;
 
         //make sure they ren't already dead
-        if (!dead)
-        {
+        //if (!dead)
+        //{
             //spawn drops
             gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyDeath);
             print("spawned");
@@ -182,7 +182,7 @@ public class DragonEnemy : MonoBehaviour
             {
                 Instantiate(drop2, transform.position, transform.rotation);
             }
-        }
+        //}
         //enemy becomes dead
         dead = true;
         //destory enemy after animation is done

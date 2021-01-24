@@ -169,11 +169,11 @@ public class RangedEnemy : MonoBehaviour
         hurting = true;
 
         //make sure they ren't already dead
-        if (!dead)
-        {
+        //if (!dead)
+        //{
             //spawn drops
             gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyDeath);
-            print("spawned");
+            
             spawnNumber = Random.Range(1, maxDrops);
             for (int i = 0; i < spawnNumber; i++)
             {
@@ -184,7 +184,7 @@ public class RangedEnemy : MonoBehaviour
             {
                 Instantiate(drop2, transform.position, transform.rotation);
             }
-        }
+        //}
         //enemy becomes dead
         dead = true;
         //destory enemy after animation is done
