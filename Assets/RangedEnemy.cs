@@ -43,13 +43,13 @@ public class RangedEnemy : MonoBehaviour
     private Vector3 waypoint1;
     private Vector3 waypoint2;
 
+    public Vector2 Distance;
     private RaycastHit2D hit;
 
     public LayerMask raycastMask;
     public float rayCastLength;
     public Transform rayCast;
     public float distance;
-    private Transform target;
 
     [SerializeField] bool hurting = false;
 
@@ -73,6 +73,9 @@ public class RangedEnemy : MonoBehaviour
     public int temp;
     private Quaternion originalPos;
     private bool dead;
+
+    public AudioClip EnemyHurt;
+    public AudioClip EnemyAttack;
 
     void Start()
     {
@@ -111,6 +114,7 @@ public class RangedEnemy : MonoBehaviour
             Flip();
         }
 
+        Distance = transform.position - player.transform.position;
 
         hit = Physics2D.Raycast(rayCast.position, transform.right, rayCastLength, raycastMask);
 
@@ -128,6 +132,10 @@ public class RangedEnemy : MonoBehaviour
 
             else if (distance <= attackDistance)
             {
+                if (Mathf.Sign(Distance.x) == Mathf.Sign(transform.localScale.x))
+                {
+                    Flip();
+                }
                 Attack();
                 Invoke("ResetTimer", 1f);
             }
@@ -206,6 +214,7 @@ public class RangedEnemy : MonoBehaviour
 
         if (hasNotFired)
         {
+            gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyAttack);
             difference = player.transform.position - transform.position;
             rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, rotz + offset);
@@ -268,6 +277,9 @@ public class RangedEnemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (!hurting)
+            gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyHurt);
+
         hitPoints -= damage;
         enemyAnim.SetBool(attack, false);
         enemyAnim.SetBool(walking, false);

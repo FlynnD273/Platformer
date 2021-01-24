@@ -40,6 +40,7 @@ public class DragonEnemy : MonoBehaviour
     private Vector3 waypoint1;
     private Vector3 waypoint2;
 
+    public Vector2 Distance;
     private RaycastHit2D hit;
 
     public LayerMask raycastMask;
@@ -62,6 +63,10 @@ public class DragonEnemy : MonoBehaviour
 
     
     private bool dead;
+
+    public AudioClip EnemyHurt;
+    public AudioClip EnemyAttack;
+    private bool hasAttacked;
 
     void Start()
     {
@@ -98,6 +103,7 @@ public class DragonEnemy : MonoBehaviour
             Flip();
         }
 
+        Distance = transform.position - player.transform.position;
 
         hit = Physics2D.Raycast(rayCast.position, transform.right, rayCastLength, raycastMask);
 
@@ -115,6 +121,12 @@ public class DragonEnemy : MonoBehaviour
 
             else if (distance <= attackDistance)
             {
+                if (Mathf.Sign(Distance.x) == Mathf.Sign(transform.localScale.x))
+                {
+                    Flip();
+                }
+                if (!hasAttacked)
+                    gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyAttack);
                 Attack();
                 Invoke("ResetTimer", 1f);
             }
@@ -174,6 +186,7 @@ public class DragonEnemy : MonoBehaviour
     private void ResetTimer()
     {
         timer = 0;
+        hasAttacked = false;
     }
 
     private void Idle()
@@ -188,7 +201,7 @@ public class DragonEnemy : MonoBehaviour
 
     private void Attack()
     {
-
+       
         Invoke("FireballOn", 0.5f);
 
         enemyAnim.SetBool(walking, false);
@@ -196,6 +209,8 @@ public class DragonEnemy : MonoBehaviour
         enemyAnim.SetBool(attack, true);
 
         Invoke("FireballOff", 4.5f);
+
+        hasAttacked = true;
     }
 
     private void FireballOn()
@@ -232,6 +247,8 @@ public class DragonEnemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (!hurting)
+            gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyHurt);
         hitPoints -= damage;
         enemyAnim.SetBool(attack, false);
         enemyAnim.SetBool(walking, false);

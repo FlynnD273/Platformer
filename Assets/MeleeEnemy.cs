@@ -40,10 +40,8 @@ public class MeleeEnemy : MonoBehaviour
     private Vector3 waypoint1;
     private Vector3 waypoint2;
 
-    private RaycastHit2D hit;
 
     public Vector2 Distance;
-    private Transform target;
 
     [SerializeField] bool hurting = false;
 
@@ -55,6 +53,12 @@ public class MeleeEnemy : MonoBehaviour
     public GameObject drop2;
     public int maxDrops;
     public float spawnNumber;
+
+    public AudioClip EnemyHurt;
+    public AudioClip EnemyAttack;
+    public AudioClip EnemyDeath;
+    private bool dead;
+    private bool hasAttacked;
 
     void Start()
     {
@@ -105,6 +109,8 @@ public class MeleeEnemy : MonoBehaviour
                 {
                     Flip();
                 }
+                if (!hasAttacked)
+                    gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyAttack);
                 Attack();
                 Invoke("ResetTimer", 1f);
             }
@@ -125,21 +131,28 @@ public class MeleeEnemy : MonoBehaviour
         enemyAnim.SetBool(hurt, false);
         enemyAnim.SetBool(attack, false);
 
-        hurting = true;
+
 
         enemyAnim.SetBool(death, true);
 
-        spawnNumber = Random.Range(1, maxDrops);
-        for (int i = 0; i < spawnNumber; i++)
-        {
-            Instantiate(drop1, transform.position, transform.rotation);
-        }
-        spawnNumber = Random.Range(1, maxDrops);
-        for (int i = 0; i < spawnNumber; i++)
-        {
-            Instantiate(drop2, transform.position, transform.rotation);
-        }
+        hurting = true;
 
+        if (!dead)
+        {
+            gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyDeath);
+            print("spawned");
+            spawnNumber = Random.Range(1, maxDrops);
+            for (int i = 0; i < spawnNumber; i++)
+            {
+                Instantiate(drop1, transform.position, transform.rotation);
+            }
+            spawnNumber = Random.Range(1, maxDrops);
+            for (int i = 0; i < spawnNumber; i++)
+            {
+                Instantiate(drop2, transform.position, transform.rotation);
+            }
+        }
+        dead = true;
         Invoke("DestroyEnemy", 1f);
     }
 
@@ -151,6 +164,7 @@ public class MeleeEnemy : MonoBehaviour
     private void ResetTimer()
     {
         timer = 0;
+        hasAttacked = false;
     }
 
     private void Idle()
@@ -166,7 +180,7 @@ public class MeleeEnemy : MonoBehaviour
 
     private void Attack()
     {
-        
+        hasAttacked = true;
         AttackCollider.enabled = true;
 
         enemyAnim.SetBool(walking, false);
@@ -195,6 +209,8 @@ public class MeleeEnemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (!hurting)
+            gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyHurt);
         hitPoints -= damage;
         enemyAnim.SetBool(attack, false);
         enemyAnim.SetBool(walking, false);

@@ -81,7 +81,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &656458869355489055
 Transform:
   m_ObjectHideFlags: 0
@@ -192,6 +192,7 @@ MonoBehaviour:
   attackCooldown: 1
   dirRight: 1
   EnemyName: Djinn
+  Distance: {x: 0, y: 0}
   raycastMask:
     serializedVersion: 2
     m_Bits: 4294967295
