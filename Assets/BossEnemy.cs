@@ -105,6 +105,11 @@ public class BossEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //die if health hits 0
+        if (hitPoints <= 0)
+        {
+            Death();
+        }
         //update timer
         timer += Time.deltaTime;
         bossHealthbar.value = hitPoints;
@@ -165,11 +170,7 @@ public class BossEnemy : MonoBehaviour
             Walk();
         
 
-        //die if health hits 0
-        if (hitPoints <= 0)
-        {
-            Death();
-        }
+        
     }
 
 
@@ -239,10 +240,7 @@ public class BossEnemy : MonoBehaviour
 
         //disable all other animations
         enemyAnim.SetBool(walking, false);
-        enemyAnim.SetBool(hurt, false);
         enemyAnim.SetBool(attack, false);
-        //start death animation
-        enemyAnim.SetBool(death, true);
 
         //hurt enemy
         hurting = true;
