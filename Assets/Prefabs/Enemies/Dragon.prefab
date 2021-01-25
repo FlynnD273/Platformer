@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3176010524980008103}
   m_Layer: 10
   m_Name: Fire
-  m_TagString: FireballEnemy
+  m_TagString: DragonFire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539846550134453598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.998, y: -0.435, z: -1.026242}
+  m_LocalPosition: {x: 1.487, y: -0.544, z: -1.026242}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 8113398188082769866}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 8
+  m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: e5ff04476145b4b21b99308644b1b43d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -112,7 +112,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 8540171064391200483}
   - component: {fileID: 4590418127920880406}
   - component: {fileID: 4590418127920880401}
-  - component: {fileID: 4590418127920880403}
   - component: {fileID: 4590418127920880400}
   - component: {fileID: 1733091337}
   m_Layer: 9
@@ -322,22 +321,6 @@ PolygonCollider2D:
       - {x: 0.359375, y: -0.140625}
       - {x: 0.34375, y: -0.140625}
       - {x: 0.3125, y: -0.171875}
---- !u!70 &4590418127920880403
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4590418127920880402}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.1, y: 0.1}
-  m_Direction: 0
 --- !u!114 &4590418127920880400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,6 +343,7 @@ MonoBehaviour:
   attackDistance: 6
   attackCooldown: 1
   fireblast: {fileID: 539846550134453598}
+  dropItemsOnDeath: 1
   drop1: {fileID: 9031457613526283657, guid: 37beb4771497c774f86705ec37daf562, type: 3}
   drop2: {fileID: 1278394888584079965, guid: 1e093557e3cb2f649bb6f8e33894d881, type: 3}
   maxDrops: 6
@@ -487,7 +471,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7368646258702529842}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.04, y: -0.92, z: -5.254656}
+  m_LocalPosition: {x: 1.027, y: -1.016, z: -5.254656}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 8113398188082769866}
@@ -517,7 +501,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7368646259406847639}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.48, y: -0.89, z: -5.254656}
+  m_LocalPosition: {x: -2.073, y: -0.984, z: -5.254656}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 8113398188082769866}
