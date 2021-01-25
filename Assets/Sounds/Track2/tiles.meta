@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Sounds/Track2/tiles.meta
 guid: 97f8ed1c003653e4082919dd4f8a1668
+=======
+guid: 6d684c96a1a8640f78c5fa95a2901c36
+>>>>>>> 354f4069d2d791f84a073048b888fa6a557c3740:Assets/Tiles/BlenderTilemap.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
