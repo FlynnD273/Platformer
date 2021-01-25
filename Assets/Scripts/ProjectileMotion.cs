@@ -33,6 +33,7 @@ public class ProjectileMotion : MonoBehaviour
     [SerializeField] MeleeEnemy meleeEnemy;
     [SerializeField] RangedEnemy rangedEnemy;
     [SerializeField] DragonEnemy dragonEnemy;
+    [SerializeField] BossEnemy bossEnemy;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +67,13 @@ public class ProjectileMotion : MonoBehaviour
             if (dragonEnemy != null)
             {
                 dragonEnemy.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+            if (dragonEnemy == null && rangedEnemy == null)
+                bossEnemy = collision.GetComponent<BossEnemy>();
+            if (bossEnemy != null)
+            {
+                bossEnemy.TakeDamage(damage);
                 Destroy(gameObject);
             }
             crateDrops = collision.GetComponent<CrateDrops>();
