@@ -116,6 +116,12 @@ public class NEWPlayerLogic : MonoBehaviour
             StartCoroutine(ChangePlayerColor());
             
         }
+
+        //kill test collision
+        if(collision.gameObject.name == "KillTest")
+        {
+            gameManager.SendToLoseLevel();
+        }
     }
 
 
@@ -138,6 +144,12 @@ public class NEWPlayerLogic : MonoBehaviour
             {
                 SceneManager.LoadScene(LD.NextLevel);
             }
+        }
+
+        //kill test collision
+        if (collision.gameObject.name == "KillTest")
+        {
+            gameManager.SendToLoseLevel();
         }
     }
 
