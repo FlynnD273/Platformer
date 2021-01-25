@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class FullscreenSprite : MonoBehaviour
 {
-    private void Update()
+    private Camera cam;
+    private void Start()
+    {
+        cam = Camera.main;
+    }
+    private void LateUpdate()
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
-        float cameraHeight = Camera.main.orthographicSize * 2;
-        Vector2 cameraSize = new Vector2(Camera.main.aspect * cameraHeight, cameraHeight);
+        float cameraHeight = cam.orthographicSize * 2;
+        Vector2 cameraSize = new Vector2(cam.aspect * cameraHeight, cameraHeight);
         Vector3 spriteSize = spriteRenderer.sprite.bounds.size;
 
         Vector2 scale = new Vector2(1, 1);
@@ -22,6 +27,9 @@ public class FullscreenSprite : MonoBehaviour
             scale *= cameraSize.y / spriteSize.y;
         }
 
-        transform.localScale = scale;
+        transform.localScale = scale * 1.5f;
+
+        transform.position = cam.transform.position / -5;
+        transform.localPosition = new Vector3(Mathf.Max(Mathf.Min(transform.position.x, cameraSize.x / 4), cameraSize.x / -4), Mathf.Max(Mathf.Min(transform.position.y, cameraSize.y / 4), cameraSize.y / -4), 50);// + cam.transform.position;
     }
 }
