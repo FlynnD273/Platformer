@@ -19,14 +19,19 @@ public class BackgroundScrollerScript : MonoBehaviour
 
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         isTouchingWall = player.GetComponent<CooperPlayerController>().isTouchingWall;
 
         Debug.Log(Input.GetAxis("Horizontal"));
-        if ((Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Horizontal") < 0f) && !isTouchingWall) 
+        if (Input.GetAxis("Horizontal") > 0f && !isTouchingWall)
         {
             material.mainTextureOffset += offset * Time.deltaTime;
+        }
+
+        if (Input.GetAxis("Horizontal") < 0f && !isTouchingWall)
+        {
+            material.mainTextureOffset -= offset * Time.deltaTime;
         }
         zero = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0);
         transform.position = zero;
