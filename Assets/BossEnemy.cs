@@ -249,7 +249,8 @@ public class BossEnemy : MonoBehaviour
         if (!dead)
             gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyDeath);
 
-
+        //dasable healthbar
+        bossHealthbarParent.SetActive(false);
         //enemy becomes dead
 
         if (!dead)
