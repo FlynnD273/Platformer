@@ -1,6 +1,7 @@
 ﻿//Cooper Spring, 1/6/2021, Script to control a simple moving platform
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 public class MovingPlatform : MonoBehaviour
@@ -52,6 +53,15 @@ public class MovingPlatform : MonoBehaviour
     [Tooltip("Should the platform be one-way? Needs to be enabled if using fallthrough.")]
     public bool oneWay = false;
 
+    [Tooltip("Should the platform return to original position if the player leaves it? Works best if the platform waits for player." +
+        " Only should be used in cases where the platform needs to return if the player dies.")]
+    public bool returnIfPlayerGone = false;
+
+    [Tooltip("How long should we wait for the player to be off the platform?")]
+    public float playerGoneTimerLength = 0f;
+
+    private Stopwatch playerGoneTimer;
+
     
 
     //Effector for fallthrough
@@ -59,6 +69,8 @@ public class MovingPlatform : MonoBehaviour
 
     private void Start()
     {
+        playerGoneTimer = new Stopwatch();
+
         startingPosx = transform.position.x;
         startingPosy = transform.position.y;
         effector = gameObject.GetComponent<PlatformEffector2D>();
@@ -71,7 +83,7 @@ public class MovingPlatform : MonoBehaviour
 
         if(fallThrough && !oneWay)
         {
-            Debug.Log("Fallthrough will not work without oneWay turned on.");
+            UnityEngine.Debug.Log("Fallthrough will not work without oneWay turned on.");
         }
     }
     
@@ -100,6 +112,14 @@ public class MovingPlatform : MonoBehaviour
         if (fallThrough)
         {
             AllowFallThrough();
+        }
+
+        if(Freeze && returnIfPlayerGone && playerGoneTimer.ElapsedMilliseconds > (playerGoneTimerLength * 1000))
+        {
+            Freeze = false;
+            waiting = true;
+            gameObject.transform.position = new Vector2(startingPosx, startingPosy);
+            playerGoneTimer.Reset();
         }
     }
 
@@ -226,6 +246,13 @@ public class MovingPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.transform.SetParent(null);
+            //Only start the timer to reset the platform if the platform isn't already frozen. 
+            //This fixes situations where you only want the platform to reset if the player has to respawn and get on it again.
+            if (!Freeze)
+            {
+                playerGoneTimer.Start();
+            }
         }
     }
+
 }

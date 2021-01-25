@@ -27,7 +27,7 @@ public class RangedEnemy : MonoBehaviour
     public GameObject RightWaypoint; //farthest right enemy will patrol
 
     [Header("Player")]
-    public GameObject player; //the player in the scene
+    private GameObject player; //the player in the scene
 
     [Header("Animator")]
     [SerializeField] Animator enemyAnim; //animator component of enemy
