@@ -330,12 +330,13 @@ public class NEWPlayerLogic : MonoBehaviour
             if (canUseMelee)
             {
                 if (canUseMelee)
+                {
                     gameObject.GetComponent<AudioSource>().PlayOneShot(SwordAttack);
-                canUseMelee = false;
-                Sword.SetActive(true);
-                playerAnim.SetTrigger("Sword");
-                Sword.GetComponent<Animator>().SetTrigger("Sword");
-                
+                    canUseMelee = false;
+                    Sword.SetActive(true);
+                    playerAnim.SetTrigger("Sword");
+                    Sword.GetComponent<Animator>().SetTrigger("Sword");
+                }
             }
             else if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("SwordAttack"))
             {
