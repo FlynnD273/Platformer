@@ -2,7 +2,7 @@
 ///Name: Thomas Allen
 ///Date: 1/24/21
 ///Desc: A boss with rnaged an melee states
-///Thanks to Flynn for making the flipping work properly
+///Thanks to Flynn for making the flipping work properly, adn thanks to Brakeys for the dissolve effect
 ////////////////////
 
 
@@ -58,6 +58,7 @@ public class BossEnemy : MonoBehaviour
     [SerializeField] Slider bossHealthbar;
     [SerializeField] GameObject bossHealthbarParent;
 
+    
     private bool dirRight = true; //wether or not the enemy is moving right
     //strings for animator bools
     private string idle;
@@ -82,6 +83,11 @@ public class BossEnemy : MonoBehaviour
     private int temp;
     private Quaternion originalPos; //oroginal position before firing
 
+    Material material;
+
+    bool isDissolving = false;
+    float fade = 1f;
+
     void Start()
     {
         //get the animator component
@@ -100,6 +106,9 @@ public class BossEnemy : MonoBehaviour
         waypoint2 = RightWaypoint.transform.position;
 
         bossHealthbarParent.SetActive(false); //disabled by default
+
+        // Get a reference to the material
+        material = GetComponent<SpriteRenderer>().material;
     }
 
     // Update is called once per frame
@@ -168,9 +177,21 @@ public class BossEnemy : MonoBehaviour
         //move if cannot take other actions
         else
             Walk();
-        
 
-        
+        if (isDissolving)
+        {
+            fade -= Time.deltaTime;
+
+            if (fade <= 0f)
+            {
+                fade = 0f;
+                isDissolving = false;
+            }
+
+            // Set the property
+            material.SetFloat("_Fade", fade);
+        }
+
     }
 
 
@@ -237,7 +258,8 @@ public class BossEnemy : MonoBehaviour
     //called when enemy has no health
     private void Death()
     {
-
+        //enable dissolve effect
+        isDissolving = true;
         //disable all other animations
         enemyAnim.SetBool(walking, false);
         enemyAnim.SetBool(attack, false);
@@ -255,7 +277,7 @@ public class BossEnemy : MonoBehaviour
 
         if (!dead)
             //destory enemy after animation is done
-            Invoke("DestroyEnemy", 1f);
+            Invoke("DestroyEnemy", 2f);
         dead = true;
     }
 
