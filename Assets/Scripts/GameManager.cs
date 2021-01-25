@@ -1,5 +1,5 @@
 ﻿/********************************
- * Author: Flynn Duniho
+ * Author: Flynn Duniho and additions from Thomas Allen
  * Date: 12/18/2020
  * Purpose: Manages scene loading and levels
 ********************************/
@@ -134,5 +134,15 @@ public class GameManager : MonoBehaviour
     public void SendToLoseLevel()
     {
         SceneManager.LoadScene("LoseScene");
+    }
+
+    public void CreditSceneLoad()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void MainMenuLoad()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
