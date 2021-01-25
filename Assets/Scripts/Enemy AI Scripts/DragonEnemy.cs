@@ -44,6 +44,7 @@ public class DragonEnemy : MonoBehaviour
     [SerializeField] public GameObject fireblast;
 
     [Header("Weapons to Drop on Death")]
+    [SerializeField] bool dropItemsOnDeath; //wther or not enemy drops items on death
     //weapons to drop
     public GameObject drop1;
     public GameObject drop2;
@@ -78,7 +79,8 @@ public class DragonEnemy : MonoBehaviour
         enemyAnim = gameObject.GetComponent<Animator>();
         //diable fire attack
         fireblast.SetActive(false);
-
+        //player
+        player = GameObject.FindGameObjectWithTag("Player");
         //set animator bool strings depending on the name of the enemy
         idle = EnemyName + "IsIdle";
         walking = EnemyName + "IsWalking";
@@ -174,18 +176,21 @@ public class DragonEnemy : MonoBehaviour
     }
     private void DestroyEnemy()
     {
-        //spawn drops
-        gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyDeath);
-        print("spawned");
-        spawnNumber = Random.Range(1, maxDrops);
-        for (int i = 0; i < spawnNumber; i++)
+        if (dropItemsOnDeath)
         {
-            Instantiate(drop1, transform.position, transform.rotation);
-        }
-        spawnNumber = Random.Range(1, maxDrops);
-        for (int i = 0; i < spawnNumber; i++)
-        {
-            Instantiate(drop2, transform.position, transform.rotation);
+            //spawn drops
+            gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyDeath);
+            print("spawned");
+            spawnNumber = Random.Range(1, maxDrops);
+            for (int i = 0; i < spawnNumber; i++)
+            {
+                Instantiate(drop1, transform.position, transform.rotation);
+            }
+            spawnNumber = Random.Range(1, maxDrops);
+            for (int i = 0; i < spawnNumber; i++)
+            {
+                Instantiate(drop2, transform.position, transform.rotation);
+            }
         }
         Destroy(gameObject);
     }

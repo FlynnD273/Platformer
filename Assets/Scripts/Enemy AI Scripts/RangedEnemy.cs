@@ -44,6 +44,7 @@ public class RangedEnemy : MonoBehaviour
     [SerializeField] GameObject projectile; //projectile to fire
 
     [Header("Weapons to Drop on Death")]
+    [SerializeField] bool dropItemsOnDeath; //wther or not enemy drops items on death
     //weapons to drop
     public GameObject drop1;
     public GameObject drop2;
@@ -76,6 +77,7 @@ public class RangedEnemy : MonoBehaviour
     private float rotz; //rotation to fire
     private int temp; 
     private Quaternion originalPos; //oroginal position before firing
+    
 
 
     void Start()
@@ -84,7 +86,8 @@ public class RangedEnemy : MonoBehaviour
         enemyAnim = gameObject.GetComponent<Animator>();
         //disable attack collider
         AttackCollider.enabled = false;
-
+        //player
+        player = GameObject.FindGameObjectWithTag("Player");
         //set animator bool strings depending on the name of the enemy
         idle = EnemyName + "IsIdle";
         walking = EnemyName + "IsWalking";
@@ -176,17 +179,20 @@ public class RangedEnemy : MonoBehaviour
     private void DestroyEnemy()
     {
         //spawn drops
-        gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyDeath);
+        if (dropItemsOnDeath)
+        {
+            gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyDeath);
 
-        spawnNumber = Random.Range(1, maxDrops);
-        for (int i = 0; i < spawnNumber; i++)
-        {
-            Instantiate(drop1, transform.position, transform.rotation);
-        }
-        spawnNumber = Random.Range(1, maxDrops);
-        for (int i = 0; i < spawnNumber; i++)
-        {
-            Instantiate(drop2, transform.position, transform.rotation);
+            spawnNumber = Random.Range(1, maxDrops);
+            for (int i = 0; i < spawnNumber; i++)
+            {
+                Instantiate(drop1, transform.position, transform.rotation);
+            }
+            spawnNumber = Random.Range(1, maxDrops);
+            for (int i = 0; i < spawnNumber; i++)
+            {
+                Instantiate(drop2, transform.position, transform.rotation);
+            }
         }
         //destroy enemy
         Destroy(gameObject);

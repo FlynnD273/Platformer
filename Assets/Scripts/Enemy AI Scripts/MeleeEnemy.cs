@@ -42,6 +42,7 @@ public class MeleeEnemy : MonoBehaviour
     [SerializeField] CapsuleCollider2D AttackCollider; //turns on when attacking, off when not
 
     [Header("Weapons to Drop on Death")]
+    [SerializeField] bool dropItemsOnDeath; //wther or not enemy drops items on death
     //weapons to drop
     public GameObject drop1; 
     public GameObject drop2;
@@ -75,7 +76,8 @@ public class MeleeEnemy : MonoBehaviour
         enemyAnim = gameObject.GetComponent<Animator>();
         //disable attack collider
         AttackCollider.enabled = false;
-
+        //player
+        player = GameObject.FindGameObjectWithTag("Player");
         //set animator bool strings depending on the name of the enemy
         idle = EnemyName + "IsIdle";
         walking = EnemyName + "IsWalking";
@@ -173,16 +175,19 @@ public class MeleeEnemy : MonoBehaviour
 
     private void DestroyEnemy()
     {
-        //spawn drops
-        spawnNumber = Random.Range(1, maxDrops);
-        for (int i = 0; i < spawnNumber; i++)
+        if (dropItemsOnDeath)
         {
-            Instantiate(drop1, transform.position, transform.rotation);
-        }
-        spawnNumber = Random.Range(1, maxDrops);
-        for (int i = 0; i < spawnNumber; i++)
-        {
-            Instantiate(drop2, transform.position, transform.rotation);
+            //spawn drops
+            spawnNumber = Random.Range(1, maxDrops);
+            for (int i = 0; i < spawnNumber; i++)
+            {
+                Instantiate(drop1, transform.position, transform.rotation);
+            }
+            spawnNumber = Random.Range(1, maxDrops);
+            for (int i = 0; i < spawnNumber; i++)
+            {
+                Instantiate(drop2, transform.position, transform.rotation);
+            }
         }
         Destroy(gameObject);
     }
