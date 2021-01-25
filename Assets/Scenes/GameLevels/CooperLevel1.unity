@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 5
-    NearClipPlane: 0.01
+    NearClipPlane: 1
     FarClipPlane: 250
     Dutch: 0
     LensShift: {x: 0, y: 0}
@@ -720,6 +720,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: cursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337305290693064177, guid: 8ef4fcc872d5214458f6e7d413b0b610,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2337305290693064179, guid: 8ef4fcc872d5214458f6e7d413b0b610,
         type: 3}
@@ -33911,14 +33916,44 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 40127031, guid: 39504ef80e584477f9edc638510b9ce0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 40127031, guid: 39504ef80e584477f9edc638510b9ce0, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 40127031, guid: 39504ef80e584477f9edc638510b9ce0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 40127031, guid: 39504ef80e584477f9edc638510b9ce0, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1089053261
+      objectReference: {fileID: 0}
+    - target: {fileID: 40127031, guid: 39504ef80e584477f9edc638510b9ce0, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1513268968, guid: 39504ef80e584477f9edc638510b9ce0, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 8923c5dcbe899a143b38f3973bb74afd, type: 2}
+      objectReference: {fileID: 9100000, guid: f2992ade035a8a341b4b96df7a0aeef2, type: 2}
     - target: {fileID: 2011823935, guid: 39504ef80e584477f9edc638510b9ce0, type: 3}
       propertyPath: cursor
       value: 
       objectReference: {fileID: 400050171}
+    - target: {fileID: 160470263020817021, guid: 39504ef80e584477f9edc638510b9ce0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.445
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009786579980632800, guid: 39504ef80e584477f9edc638510b9ce0,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 2009786579980632801, guid: 39504ef80e584477f9edc638510b9ce0,
         type: 3}
       propertyPath: m_Controller
@@ -34017,6 +34052,11 @@ PrefabInstance:
     - target: {fileID: 2009786581153239853, guid: 39504ef80e584477f9edc638510b9ce0,
         type: 3}
       propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6310929744756812333, guid: 39504ef80e584477f9edc638510b9ce0,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -34410,7 +34450,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: 1
   far clip plane: 250
   field of view: 40
   orthographic: 1
