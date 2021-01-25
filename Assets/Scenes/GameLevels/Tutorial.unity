@@ -6303,7 +6303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858012421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.880335, y: 6.7800026, z: -11}
+  m_LocalPosition: {x: 7.63708, y: 6.777511, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6986,6 +6986,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1056661869 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1686271079, guid: 8f78fe175f757a34eb138393109239e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 749107860}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1069857607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11017,6 +11023,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2009786579980632810, guid: 39504ef80e584477f9edc638510b9ce0,
+        type: 3}
+      propertyPath: DeathScreen
+      value: 
+      objectReference: {fileID: 1056661869}
     - target: {fileID: 2009786579980632811, guid: 39504ef80e584477f9edc638510b9ce0,
         type: 3}
       propertyPath: jumpForce

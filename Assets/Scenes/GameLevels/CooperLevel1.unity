@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -311,6 +311,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1686271079, guid: 8f78fe175f757a34eb138393109239e8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1360361725314865031, guid: 8f78fe175f757a34eb138393109239e8,
         type: 3}
       propertyPath: m_IsActive
@@ -1664,6 +1668,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1002615840 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1686271079, guid: 8f78fe175f757a34eb138393109239e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 53412442}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1121890002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30184,6 +30194,11 @@ PrefabInstance:
       propertyPath: PlayerHurtSound
       value: 
       objectReference: {fileID: 8300000, guid: 2bce5f26c6fa1834dbaca896d4616a2a, type: 3}
+    - target: {fileID: 2009786579980632810, guid: 39504ef80e584477f9edc638510b9ce0,
+        type: 3}
+      propertyPath: DeathScreen
+      value: 
+      objectReference: {fileID: 1002615840}
     - target: {fileID: 2009786579980632811, guid: 39504ef80e584477f9edc638510b9ce0,
         type: 3}
       propertyPath: wallSliding
