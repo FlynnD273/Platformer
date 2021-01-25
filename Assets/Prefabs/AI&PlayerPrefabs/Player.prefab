@@ -299,8 +299,8 @@ MonoBehaviour:
   regenCounter: 0
   MyRB: {fileID: 0}
   PlayerHurtSound: {fileID: 8300000, guid: 2bce5f26c6fa1834dbaca896d4616a2a, type: 3}
-  PlayerDeathSound: {fileID: 0}
-  SwordAttack: {fileID: 0}
+  PlayerDeathSound: {fileID: 8300000, guid: 5cc3763aa69a9304ca88fc6f42802f44, type: 3}
+  SwordAttack: {fileID: 8300000, guid: b65d5d1aeacfdc748a440fd9a85be369, type: 3}
   keySound: {fileID: 8300000, guid: 9a6a688d81c56d442afe7e436347caca, type: 3}
   key: {fileID: 0}
   DamgeCooldown: 0
