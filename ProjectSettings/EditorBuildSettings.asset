@@ -12,25 +12,25 @@ EditorBuildSettings:
     path: Assets/Scenes/GameLevels/Tutorial.unity
     guid: 4d524bc8761244001a71560a575d2621
   - enabled: 1
-    path: Assets/Scenes/GameLevels/CooperLevel1.unity
+    path: Assets/Scenes/GameLevels/1 - Cooper.unity
     guid: adeb4fa9eb324d54c9e1e4e216d72f47
   - enabled: 1
-    path: Assets/Scenes/GameLevels/FlynnLevel2.unity
+    path: Assets/Scenes/GameLevels/2 - Flynn.unity
     guid: 6c0926f27fdaaa349850e32e8b5116de
   - enabled: 1
-    path: Assets/Scenes/GameLevels/Level3(Abhi).unity
+    path: Assets/Scenes/Level3(Abhi).unity
     guid: 59b7e50f3075246ec82a34c3dbdf564d
   - enabled: 1
-    path: Assets/Scenes/GameLevels/AryaLevel4.unity
+    path: Assets/Scenes/GameLevels/3 - Arya.unity
     guid: a6e528a38f0ef884cb1d4ee0f5cb6013
   - enabled: 1
-    path: Assets/Scenes/GameLevels/DevLevel6.unity
+    path: Assets/Scenes/GameLevels/4 - Devy.unity
     guid: 8771a52f23952c247bf1c713c5f57f67
   - enabled: 1
-    path: Assets/Scenes/GameLevels/Thomas Level (5 - fireball) 1.unity
+    path: Assets/Scenes/GameLevels/5 - Thomas.unity
     guid: 454902791bbe321498c623f75ee5d4e0
   - enabled: 1
-    path: Assets/Scenes/GameLevels/FinalBossArena.unity
+    path: Assets/Scenes/GameLevels/6 - Final Boss (Thomas).unity
     guid: ff17a92dbcd9da34e85270dfbc8178e3
   - enabled: 1
     path: Assets/Scenes/GameLevels/WinLevel.unity
