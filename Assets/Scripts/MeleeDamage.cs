@@ -13,6 +13,7 @@ public class MeleeDamage : MonoBehaviour
     public int damage = 15;
     private RangedEnemy rangedEnemy;
     private DragonEnemy dragonEnemy;
+    private BossEnemy bossEnemy;
 
     private void Start()
     {
@@ -39,6 +40,12 @@ public class MeleeDamage : MonoBehaviour
         {
             dragonEnemy.TakeDamage(damage);
             
+        }
+        if (dragonEnemy == null && rangedEnemy == null)
+            bossEnemy = collision.GetComponent<BossEnemy>();
+        if (bossEnemy != null)
+        {
+            bossEnemy.TakeDamage(damage);
         }
         CrateDrops crateDrops;
         crateDrops = collision.GetComponent<CrateDrops>();

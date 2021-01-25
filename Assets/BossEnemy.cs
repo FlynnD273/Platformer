@@ -40,7 +40,6 @@ public class BossEnemy : MonoBehaviour
     [SerializeField] public float attackCooldown; //how long enemy has to wait in between attacks
 
     [Header("Weapons and Attack COlliders")]
-    [SerializeField] CapsuleCollider2D AttackCollider; //turns on when attacking, off when not
     [SerializeField] GameObject projectile; //object to fire
 
     [Header("Weapons to Drop on Death")]
@@ -57,6 +56,7 @@ public class BossEnemy : MonoBehaviour
 
     [Header("Boss Extras")]
     [SerializeField] Slider bossHealthbar;
+    [SerializeField] GameObject bossHealthbarParent;
 
     private bool dirRight = true; //wether or not the enemy is moving right
     //strings for animator bools
@@ -86,8 +86,7 @@ public class BossEnemy : MonoBehaviour
     {
         //get the animator component
         enemyAnim = gameObject.GetComponent<Animator>();
-        //disable attack collider
-        AttackCollider.enabled = false;
+
         //player
         player = GameObject.FindGameObjectWithTag("Player");
         //set animator bool strings depending on the name of the enemy
@@ -100,7 +99,7 @@ public class BossEnemy : MonoBehaviour
         waypoint1 = LeftWaypoint.transform.position;
         waypoint2 = RightWaypoint.transform.position;
 
-        bossHealthbar.enabled = false; //disabled by default
+        bossHealthbarParent.SetActive(false); //disabled by default
     }
 
     // Update is called once per frame
@@ -124,50 +123,47 @@ public class BossEnemy : MonoBehaviour
         //calculate new distance to player
         Distance = transform.position - player.transform.position;
 
-        //take action is enemy is not hurting
-        if (!hurting)
+        //idle if timer is counting
+        if (timer < attackCooldown)
         {
-            //idle if timer is counting
-            if (timer < attackCooldown)
-            {
-                Idle();
-            }
-            //if player is within attack range, attac them
-            else if (Distance.sqrMagnitude <= attackDistance * attackDistance)
-            {
-                //flip to face the player
-                if (Mathf.Sign(Distance.x) == Mathf.Sign(transform.localScale.x))
-                {
-                    Flip();
-                }
-                //play attack sound
-                if (!hasAttacked)
-                    gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyAttack);
-                //attack
-                Attack();
-                //reset cooldown
-                Invoke("ResetTimer", 1f);
-            }
-            else if (Distance.sqrMagnitude <= rangedAttackDistance * rangedAttackDistance)
-            {
-                bossHealthbar.enabled = true;
-                //flip to face the player
-                if (Mathf.Sign(Distance.x) == Mathf.Sign(transform.localScale.x))
-                {
-                    Flip();
-                }
-                //play attack sound
-                if (!hasAttacked)
-                    gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyAttack);
-                //attack
-                RangedAttack();
-                //reset cooldown
-                Invoke("ResetTimer", 1f);
-            }
-            //move if cannot take other actions
-            else
-                Walk();
+            Idle();
         }
+        //if player is within attack range, attac them
+        else if (Distance.sqrMagnitude <= attackDistance * attackDistance)
+        {
+            //flip to face the player
+            if (Mathf.Sign(Distance.x) == Mathf.Sign(transform.localScale.x))
+            {
+                Flip();
+            }
+            //play attack sound
+            if (!hasAttacked)
+                gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyAttack);
+            //attack
+            Attack();
+            //reset cooldown
+            Invoke("ResetTimer", 1f);
+        }
+        else if (Distance.sqrMagnitude <= rangedAttackDistance * rangedAttackDistance)
+        {
+            bossHealthbarParent.SetActive(true);
+            //flip to face the player
+            if (Mathf.Sign(Distance.x) == Mathf.Sign(transform.localScale.x))
+            {
+                Flip();
+            }
+            //play attack sound
+            if (!hasAttacked)
+                gameObject.GetComponent<AudioSource>().PlayOneShot(EnemyAttack);
+            //attack
+            RangedAttack();
+            //reset cooldown
+            Invoke("ResetTimer", 1f);
+        }
+        //move if cannot take other actions
+        else
+            Walk();
+        
 
         //die if health hits 0
         if (hitPoints <= 0)
@@ -180,7 +176,6 @@ public class BossEnemy : MonoBehaviour
     private void RangedAttack()
     {
 
-        AttackCollider.enabled = true; //enable attack collider
 
         //reset anim
         enemyAnim.SetBool(walking, false);
@@ -241,8 +236,7 @@ public class BossEnemy : MonoBehaviour
     //called when enemy has no health
     private void Death()
     {
-        //dable attacks
-        AttackCollider.enabled = false;
+
         //disable all other animations
         enemyAnim.SetBool(walking, false);
         enemyAnim.SetBool(hurt, false);
@@ -296,7 +290,7 @@ public class BossEnemy : MonoBehaviour
     private void Idle()
     {
         //reset attack collider and animations
-        AttackCollider.enabled = false;
+
         enemyAnim.SetBool(walking, false);
         enemyAnim.SetBool(attack, false);
         //"heal" hurt state
@@ -308,8 +302,7 @@ public class BossEnemy : MonoBehaviour
     {
         //update bool
         hasAttacked = true;
-        //enable collider of attack
-        AttackCollider.enabled = true;
+
         //disable walking
         enemyAnim.SetBool(walking, false);
         //start attack anim
@@ -324,8 +317,7 @@ public class BossEnemy : MonoBehaviour
         Vector3 v = new Vector3(Mathf.Sign(transform.localScale.x), 0, 0);
         transform.Translate(v * moveSpeed * Time.deltaTime);
 
-        //diable attacks
-        AttackCollider.enabled = false;
+
         enemyAnim.SetBool(attack, false);
         //enable walking anim
         enemyAnim.SetBool(walking, true);
