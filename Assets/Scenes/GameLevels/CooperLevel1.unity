@@ -586,7 +586,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112664303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.95, y: -0.62, z: -10}
+  m_LocalPosition: {x: -12.3, y: -0.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 897257358}
@@ -1225,7 +1225,7 @@ PrefabInstance:
     - target: {fileID: 3607411296907776144, guid: 9c5e9c7d77b588a48900d2b5acc7f0c1,
         type: 3}
       propertyPath: endIfMaxUp
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3607411296907776144, guid: 9c5e9c7d77b588a48900d2b5acc7f0c1,
         type: 3}
@@ -1245,17 +1245,22 @@ PrefabInstance:
     - target: {fileID: 3607411296907776144, guid: 9c5e9c7d77b588a48900d2b5acc7f0c1,
         type: 3}
       propertyPath: moveSpeed
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3607411296907776144, guid: 9c5e9c7d77b588a48900d2b5acc7f0c1,
         type: 3}
       propertyPath: returnIfPlayerGone
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3607411296907776144, guid: 9c5e9c7d77b588a48900d2b5acc7f0c1,
         type: 3}
       propertyPath: playerGoneTimerLength
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607411296907776144, guid: 9c5e9c7d77b588a48900d2b5acc7f0c1,
+        type: 3}
+      propertyPath: waitForPlayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3607411296907776145, guid: 9c5e9c7d77b588a48900d2b5acc7f0c1,
         type: 3}
@@ -33962,12 +33967,12 @@ PrefabInstance:
     - target: {fileID: 2009786579980632803, guid: 39504ef80e584477f9edc638510b9ce0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.95
+      value: -12.3
       objectReference: {fileID: 0}
     - target: {fileID: 2009786579980632803, guid: 39504ef80e584477f9edc638510b9ce0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.62
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2009786579980632803, guid: 39504ef80e584477f9edc638510b9ce0,
         type: 3}
@@ -34478,7 +34483,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888901435}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.95, y: -0.62, z: -10}
+  m_LocalPosition: {x: -12.3, y: -0.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1636616871}
@@ -35397,6 +35402,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 493092afd0b1048ff8b24976f6127269,
         type: 3}
+    - target: {fileID: 3607411296907776144, guid: 9c5e9c7d77b588a48900d2b5acc7f0c1,
+        type: 3}
+      propertyPath: returnIfPlayerGone
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607411296907776144, guid: 9c5e9c7d77b588a48900d2b5acc7f0c1,
+        type: 3}
+      propertyPath: playerGoneTimerLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607411296907776144, guid: 9c5e9c7d77b588a48900d2b5acc7f0c1,
+        type: 3}
+      propertyPath: platformLeftRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607411296907776144, guid: 9c5e9c7d77b588a48900d2b5acc7f0c1,
+        type: 3}
+      propertyPath: platformUpDown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607411296907776144, guid: 9c5e9c7d77b588a48900d2b5acc7f0c1,
+        type: 3}
+      propertyPath: endIfMaxUp
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3607411296907776145, guid: 9c5e9c7d77b588a48900d2b5acc7f0c1,
         type: 3}
       propertyPath: m_ChunkCullingBounds.x

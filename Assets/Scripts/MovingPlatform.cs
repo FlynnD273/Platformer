@@ -118,9 +118,10 @@ public class MovingPlatform : MonoBehaviour
         {
             Freeze = false;
             waiting = true;
-            gameObject.transform.position = new Vector2(startingPosx, startingPosy);
+            ResetPosition();
             playerGoneTimer.Reset();
         }
+
     }
 
     private void MovePlatformLeftRight()
@@ -255,4 +256,8 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
+    public void ResetPosition()
+    {
+        gameObject.transform.position = new Vector2(startingPosx, startingPosy);
+    }
 }
