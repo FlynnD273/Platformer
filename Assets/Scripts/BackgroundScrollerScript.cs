@@ -1,39 +1,34 @@
-﻿using System.Collections;
+﻿/*
+ * Made by Abhi
+ * Jn 24, 2021
+ * Background parralx effect script
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BackgroundScrollerScript : MonoBehaviour
 {
-    [SerializeField] float backgroundScrollSpeed = 0.5f;
-    Material material;
-    Vector2 offset;
-    Vector3 zero;
-    [SerializeField] GameObject player;
-    bool isTouchingWall;
+    private float length, startpos;
+    public GameObject cam;
+    public float parralaxEffect;
 
     private void Start()
     {
-        material = GetComponent<Renderer>().material;
-        //transform.position = mainCamera.transform.position;
-        offset = new Vector2(backgroundScrollSpeed, 0f);
+        startpos = transform.position.x;
+        length = GetComponent<SpriteRenderer>().bounds.size.x;
 
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
-        isTouchingWall = player.GetComponent<CooperPlayerController>().isTouchingWall;
+        float temp = (cam.transform.position.x * (1 - parralaxEffect));
+        float dist = (cam.transform.position.x * parralaxEffect);
 
-        Debug.Log(Input.GetAxis("Horizontal"));
-        if (Input.GetAxis("Horizontal") > 0f && !isTouchingWall)
-        {
-            material.mainTextureOffset += offset * Time.deltaTime;
-        }
+        transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
 
-        if (Input.GetAxis("Horizontal") < 0f && !isTouchingWall)
-        {
-            material.mainTextureOffset -= offset * Time.deltaTime;
-        }
-        zero = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0);
-        transform.position = zero;
+        if (temp > startpos + length) startpos += length;
+        if (temp < startpos - length) startpos -= length;
     }
 }

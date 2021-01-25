@@ -213,7 +213,7 @@ public class NEWPlayerLogic : MonoBehaviour
 
         if (collision.gameObject.CompareTag("DragonFire") && DamgeCooldown <= 0)
         {
-            DamgeCooldown = 4;
+            DamgeCooldown = 2;
             Subhealth(34);
             StartCoroutine(ChangePlayerColor());
         }
