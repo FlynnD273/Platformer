@@ -11,25 +11,53 @@ public class Switch : MonoBehaviour
 {
     public GameObject wall;
     public Color checkActive = new Color(1, 0, 1, 1);
+    public Color checkInactive = new Color(1, 1, 1, 1);
     public bool doDestroyORCreate = true;
+    private bool isActive = true;
 
     //Checks if collision with kunai happens
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Sword") || collision.gameObject.CompareTag("Kunai"))
+        if (collision.gameObject.CompareTag("Sword") || collision.gameObject.CompareTag("Kunai") || collision.gameObject.CompareTag("Shuriken"))
         {
-            if (doDestroyORCreate)
+            
+            if (isActive == true)
             {
-                Destroy(wall);
+                gameObject.GetComponent<SpriteRenderer>().color = checkActive;
+                isActive = false;
+                if(doDestroyORCreate == true)
+                {
+                    doDestroyORCreate = false;
+                }
+                else
+                {
+                    doDestroyORCreate = true;
+                }
             }
-            if (!doDestroyORCreate)
+            else
+            {
+                gameObject.GetComponent<SpriteRenderer>().color = checkInactive;
+                isActive = true;
+                if (doDestroyORCreate == true)
+                {
+                    doDestroyORCreate = false;
+                }
+                else
+                {
+                    doDestroyORCreate = true;
+                }
+            }
+            if (collision.gameObject.CompareTag("Kunai") || collision.gameObject.CompareTag("Shuriken"))
+            {
+                Destroy(collision.gameObject);
+            }
+            if (doDestroyORCreate == true)
             {
                 wall.SetActive(true);
             }
-            gameObject.GetComponent<SpriteRenderer>().color = checkActive;
-            if (collision.gameObject.CompareTag("Kunai"))
+            if (doDestroyORCreate == false)
             {
-                Destroy(collision.gameObject);
+                wall.SetActive(false);
             }
         }
     }
