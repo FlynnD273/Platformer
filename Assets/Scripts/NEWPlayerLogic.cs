@@ -180,6 +180,7 @@ public class NEWPlayerLogic : MonoBehaviour
             {
                 health = maxHealth;
             }
+            Destroy(collision.gameObject);
         }
         //For deathobjects
         if (collision.gameObject.CompareTag("Death"))

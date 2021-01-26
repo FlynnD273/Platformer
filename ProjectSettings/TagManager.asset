@@ -30,6 +30,7 @@ TagManager:
   - Medusa
   - SmallDragon
   - DragonFire
+  - Dangerous
   layers:
   - Default
   - TransparentFX
@@ -64,9 +65,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: LowerBackGround
+    uniqueID: 3620752233
+    locked: 0
+  - name: background
+    uniqueID: 1089053261
+    locked: 0
+  - name: UpBackground
+    uniqueID: 1211140705
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Above
-    uniqueID: 1089053261
     locked: 0
