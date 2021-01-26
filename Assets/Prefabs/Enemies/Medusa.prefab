@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080251146667455284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.511, y: -0.348, z: 0}
+  m_LocalPosition: {x: 1.511, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4101384432631145663}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080251147296155401}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.755, y: -0.356, z: 0}
+  m_LocalPosition: {x: -1.755, y: -0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4101384432631145663}
@@ -250,7 +250,6 @@ MonoBehaviour:
   EnemyName: Medusa
   LeftWaypoint: {fileID: 1080251147296155401}
   RightWaypoint: {fileID: 1080251146667455284}
-  player: {fileID: 0}
   enemyAnim: {fileID: 4101384432631145656}
   moveSpeed: 2
   hitPoints: 100
@@ -259,6 +258,7 @@ MonoBehaviour:
   AttackCollider: {fileID: 4101384432631145659}
   projectile: {fileID: 7191949309268317104, guid: 2737d6c192d01c642a4ccb7b38315e12,
     type: 3}
+  dropItemsOnDeath: 0
   drop1: {fileID: 9031457613526283657, guid: 37beb4771497c774f86705ec37daf562, type: 3}
   drop2: {fileID: 1278394888584079965, guid: 1e093557e3cb2f649bb6f8e33894d881, type: 3}
   maxDrops: 10
