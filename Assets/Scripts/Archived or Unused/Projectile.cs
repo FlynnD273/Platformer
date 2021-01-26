@@ -95,7 +95,7 @@ public class Projectile : MonoBehaviour
         {
             cursur.transform.position = cursurOg;
         }
-        if (Input.GetMouseButtonDown(2) && !PauseMenu.isPaused)
+        if (Input.GetMouseButtonDown(2) && !PauseMenu.gameIsPause)
         {
             switchProj++;
             if (switchProj >= switchLimit)
@@ -121,7 +121,7 @@ public class Projectile : MonoBehaviour
         }
 
         //checks when to fire
-        if (Input.GetMouseButtonDown(0) && !PauseMenu.isPaused && !startCount)
+        if (Input.GetMouseButtonDown(0) && !PauseMenu.gameIsPause && !startCount)
         {
             Switch();
         }

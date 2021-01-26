@@ -140,11 +140,12 @@ public class GameManager : MonoBehaviour
 
     public void CreditSceneLoad()
     {
-        SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene("ScrollingCredits");
     }
 
     public void MainMenuLoad()
     {
         SceneManager.LoadScene("MainMenu");
     }
+
 }

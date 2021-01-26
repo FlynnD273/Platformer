@@ -39,6 +39,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GameLevels/LoseScene.unity
     guid: 2d5a17404cec8e644bfaadbcd246eff9
   - enabled: 1
-    path: Assets/Scenes/GameLevels/Credits.unity
-    guid: 3c6a06c18639df546b5354e935304028
+    path: Assets/Scenes/GameLevels/ScrollingCredits.unity
+    guid: db92821cd50f54bb7957ffee708e76e8
   m_configObjects: {}

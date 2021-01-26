@@ -80,3 +80,12 @@ TagManager:
   - name: InFront
     uniqueID: 3250235351
     locked: 0
+  - name: Text
+    uniqueID: 3481840391
+    locked: 0
+  - name: Button
+    uniqueID: 2905603437
+    locked: 0
+  - name: Disspaear
+    uniqueID: 4245302739
+    locked: 0
