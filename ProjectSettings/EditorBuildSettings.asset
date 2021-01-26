@@ -11,20 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameLevels/0 - Tutorial (Abhi).unity
     guid: 63301afd07fdb6c428723b58d53d20a2
-<<<<<<< Updated upstream
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/GameLevels/2 - Flynn.unity
-    guid: 4286bc5ad796c514fa0786aceae0e619
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-=======
   - enabled: 1
     path: Assets/Scenes/GameLevels/1 - Copper UPDATED.unity
     guid: bd350ae838562b24a8a5858e5e69b6ce
@@ -37,7 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameLevels/4 - Arya.unity
     guid: 52dc421b16d734c46888517a5c39c430
->>>>>>> Stashed changes
   - enabled: 1
     path: Assets/Scenes/GameLevels/5 - Devy.unity
     guid: 8771a52f23952c247bf1c713c5f57f67
