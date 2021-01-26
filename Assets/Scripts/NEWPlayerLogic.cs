@@ -63,6 +63,8 @@ public class NEWPlayerLogic : MonoBehaviour
 
     public GameObject DeathScreen;
     // Start is called before the first frame update
+
+    private bool dying = false;
     void Start()
     {
         //health
@@ -189,6 +191,7 @@ public class NEWPlayerLogic : MonoBehaviour
             gameObject.GetComponent<AudioSource>().PlayOneShot(PlayerDeathSound);
             DeathScreen.SetActive(true);
             Invoke("Respawn", 3f);
+            
         }
         //enable use of kunai and shuriken when picking up
         if (collision.gameObject.CompareTag("Kunai"))

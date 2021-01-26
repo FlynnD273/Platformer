@@ -13,7 +13,7 @@ public class ProjectileHandler : MonoBehaviour
     //Spawn Point for projectiles
     public Transform firePoint;
 
-    [Header("")]
+    [Header("Weapon Stuff")]
     public static int currentWeapon = 1; //int to represent currently equipped weapon
     public static int maxWeapons = 1; //limit on weapons player can access
 

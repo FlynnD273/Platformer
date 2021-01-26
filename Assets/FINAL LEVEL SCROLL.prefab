@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 580767596929952938}
   - component: {fileID: 702162046574760790}
   - component: {fileID: 3660539628506175466}
-  - component: {fileID: 3368423092109995862}
+  - component: {fileID: -3591660077750954648}
   m_Layer: 0
   m_Name: FINAL LEVEL SCROLL
   m_TagString: Untagged
@@ -122,7 +122,7 @@ PolygonCollider2D:
       - {x: 0.5, y: -0.8125}
       - {x: 0.4375, y: 0.375}
       - {x: 0.5, y: 0.78125}
---- !u!114 &3368423092109995862
+--- !u!114 &-3591660077750954648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
