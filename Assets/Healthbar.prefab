@@ -103,10 +103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 4548838954074725784}
-  meleeEnemy: {fileID: 0}
-  rangedEnemy: {fileID: 0}
-  dragonEnemy: {fileID: 0}
-  Type: Melee
 --- !u!1 &4548838954310746789
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,8 +160,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 1089053261
-  m_SortingOrder: 0
+  m_SortingLayerID: -1044731945
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &4548838954310746794
 MonoBehaviour:

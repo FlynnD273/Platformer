@@ -492,6 +492,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Healthbar
       objectReference: {fileID: 0}
+    - target: {fileID: 4548838954310746793, guid: 0f0fbdc1f00667445ab07a11c7849deb,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4548838955101642014, guid: 0f0fbdc1f00667445ab07a11c7849deb,
         type: 3}
       propertyPath: m_AnchorMax.x

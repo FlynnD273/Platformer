@@ -11,18 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameLevels/0 - Tutorial (Abhi).unity
     guid: 63301afd07fdb6c428723b58d53d20a2
-  - enabled: 1
-    path: Assets/Scenes/GameLevels/CooperLevel1.unity
-    guid: adeb4fa9eb324d54c9e1e4e216d72f47
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/GameLevels/2 - Flynn.unity
     guid: 4286bc5ad796c514fa0786aceae0e619
-  - enabled: 1
-    path: Assets/Scenes/GameLevels/3 - Arya.unity
-    guid: b68e10d80632a4ccc81d2777691f00dd
-  - enabled: 1
-    path: Assets/Scenes/GameLevels/4 - Devy.unity
-    guid: 8bdb9adde23d1af47b91bafe57897401
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/GameLevels/5 - Thomas.unity
     guid: 2ca9430a341f1af4f8dcfda1476b5981
