@@ -23,11 +23,14 @@ public class EnemyHealthBar : MonoBehaviour
     {
 
         meleeEnemy = gameObject.GetComponentInParent<MeleeEnemy>();
-        healthBar.maxValue = meleeEnemy.hitPoints;
+        if (meleeEnemy != null)
+            healthBar.maxValue = meleeEnemy.hitPoints;
         rangedEnemy = gameObject.GetComponentInParent<RangedEnemy>();
-        healthBar.maxValue = meleeEnemy.hitPoints;
+        if (rangedEnemy != null)
+            healthBar.maxValue = rangedEnemy.hitPoints;
         dragonEnemy = gameObject.GetComponentInParent<DragonEnemy>();
-        healthBar.maxValue = meleeEnemy.hitPoints;
+        if (dragonEnemy != null)
+            healthBar.maxValue = dragonEnemy.hitPoints;
     }
 
     // Update is called once per frame
