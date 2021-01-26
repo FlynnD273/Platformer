@@ -1,5 +1,5 @@
 ﻿/////////////////////
-///Name: Thomas Allen
+///Name: Thomas Allen an Dev Dhawan
 ///Date: 1/24/21
 ///Desc: Add thsis to a dragon enemy to allow it to move between two points and attack the player
 ///Thanks to Flynn for making the flipping work properly
@@ -27,6 +27,9 @@ public class DragonEnemy : MonoBehaviour
     public GameObject LeftWaypoint; //farthest left enemy will patrol
     public GameObject RightWaypoint; //farthest right enemy will patrol
 
+    [Header("HealthBar")]
+    public GameObject healthBar;
+
     [Header("Player")]
     public GameObject player; //the player in the scene
 
@@ -39,6 +42,8 @@ public class DragonEnemy : MonoBehaviour
     [SerializeField] public int hitPoints; //health
     [SerializeField] public float attackDistance; //range
     [SerializeField] public float attackCooldown; //how long enemy has to wait in between attacks
+    private Vector3 healthT;
+
 
     [Header("Weapons")]
     [SerializeField] public GameObject fireblast;
@@ -90,6 +95,8 @@ public class DragonEnemy : MonoBehaviour
         //set waypoints to the startng positions of the gameobject waypoints
         waypoint1 = LeftWaypoint.transform.position;
         waypoint2 = RightWaypoint.transform.position;
+        //health bar
+        healthT = healthBar.transform.localScale;
     }
 
     // Update is called once per frame
@@ -152,6 +159,10 @@ public class DragonEnemy : MonoBehaviour
         {
             FireballOff();
         }
+
+        float temp = hitPoints * 0.005f;
+        healthT = new Vector3(temp, healthBar.transform.localScale.y, 0f);
+        healthBar.transform.localScale = healthT;
     }
 
     private void Death()

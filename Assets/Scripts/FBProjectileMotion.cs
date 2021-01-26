@@ -12,6 +12,7 @@ public class FBProjectileMotion : MonoBehaviour
     //speed and damage vars
     public float speed = 2f;
     public int damage = 300;
+    private bool isHit = true;
 
     //rotation variables
     public bool boolRotate = false;
@@ -53,7 +54,11 @@ public class FBProjectileMotion : MonoBehaviour
             
         if (myEnemy != null)
         {
-            myEnemy.TakeDamage(damage);
+            if (isHit == true)
+            {
+                myEnemy.TakeDamage(damage);
+                isHit = false;
+            }
         }
         if (collision.gameObject.CompareTag("KunaiEnemy") || collision.gameObject.CompareTag("ShurikenEnemy"))
         {
@@ -62,7 +67,6 @@ public class FBProjectileMotion : MonoBehaviour
         if (collision.gameObject.CompareTag("FireballEnemy") && boolMini == false)
         {
             Destroy(collision.gameObject);
-            Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("FireballEnemy") && boolMini == true)
         {
@@ -79,31 +83,57 @@ public class FBProjectileMotion : MonoBehaviour
         if (crateDrops != null)
         {
             crateDrops.TakeDamage(damage);
-            Destroy(gameObject);
+            if (boolMini)
+            {
+                Destroy(gameObject);
+            }
         }
         if (myEnemy == null)
             rangedEnemy = collision.GetComponent<RangedEnemy>();
         if (rangedEnemy != null)
         {
-            rangedEnemy.TakeDamage(damage);
-            Destroy(gameObject);
+            if (isHit == true)
+            {
+                rangedEnemy.TakeDamage(damage);
+                isHit = false;
+            }
+            if (boolMini)
+            {
+                Destroy(gameObject);
+            }
         }
         if (rangedEnemy == null && rangedEnemy == null)
             dragonEnemy = collision.GetComponent<DragonEnemy>();
         if (dragonEnemy != null)
         {
-            dragonEnemy.TakeDamage(damage);
-            Destroy(gameObject);
+            if (isHit == true)
+            {
+                dragonEnemy.TakeDamage(damage);
+                isHit = false;
+            }
+            if (boolMini)
+            {
+                Destroy(gameObject);
+            }
         }
         if (dragonEnemy == null && rangedEnemy == null)
             bossEnemy = collision.GetComponent<BossEnemy>();
         if (bossEnemy != null)
         {
-            bossEnemy.TakeDamage(damage);
-            Destroy(gameObject);
+            if (isHit == true)
+            {
+                bossEnemy.TakeDamage(damage);
+                isHit = false;
+            }
+            if (boolMini)
+            {
+                Destroy(gameObject);
+            }
         }
-
-
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isHit = true;
     }
 
 

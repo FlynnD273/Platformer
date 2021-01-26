@@ -130,6 +130,7 @@ MonoBehaviour:
   isEnemyProj: 0
   rangedEnemy: {fileID: 0}
   dragonEnemy: {fileID: 0}
+  bossEnemy: {fileID: 0}
 --- !u!50 &5594173120019483616
 Rigidbody2D:
   serializedVersion: 4
