@@ -42,7 +42,6 @@ public class DragonEnemy : MonoBehaviour
     [SerializeField] public int hitPoints; //health
     [SerializeField] public float attackDistance; //range
     [SerializeField] public float attackCooldown; //how long enemy has to wait in between attacks
-    private Vector3 healthT;
 
 
     [Header("Weapons")]
@@ -95,8 +94,6 @@ public class DragonEnemy : MonoBehaviour
         //set waypoints to the startng positions of the gameobject waypoints
         waypoint1 = LeftWaypoint.transform.position;
         waypoint2 = RightWaypoint.transform.position;
-        //health bar
-        healthT = healthBar.transform.localScale;
     }
 
     // Update is called once per frame
@@ -160,9 +157,6 @@ public class DragonEnemy : MonoBehaviour
             FireballOff();
         }
 
-        float temp = hitPoints * 0.005f;
-        healthT = new Vector3(temp, healthBar.transform.localScale.y, 0f);
-        healthBar.transform.localScale = healthT;
     }
 
     private void Death()
